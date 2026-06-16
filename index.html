@@ -10,100 +10,101 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-        <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HTMGLEHCF"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-4HTMGLEHCF');
     </script>
-    <!-- Google tag (gtag.js) -->
-     
 </head>
+
 <body>
 
-    <header>
-        <h1>Mente Crua</h1>
-        <p>Ideias sem filtro.</p>
+<header class="site-header">
+    <div class="container header-content">
+        <div class="logo">
+            <a href="index.html">Mente Crua</a>
+            <span>Ideias sem filtro.</span>
+        </div>
 
-        <nav>
+        <nav class="menu">
             <a href="index.html">Home</a>
+            <a href="#artigos">Artigos</a>
+            <a href="#temas">Temas</a>
             <a href="sobre.html">Sobre</a>
             <a href="contato.html">Contato</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <main>
-
-        <section>
 <main>
 
-```
-<section>
-    <h2>Ideias sem filtro.</h2>
+    <section class="hero">
+        <div class="container hero-content">
+            <p class="tag">Filosofia • Sociedade • Comportamento</p>
 
-    <p>
-        O Mente Crua é um espaço dedicado à reflexão sobre filosofia,
-        comportamento humano, tecnologia, sociedade e pensamento crítico.
-    </p>
+            <h1>Ideias sem filtro para quem ainda gosta de pensar.</h1>
 
-    <p>
-        Em uma época dominada por distrações, opiniões instantâneas e certezas absolutas,
-        pensar profundamente tornou-se um ato de resistência.
-    </p>
+            <p class="hero-text">
+                Reflexões sobre filosofia, comportamento humano, tecnologia,
+                sociedade e pensamento crítico em uma época dominada por distrações,
+                opiniões instantâneas e certezas absolutas.
+            </p>
 
-    <p>
-        Aqui você encontrará reflexões que questionam hábitos modernos,
-        crenças populares e comportamentos que raramente são analisados com profundidade.
-    </p>
-</section>
+            <a href="#artigos" class="btn">Ler artigos</a>
+        </div>
+    </section>
 
-<section>
-    <h2>Artigo em Destaque</h2>
+    <section class="featured" id="artigos">
+        <div class="container">
+            <h2>Artigo em destaque</h2>
 
-    <article>
-        <h3>A Internet Está Destruindo o Silêncio?</h3>
+            <article class="featured-card">
+                <div>
+                    <span class="category">Tecnologia e Sociedade</span>
+                    <h3>A Internet Está Destruindo o Silêncio?</h3>
 
-        <p>
-            Nunca estivemos tão conectados. Nunca foi tão difícil ficar sozinho
-            com os próprios pensamentos.
-        </p>
+                    <p>
+                        Nunca estivemos tão conectados. Nunca foi tão difícil ficar sozinho
+                        com os próprios pensamentos.
+                    </p>
 
-        <p>
-            Em breve.
-        </p>
-    </article>
-</section>
+                    <a href="#" class="read-more">Em breve</a>
+                </div>
+            </article>
+        </div>
+    </section>
 
-<section>
-    <h2>Temas do Blog</h2>
+    <section class="themes" id="temas">
+        <div class="container">
+            <h2>Temas do blog</h2>
 
-    <ul>
-        <li>Filosofia</li>
-        <li>Comportamento Humano</li>
-        <li>Pensamento Crítico</li>
-        <li>Tecnologia e Sociedade</li>
-        <li>Psicologia</li>
-    </ul>
-</section>
-```
+            <div class="theme-grid">
+                <div class="theme-card">Filosofia</div>
+                <div class="theme-card">Comportamento Humano</div>
+                <div class="theme-card">Pensamento Crítico</div>
+                <div class="theme-card">Tecnologia e Sociedade</div>
+                <div class="theme-card">Psicologia</div>
+                <div class="theme-card">Vida Moderna</div>
+            </div>
+        </div>
+    </section>
 
 </main>
 
-
-    </main>
-
-    <footer>
+<footer class="site-footer">
+    <div class="container footer-content">
         <p>&copy; 2026 Mente Crua</p>
 
-        <p>
-            <a href="privacidade.html">Política de Privacidade</a> |
-            <a href="cookies.html">Política de Cookies</a> |
+        <div class="footer-links">
+            <a href="privacidade.html">Política de Privacidade</a>
+            <a href="cookies.html">Política de Cookies</a>
             <a href="termos.html">Termos de Uso</a>
-        </p>
-    </footer>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
