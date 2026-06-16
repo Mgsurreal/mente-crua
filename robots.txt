@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mente-crua.pages.dev/sitemap.xml
+Sitemap: https://mente-crua.surreal-marcosrg.workers.dev/sitemap.xml
