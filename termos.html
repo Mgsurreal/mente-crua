@@ -1,85 +1,152 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termos de Uso | Mente Crua</title>
-    <meta name="description" content="Termos de Uso do Mente Crua.">
+    <title>TÍTULO DA PÁGINA | Mente Crua</title>
+
+    <meta name="description" content="DESCRIÇÃO DA PÁGINA.">
+
+    <!-- Fonte principal do site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS principal -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imagens/favicon-v1.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HTMGLEHCF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4HTMGLEHCF');
+    </script>
 </head>
+
 <body>
 
-<header>
-    <h1>Mente Crua</h1>
-    <p>Ideias sem filtro.</p>
+<!-- ==========================================
+     HEADER
+     Menu principal do site
+========================================== -->
+<header class="site-header">
+    <div class="container header-content">
 
-```
-<nav>
-    <a href="index.html">Home</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="contato.html">Contato</a>
-</nav>
-```
+        <!-- Logo -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="imagens/logo-site.png" alt="Mente Crua">
+            </a>
+        </div>
 
+        <!-- Menu -->
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="index.html#artigos">Artigos</a>
+            <a href="index.html#temas">Temas</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+
+    </div>
 </header>
 
 <main>
 
-<section>
-    <h2>Termos de Uso</h2>
+<!-- ==========================================
+     HERO
+     Primeira dobra da página
+========================================== -->
+<section class="hero">
 
-```
-<p>
-    Ao acessar e utilizar o Mente Crua, o visitante concorda com os termos e condições descritos nesta página.
-</p>
+    <div class="container hero-layout">
 
-<h3>Objetivo do Conteúdo</h3>
+        <div class="hero-content">
 
-<p>
-    O conteúdo publicado possui caráter informativo, educativo e opinativo, abordando temas relacionados à filosofia, comportamento humano, tecnologia, sociedade e pensamento crítico.
-</p>
+            <p class="tag">
+                Informações Legais
+            </p>
 
-<h3>Responsabilidade do Usuário</h3>
+            <h1>
+                Termos de Uso
+            </h1>
 
-<p>
-    O usuário é responsável pela forma como utiliza as informações disponibilizadas neste site. Nenhum conteúdo deve ser interpretado como aconselhamento profissional, jurídico, financeiro ou médico.
-</p>
+            <p class="hero-text">
+                Condições para utilização do conteúdo do Mente Crua.
+            </p>
 
-<h3>Propriedade Intelectual</h3>
+        </div>
 
-<p>
-    Os textos, imagens, elementos visuais e demais conteúdos publicados no Mente Crua são protegidos pelas leis de propriedade intelectual, salvo quando indicado de forma diferente.
-</p>
+    </div>
 
-<h3>Links Externos</h3>
+</section>
 
-<p>
-    O site poderá conter links para páginas de terceiros. O Mente Crua não se responsabiliza pelo conteúdo, políticas ou práticas adotadas por esses sites externos.
-</p>
+<!-- ==========================================
+     CONTEÚDO PRINCIPAL
+========================================== -->
+<section class="page-section">
 
-<h3>Alterações dos Termos</h3>
+    <div class="container">
 
-<p>
-    Estes termos poderão ser atualizados a qualquer momento, sem aviso prévio, para refletir mudanças legais, técnicas ou operacionais.
-</p>
-```
+        <article class="featured-card">
+
+            <h2>Termos de Uso</h2>
+
+            <p>
+                Todo o conteúdo publicado no Mente Crua possui caráter
+                informativo, reflexivo e opinativo.
+            </p>
+
+            <p>
+                As opiniões apresentadas nos artigos representam interpretações,
+                análises e reflexões sobre os temas abordados, não constituindo
+                aconselhamento profissional, jurídico, financeiro, médico ou psicológico.
+            </p>
+
+            <p>
+                É permitida a citação de trechos do conteúdo desde que a fonte
+                seja devidamente mencionada.
+            </p>
+
+            <p>
+                O uso continuado deste site implica na aceitação destes Termos de Uso.
+            </p>
+
+            <p>
+                O Mente Crua reserva-se o direito de alterar, atualizar ou remover
+                conteúdos e páginas sempre que considerar necessário.
+            </p>
+
+        </article>
+
+    </div>
 
 </section>
 
 </main>
 
-<footer>
-    <p>&copy; 2026 Mente Crua</p>
+<!-- ==========================================
+     FOOTER
+     Rodapé com links legais
+========================================== -->
+<footer class="site-footer">
+    <div class="container footer-content">
 
-```
-<p>
-    <a href="privacidade.html">Política de Privacidade</a> |
-    <a href="cookies.html">Política de Cookies</a> |
-    <a href="termos.html">Termos de Uso</a>
-</p>
-```
+        <p>&copy; 2026 Mente Crua</p>
 
+        <div class="footer-links">
+            <a href="privacidade.html">Política de Privacidade</a>
+            <a href="cookies.html">Política de Cookies</a>
+            <a href="termos.html">Termos de Uso</a>
+        </div>
+
+    </div>
 </footer>
 
 </body>

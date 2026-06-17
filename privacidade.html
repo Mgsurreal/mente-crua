@@ -1,85 +1,156 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidade | Mente Crua</title>
-    <meta name="description" content="Política de Privacidade do Mente Crua.">
+    <title>TÍTULO DA PÁGINA | Mente Crua</title>
+
+    <meta name="description" content="DESCRIÇÃO DA PÁGINA.">
+
+    <!-- Fonte principal do site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS principal -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imagens/favicon-v1.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HTMGLEHCF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4HTMGLEHCF');
+    </script>
 </head>
+
 <body>
 
-<header>
-    <h1>Mente Crua</h1>
-    <p>Ideias sem filtro.</p>
+<!-- ==========================================
+     HEADER
+     Menu principal do site
+========================================== -->
+<header class="site-header">
+    <div class="container header-content">
 
-```
-<nav>
-    <a href="index.html">Home</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="contato.html">Contato</a>
-</nav>
-```
+        <!-- Logo -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="imagens/logo-site.png" alt="Mente Crua">
+            </a>
+        </div>
 
+        <!-- Menu -->
+        <nav class="menu">
+            <a href="index.html">Home</a>
+            <a href="index.html#artigos">Artigos</a>
+            <a href="index.html#temas">Temas</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+
+    </div>
 </header>
 
 <main>
 
-<section>
-    <h2>Política de Privacidade</h2>
+```html
+<!-- ==========================================
+     HERO
+     Primeira dobra da página
+========================================== -->
+<section class="hero">
 
-```
-<p>
-    A sua privacidade é importante para o Mente Crua. Esta política explica como informações podem ser coletadas, utilizadas e protegidas durante a navegação neste site.
-</p>
+    <div class="container hero-layout">
 
-<h3>Coleta de Informações</h3>
+        <div class="hero-content">
 
-<p>
-    O site pode coletar informações estatísticas de navegação por meio de ferramentas de análise, como o Google Analytics, incluindo páginas visitadas, tempo de permanência e dispositivo utilizado.
-</p>
+            <p class="tag">
+                Informações Legais
+            </p>
 
-<h3>Cookies</h3>
+            <h1>
+                Política de Privacidade
+            </h1>
 
-<p>
-    Cookies podem ser utilizados para melhorar a experiência do usuário, analisar o tráfego do site e compreender melhor o comportamento dos visitantes.
-</p>
+            <p class="hero-text">
+                Como os dados são tratados no Mente Crua.
+            </p>
 
-<h3>Compartilhamento de Dados</h3>
+        </div>
 
-<p>
-    O Mente Crua não comercializa informações pessoais de visitantes.
-</p>
-
-<h3>Links Externos</h3>
-
-<p>
-    Este site pode conter links para páginas externas. Não nos responsabilizamos pelas práticas de privacidade adotadas por terceiros.
-</p>
-
-<h3>Alterações</h3>
-
-<p>
-    Esta política poderá ser atualizada periodicamente para refletir mudanças legais, técnicas ou operacionais.
-</p>
-```
+    </div>
 
 </section>
 
+<!-- ==========================================
+     CONTEÚDO PRINCIPAL
+========================================== -->
+<section class="page-section">
+
+    <div class="container">
+
+        <article class="featured-card">
+
+            <h2>Privacidade</h2>
+
+            <p>
+                O Mente Crua respeita a privacidade dos seus visitantes.
+            </p>
+
+            <p>
+                Atualmente, este site coleta apenas informações estatísticas
+                de navegação por meio do Google Analytics, utilizadas para
+                compreender o desempenho do conteúdo e melhorar a experiência
+                dos leitores.
+            </p>
+
+            <p>
+                Nenhuma informação pessoal é vendida, compartilhada ou utilizada
+                para fins diferentes dos descritos nesta política.
+            </p>
+
+            <p>
+                Caso o visitante entre em contato por e-mail, as informações
+                fornecidas serão utilizadas exclusivamente para responder à
+                mensagem recebida.
+            </p>
+
+            <p>
+                Esta política poderá ser atualizada periodicamente para refletir
+                mudanças no funcionamento do site ou exigências legais.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
 </main>
 
-<footer>
-    <p>&copy; 2026 Mente Crua</p>
+<!-- ==========================================
+     FOOTER
+     Rodapé com links legais
+========================================== -->
+<footer class="site-footer">
+    <div class="container footer-content">
 
-```
-<p>
-    <a href="privacidade.html">Política de Privacidade</a> |
-    <a href="cookies.html">Política de Cookies</a> |
-    <a href="termos.html">Termos de Uso</a>
-</p>
-```
+        <p>&copy; 2026 Mente Crua</p>
 
+        <div class="footer-links">
+            <a href="privacidade.html">Política de Privacidade</a>
+            <a href="cookies.html">Política de Cookies</a>
+            <a href="termos.html">Termos de Uso</a>
+        </div>
+
+    </div>
 </footer>
 
 </body>
