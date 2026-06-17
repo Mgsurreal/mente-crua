@@ -111,17 +111,25 @@ body {
 }
 
 
+```css
 /* ==========================================
    HERO
    Primeira dobra da Home
 ========================================== */
 
 .hero {
-    padding: 120px 0;
+    padding: 80px 0 100px;
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
 }
 
 .hero-content {
-    max-width: 850px;
+    max-width: 650px;
 }
 
 .tag {
@@ -132,7 +140,7 @@ body {
 }
 
 .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(2.8rem, 5vw, 5rem);
     line-height: 1.1;
     margin-bottom: 30px;
 }
@@ -140,8 +148,13 @@ body {
 .hero-text {
     color: var(--text-secondary);
     font-size: 1.2rem;
-    max-width: 700px;
     margin-bottom: 40px;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 16px;
+    display: block;
 }
 
 .btn {
@@ -153,6 +166,8 @@ body {
     text-decoration: none;
     font-weight: 600;
 }
+```
+
 
 
 /* ==========================================
@@ -328,6 +343,8 @@ section h2 {
 }
 
 @media (max-width: 768px) {
+
+    /* Hero empilhado no celular */ .hero-layout { grid-template-columns: 1fr; } .hero-image { order: 2; }
 
     .header-content {
         flex-direction: column;
