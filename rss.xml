@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <title>Mente Crua</title>
+  <link>https://mente-crua.surreal-marcosrg.workers.dev/</link>
+  <description>Blog Mente Crua - reflexões, crítica social e comportamento humano</description>
+  <language>pt-BR</language>
+
+  <!-- POST 1 -->
+  <item>
+    <title><![CDATA[A mente moderna em colapso silencioso]]></title>
+    <link>https://mente-crua.surreal-marcosrg.workers.dev/blog/post-1.html</link>
+    <guid>post-1</guid>
+    <description><![CDATA[Uma reflexão sobre o excesso de estímulos e a perda de foco na era digital.]]></description>
+    <pubDate>Wed, 17 Jun 2026 12:00:00 GMT</pubDate>
+  </item>
+
+  <!-- POST 2 -->
+  <item>
+    <title><![CDATA[Por que ninguém mais consegue ficar em silêncio]]></title>
+    <link>https://mente-crua.surreal-marcosrg.workers.dev/blog/post-2.html</link>
+    <guid>post-2</guid>
+    <description><![CDATA[O medo do vazio e a dependência constante de distrações digitais.]]></description>
+    <pubDate>Tue, 16 Jun 2026 12:00:00 GMT</pubDate>
+  </item>
+
+  <!-- POST 3 -->
+  <item>
+    <title><![CDATA[A ilusão de estar informado]]></title>
+    <link>https://mente-crua.surreal-marcosrg.workers.dev/blog/post-3.html</link>
+    <description><![CDATA[Como o excesso de informação cria confusão em vez de clareza.]]></description>
+    <pubDate>Mon, 15 Jun 2026 12:00:00 GMT</pubDate>
+  </item>
+
+</channel>
+
+</rss>
