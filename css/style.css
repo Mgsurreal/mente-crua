@@ -502,3 +502,54 @@ section h2 {
 .post-card:hover .post-thumb img {
     transform: scale(1.05);
 }
+
+/* ==========================================
+   IMAGENS DOS ARTIGOS
+========================================== */
+
+.article-image {
+
+    display: block;
+
+    width: 100%;
+    max-width: 620px;
+
+    margin: 40px auto;
+
+    border-radius: 12px;
+
+}
+
+/* ==========================================
+   RESPONSIVIDADE DAS IMAGENS
+========================================== */
+
+@media (max-width: 768px) {
+
+    .article-image {
+
+        width: 100%;
+        max-width: 100%;
+
+        margin: 25px auto;
+
+        border-radius: 10px;
+
+    }
+
+}
+
+figcaption {
+
+    text-align: center;
+
+    font-size: .85rem;
+
+    color: #888;
+
+    margin-top: 12px;
+    margin-bottom: 35px;
+
+    font-style: italic;
+
+}
