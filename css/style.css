@@ -553,3 +553,242 @@ figcaption {
     font-style: italic;
 
 }
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.site-footer {
+
+    position: relative;
+
+    background-image: url("../imagens/footer/footer-bg.png");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    color: #ffffff;
+
+    margin-top: 120px;
+
+}
+
+.footer-overlay {
+
+    background: rgba(0, 0, 0, 0.78);
+
+    backdrop-filter: blur(2px);
+
+}
+
+.footer-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 50px;
+
+    padding: 120px 0 80px;
+
+}
+
+.footer-column h3 {
+
+    color: #ffffff;
+
+    font-size: 1.2rem;
+
+    margin-bottom: 25px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+.footer-column h3::after {
+
+    content: "";
+
+    display: block;
+
+    width: 50px;
+
+    height: 2px;
+
+    background: #8b0000;
+
+    margin-top: 12px;
+
+}
+
+.footer-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.footer-column a {
+
+    color: #cfcfcf;
+
+    text-decoration: none;
+
+    margin-bottom: 14px;
+
+    transition: .3s;
+
+}
+
+.footer-column a:hover {
+
+    color: #b22222;
+
+    transform: translateX(4px);
+
+}
+
+.footer-column p {
+
+    color: #cfcfcf;
+
+    line-height: 1.8;
+
+}
+
+.footer-about strong {
+
+    display: block;
+
+    margin-top: 20px;
+
+    color: #b22222;
+
+    font-size: 1rem;
+
+}
+
+/* ==========================================
+   FRASES
+========================================== */
+
+.footer-quotes {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    padding: 60px 0;
+
+    border-top: 1px solid rgba(255,255,255,.08);
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+
+}
+
+.footer-quotes blockquote {
+
+    margin: 0;
+
+    color: #d8d8d8;
+
+    font-size: 1.2rem;
+
+    line-height: 1.8;
+
+    font-style: italic;
+
+}
+
+.footer-quotes cite {
+
+    display: block;
+
+    margin-top: 18px;
+
+    color: #b22222;
+
+    font-style: normal;
+
+}
+
+/* ==========================================
+   COPYRIGHT
+========================================== */
+
+.footer-bottom {
+
+    text-align: center;
+
+    padding: 30px 20px;
+
+}
+
+.footer-bottom p {
+
+    color: #b5b5b5;
+
+    font-size: .95rem;
+
+}
+
+.footer-bottom span {
+
+    margin: 0 12px;
+
+    color: #666;
+
+}
+
+.footer-bottom a {
+
+    color: #b5b5b5;
+
+    text-decoration: none;
+
+    transition: .3s;
+
+}
+
+.footer-bottom a:hover {
+
+    color: #b22222;
+
+}
+
+/* ==========================================
+   RESPONSIVO
+========================================== */
+
+@media (max-width: 768px) {
+
+    .footer-grid {
+
+        gap: 40px;
+
+        padding: 80px 0 60px;
+
+    }
+
+    .footer-quotes {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+    }
+
+    .footer-quotes blockquote {
+
+        font-size: 1rem;
+
+    }
+
+}
