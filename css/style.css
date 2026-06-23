@@ -863,3 +863,45 @@ figcaption {
         grid-template-columns: 1fr;
     }
 }
+
+
+
+.pensador-header{
+    padding:120px 0 60px;
+}
+
+.pensador-grid{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.pensador-foto img{
+    width:100%;
+    display:block;
+    border-radius:18px;
+}
+
+.pensador-info h1{
+    margin-bottom:10px;
+}
+
+.pensador-periodo{
+    color:#999;
+    margin-bottom:20px;
+}
+
+.pensador-resumo{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+.pensador-resumo span{
+    background:#111;
+    border:1px solid rgba(255,255,255,.08);
+    padding:8px 14px;
+    border-radius:999px;
+}
