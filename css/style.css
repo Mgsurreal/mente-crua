@@ -792,3 +792,74 @@ figcaption {
     }
 
 }
+
+
+/* ==========================================
+   Pensadores Livros
+========================================== */
+
+.person-hero {
+    padding: 120px 0 80px;
+}
+
+.person-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 50px;
+    align-items: center;
+}
+
+.person-photo {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    margin: 40px 0;
+}
+
+.book-card {
+    background: #151515;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 16px;
+    padding: 18px;
+    text-decoration: none;
+    color: #fff;
+    transition: .3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    border-color: #8b0000;
+}
+
+.book-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+.book-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.book-card p {
+    font-size: .9rem;
+    color: #bfbfbf;
+}
+
+.affiliate-note {
+    font-size: .9rem;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .person-hero-grid {
+        grid-template-columns: 1fr;
+    }
+}
