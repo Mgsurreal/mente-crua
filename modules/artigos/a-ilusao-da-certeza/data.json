@@ -1,0 +1,29 @@
+{
+  "title": "Título do novo artigo",
+  "subtitle": "Subtítulo do artigo",
+  "slug": "novo-artigo",
+  "category": "Filosofia",
+  "thumb": "assets/img/artigos/thumb.jpg",
+  "seoDescription": "Descrição curta para Google e redes sociais.",
+  "thinkers": [
+    "Nietzsche",
+    "Jung"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "content": "Primeiro parágrafo do artigo."
+    },
+    {
+      "type": "image",
+      "src": "assets/img/artigos/imagem.jpg",
+      "alt": "Descrição da imagem",
+      "caption": ""
+    },
+    {
+      "type": "quote",
+      "content": "Uma citação forte aqui.",
+      "author": "Mente Crua"
+    }
+  ]
+}

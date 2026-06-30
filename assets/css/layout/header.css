@@ -1,0 +1,310 @@
+/* ==========================================
+   HEADER
+   Menu principal do site
+========================================== */
+
+
+.site-header {
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.header-content {
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.menu {
+    display: flex;
+    gap: 28px;
+}
+
+.menu a {
+    color: var(--text);
+    text-decoration: none;
+    transition: .3s;
+}
+
+.menu a:hover {
+    opacity: .7;
+}
+
+
+.menu a{
+
+    position:relative;
+
+    color:#e5e5e5;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+
+.menu a:hover{
+
+    color:#ffffff;
+
+}
+
+.menu a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:#b30000;
+
+    transition:.3s;
+
+}
+
+.menu a:hover::after{
+
+    width:100%;
+
+}
+
+
+
+
+/* ==========================================
+   RESPONSIVO
+   Ajustes para telas menores
+========================================== */
+
+@media (max-width: 900px) {
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    /* Hero empilhado no celular */ .hero-layout { grid-template-columns: 1fr; } .hero-image { order: 2; }
+
+    .header-content {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 80px 0;
+    }
+
+    .featured-card {
+        padding: 25px;
+    }
+
+    .featured-card h3 {
+        font-size: 1.5rem;
+    }
+
+}
+
+
+/* ==========================================
+   Pensadores Livros
+========================================== */
+
+.person-hero {
+    padding: 120px 0 80px;
+}
+
+.person-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 50px;
+    align-items: center;
+}
+
+.person-photo {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    margin: 40px 0;
+}
+
+.book-card {
+    background: #151515;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 16px;
+    padding: 18px;
+    text-decoration: none;
+    color: #fff;
+    transition: .3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    border-color: #8b0000;
+}
+
+.book-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+.book-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.book-card p {
+    font-size: .9rem;
+    color: #bfbfbf;
+}
+
+.affiliate-note {
+    font-size: .9rem;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .person-hero-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+.pensador-header{
+    padding:120px 0 60px;
+}
+
+.pensador-grid{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.pensador-foto img{
+    width:100%;
+    display:block;
+    border-radius:18px;
+}
+
+.pensador-info h1{
+    margin-bottom:10px;
+}
+
+.pensador-periodo{
+    color:#999;
+    margin-bottom:20px;
+}
+
+.pensador-resumo{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+.pensador-resumo span{
+    background:#111;
+    border:1px solid rgba(255,255,255,.08);
+    padding:8px 14px;
+    border-radius:999px;
+}
+
+
+.article-content a{
+    color:#ffffff;
+    text-decoration:none;
+    font-weight:600;
+    position:relative;
+    transition:.3s;
+}
+
+.article-content a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-2px;
+    width:0;
+    height:1px;
+    background:#b30000;
+    transition:.3s;
+}
+
+.article-content a:hover{
+    color:#b30000;
+}
+
+.article-content a:hover::after{
+    width:100%;
+}
+
+.article-content a:visited{
+    color:#ffffff;
+}
+
+.menu a.active{
+
+    color:#ffffff;
+
+    font-weight:700;
+
+}
+
+.menu a.active::after{
+
+    width:100%;
+
+    background:#b30000;
+
+    height:2px;
+
+}
+
+
+

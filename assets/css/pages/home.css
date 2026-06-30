@@ -1,0 +1,327 @@
+/* ==========================================
+   HERO
+   Primeira dobra da Home com imagem de fundo
+========================================== */
+
+.hero {
+    min-height: 820px;
+    padding: 90px 0 120px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(13, 13, 13, 0.98) 0%,
+            rgba(13, 13, 13, 0.86) 34%,
+            rgba(13, 13, 13, 0.35) 65%,
+            rgba(13, 13, 13, 0.85) 100%
+        ),
+        url("../../img/hero/hero-mente-crua.png");
+
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+}
+
+.hero-layout {
+    display: block;
+}
+
+.hero-content {
+    max-width: 620px;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 6vw, 5.4rem);
+    line-height: 1.08;
+    margin-bottom: 30px;
+}
+
+.hero-text {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+
+.btn {
+    display: inline-block;
+    background: white;
+    color: black;
+    padding: 14px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+
+
+
+/* ==========================================
+   SEÇÕES
+   Espaçamento geral entre blocos
+========================================== */
+
+section {
+    padding: 60px 0;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+
+
+/* ==========================================
+   ARTIGO EM DESTAQUE
+   Card principal da Home
+========================================== */
+
+.featured-card {
+    background: linear-gradient(135deg, #171717, #101010);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.category {
+    display: inline-block;
+    color: #bdbdbd;
+    margin-bottom: 15px;
+    font-size: .9rem;
+}
+
+.featured-card h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.featured-card p {
+    color: var(--text-secondary);
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+/* ==========================================
+   ARTIGOS RECENTES
+   Cards dos últimos artigos publicados
+========================================== */
+
+.recent-posts {
+    padding-top: 20px;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.post-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: .3s;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    background: var(--card-hover);
+}
+
+.post-category {
+    color: var(--text-secondary);
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.post-card h3 {
+    margin: 16px 0;
+    line-height: 1.3;
+}
+
+.post-card p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.post-card a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+
+/* ==========================================
+   TEMAS DO BLOG
+   Categorias principais
+========================================== */
+
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.theme-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    transition: .3s;
+}
+
+.theme-card:hover {
+    background: var(--card-hover);
+    transform: translateY(-4px);
+}
+
+
+
+/* ==========================================
+   GALERIA DE PENSADORES
+========================================== */
+
+.pensadores-section {
+    padding: 120px 0;
+}
+
+.pensadores-section .tag {
+    color: #b30000;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: .8rem;
+}
+
+.pensadores-section h1 {
+    margin-top: 12px;
+}
+
+.pensadores-section .hero-text {
+    max-width: 780px;
+    margin-top: 18px;
+    color: #bfbfbf;
+}
+
+.pensadores-count {
+    margin-top: 18px;
+    color: #888;
+    font-size: .95rem;
+}
+
+.pensadores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+/* Card */
+
+.pensador-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 430px;
+    background: #151515;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 18px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    transition: .35s;
+}
+
+.pensador-card:hover {
+    transform: translateY(-8px);
+    border-color: #8b0000;
+    box-shadow: 0 18px 40px rgba(0,0,0,.45);
+}
+
+/* Imagem */
+
+.pensador-card img {
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: .35s;
+}
+
+.pensador-card:hover img {
+    transform: scale(1.03);
+}
+
+/* Conteúdo */
+
+.pensador-card-content {
+    padding: 22px 22px 26px;
+}
+
+.pensador-card h2 {
+    font-size: 1.45rem;
+    margin-bottom: 8px;
+    color: #fff;
+    transition: .3s;
+}
+
+.pensador-card:hover h2 {
+    color: #b30000;
+}
+
+.pensador-meta {
+    color: #777;
+    font-size: .88rem;
+    margin-bottom: 12px;
+}
+
+.pensador-card p {
+    color: #aaa;
+    font-size: .95rem;
+    line-height: 1.7;
+}
+
+.pensador-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: #b30000;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.pensador-card:hover .pensador-link {
+    letter-spacing: .5px;
+}
+
+/* Responsivo */
+
+@media (max-width: 900px) {
+    .pensadores-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+    }
+
+    .pensador-card {
+        min-height: 390px;
+    }
+
+    .pensador-card img {
+        height: 260px;
+    }
+}
+
+

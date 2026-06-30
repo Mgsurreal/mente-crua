@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Friedrich Nietzsche",
+    "slug": "nietzsche",
+    "url": "pensadores/nietzsche.html"
+  },
+  {
+    "name": "Carl Gustav Jung",
+    "slug": "jung",
+    "url": "pensadores/jung.html"
+  },
+  {
+    "name": "Sócrates",
+    "slug": "socrates",
+    "url": "pensadores/socrates.html"
+  },
+  {
+    "name": "Spinoza",
+    "slug": "spinoza",
+    "url": "pensadores/spinoza.html"
+  }
+]

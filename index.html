@@ -14,12 +14,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 
     <!-- ==========================================
      FAVICON
 ========================================== -->
-<link rel="icon" type="image/png" href="imagens/favicon-v1.png">
+<link rel="icon" type="image/png" href="assets/img/favicon-v1.png">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HTMGLEHCF"></script>
@@ -48,7 +48,7 @@
     <a href="index.html">
 
         <img
-            src="imagens/logo-site.png"
+            src="assets/img/logo-site.png"
             alt="Mente Crua">
 
     </a>
@@ -59,7 +59,7 @@
             <a href="index.html"class="active">Home</a>
             <a href="#artigos">Artigos</a>
             <a href="#temas">Temas</a>
-            <a href="/pensadores/index.html">Pensadores</a>
+            <a href="modules/pensadores/">Pensadores</a>
             <a href="sobre.html">Sobre</a>
             <a href="contato.html">Contato</a>
         </nav>
@@ -109,6 +109,18 @@
 
 </section>
 
+<section class="home-search-section">
+  <div class="container">
+    <div class="home-search-box">
+      <p class="tag">Biblioteca Mente Crua</p>
+      <h2>Buscar no acervo</h2>
+      <input id="homeSearchInput" type="search" placeholder="Buscar artigos, pensadores, conceitos, livros...">
+      <div id="homeSearchResults" class="home-search-results"></div>
+    </div>
+  </div>
+</section>
+
+
     <!-- ==========================================
          ARTIGO EM DESTAQUE
          Principal conteúdo em evidência na Home
@@ -128,7 +140,7 @@
                         Talvez o ser humano não busque a verdade tanto quanto busca segurança.
                     </p>
 
-                    <a href="artigo-certeza.html" class="read-more">Ler artigo →</a>
+                    <a href="modules/artigos/a-ilusao-da-certeza/" class="read-more">Ler artigo →</a>
                 </div>
             </article>
 
@@ -154,10 +166,10 @@
             <article class="post-card">
 
                 <!-- Thumb do artigo -->
-                <a href="artigo-certeza.html" class="post-thumb">
+                <a href="modules/artigos/a-ilusao-da-certeza/" class="post-thumb">
 
                     <img
-                        src="imagens/artigos/thumb-certeza.jpg"
+                        src="assets/img/artigos/thumb-certeza.jpg"
                         alt="Por que temos tanta necessidade de ter certeza?">
 
                 </a>
@@ -178,7 +190,7 @@
                 </p>
 
                 <!-- Link -->
-                <a href="artigo-certeza.html">
+                <a href="modules/artigos/a-ilusao-da-certeza/">
                     Ler artigo →
                 </a>
 
@@ -191,10 +203,10 @@
 
             <article class="post-card">
 
-                <a href="artigo-crenca-vira-identidade.html" class="post-thumb">
+                <a href="modules/artigos/crenca-vira-identidade/" class="post-thumb">
 
                     <img
-                        src="imagens/artigos/thumb-ego.png"
+                        src="assets/img/artigos/thumb-ego.png"
                         alt="O ego é maior que a fé?">
 
                 </a>
@@ -211,7 +223,7 @@
                     Quando uma crença é questionada, o que realmente está sendo defendido?
                 </p>
 
-                <a href="artigo-crenca-vira-identidade.html">
+                <a href="modules/artigos/crenca-vira-identidade/">
                     Ler artigo →
                 </a> 
 
@@ -263,7 +275,7 @@
 
                 <a href="index.html">Início</a>
                 <a href="index.html#artigos">Artigos</a>
-                <a href="/pensadores/index.html">Pensadores</a>
+                <a href="modules/pensadores/">Pensadores</a>
                 <a href="index.html#temas">Temas</a>
                 <a href="sobre.html">Sobre</a>
                 <a href="contato.html">Contato</a>
@@ -342,5 +354,6 @@
 
 </footer>
 
+<script src="assets/js/search.js"></script>
 </body>
 </html>

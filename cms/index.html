@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mente Crua CMS - Editor v0.4</title>
+<link rel="stylesheet" href="cms.css">
+</head>
+<body>
+<main class="cms-shell">
+  <header class="cms-header">
+    <div>
+      <p class="tag">Mente Crua CMS • Editor local v0.4</p>
+      <h1>Novo conteúdo</h1>
+      <p>Crie entidades do acervo, importe imagens, monte blocos e use <strong>Publicar Local</strong> para gerar a pasta correta no projeto. Depois você testa e faz o commit manualmente.</p>
+    </div>
+  </header>
+
+  <section class="panel notice">
+    <strong>Fluxo oficial:</strong> CMS → Publicar Local → testar no navegador → commit manual no GitHub Desktop/VS Code.
+  </section>
+
+  <section class="panel module-selector">
+    <label>Módulo
+      <select id="moduleType">
+        <option value="artigos">Artigo</option>
+        <option value="pensadores">Pensador</option>
+        <option value="conceitos">Conceito</option>
+        <option value="personagens">Personagem</option>
+        <option value="livros">Livro</option>
+        <option value="arte-explica">A Arte Explica</option>
+        <option value="antes-da-disney">A História Antes da Disney</option>
+        <option value="mitologias">Mitologia</option>
+        <option value="escolas-filosoficas">Escola Filosófica</option>
+      </select>
+    </label>
+    <p class="hint" id="folderHint">Destino: modules/artigos/seu-slug/</p>
+  </section>
+
+  <section class="panel grid-2" id="commonFields">
+    <label>Título / Nome <input id="title" placeholder="Ex: A ilusão da certeza"></label>
+    <label>Slug <input id="slug" placeholder="a-ilusao-da-certeza"></label>
+    <label>Subtítulo <input id="subtitle" placeholder="Frase de apoio"></label>
+    <label>Categoria <input id="category" placeholder="Filosofia • Psicologia"></label>
+    <label>Thumb <input id="thumb" placeholder="img/thumb.webp"></label>
+    <label>Autor <input id="author" value="Mente Crua" placeholder="Mente Crua"></label>
+    <label class="full">Descrição SEO <textarea id="seo" rows="3" placeholder="Resumo curto para Google e compartilhamento"></textarea></label>
+    <label class="full">Relacionamentos <input id="relations" placeholder="Jung, Narciso, Arquétipo, A República"></label>
+  </section>
+
+  <section class="panel media-panel">
+    <div class="section-row">
+      <div>
+        <h2>Biblioteca de imagens deste item</h2>
+        <p class="hint">Importe JPG, PNG, WEBP, GIF ou SVG. O CMS prepara o caminho como <code>img/nome-do-arquivo</code>. Imagens SVG e WebP são mantidas no formato original.</p>
+      </div>
+      <label class="file-button">+ Importar imagem do PC
+        <input id="imageImporter" type="file" accept="image/*,.svg,.webp" multiple>
+      </label>
+    </div>
+    <div id="mediaLibrary" class="media-library"><p class="hint">Nenhuma imagem importada ainda.</p></div>
+  </section>
+
+  <section class="panel module-fields" id="articleFields">
+    <h2>Campos do artigo</h2>
+    <div class="grid-2">
+      <label>Pensadores citados <input id="thinkers" placeholder="Nietzsche, Jung, Spinoza"></label>
+      <label>Conceitos citados <input id="concepts" placeholder="Niilismo, inconsciente, desejo"></label>
+    </div>
+  </section>
+
+  <section class="panel module-fields hidden" id="thinkerFields">
+    <h2>Campos do pensador</h2>
+    <div class="grid-2">
+      <label>Época <input id="period" placeholder="Ex: Psicologia analítica • Século XX"></label>
+      <label>Nascimento <input id="birth" placeholder="Ex: 1875"></label>
+      <label>Morte <input id="death" placeholder="Ex: 1961"></label>
+      <label>Imagem principal <input id="portrait" placeholder="img/retrato.webp"></label>
+      <label class="full">Principais ideias <textarea id="mainIdeas" rows="4" placeholder="Uma ideia por linha"></textarea></label>
+      <label class="full">Obras principais <textarea id="works" rows="4" placeholder="Uma obra por linha"></textarea></label>
+    </div>
+  </section>
+
+  <section class="panel module-fields hidden" id="bookFields">
+    <h2>Campos do livro</h2>
+    <div class="grid-2">
+      <label>Autor do livro <input id="bookAuthor" placeholder="Ex: Friedrich Nietzsche"></label>
+      <label>Ano <input id="bookYear" placeholder="Ex: 1883"></label>
+      <label class="full">Resumo <textarea id="bookSummary" rows="4" placeholder="Resumo do livro"></textarea></label>
+    </div>
+
+    <div class="purchase-links-box">
+      <div class="section-row">
+        <div>
+          <h3>🛒 Links de compra</h3>
+          <p class="hint">Adicione Amazon, Shopee, Mercado Livre, Estante Virtual ou qualquer outra plataforma.</p>
+        </div>
+        <button id="addPurchaseLink" type="button" class="secondary">+ Adicionar loja</button>
+      </div>
+      <div id="purchaseLinks"></div>
+    </div>
+  </section>
+
+  <section class="panel module-fields hidden" id="extraFields">
+    <h2>Campos editoriais</h2>
+    <label>Contexto <textarea id="context" rows="4" placeholder="Contexto histórico, simbólico ou cultural"></textarea></label>
+    <label>Ligação com filosofia/psicologia <textarea id="connection" rows="4" placeholder="Como isso conversa com comportamento humano, filosofia ou psicologia"></textarea></label>
+  </section>
+
+  <section class="panel">
+    <div class="section-row">
+      <h2>Blocos do conteúdo</h2>
+      <button id="clearBlocks" class="secondary" type="button">Limpar blocos</button>
+    </div>
+    <div class="block-actions">
+      <button data-add="paragraph" type="button">+ Parágrafo</button>
+      <button data-add="heading" type="button">+ Título interno</button>
+      <button data-add="image" type="button">+ Imagem</button>
+      <button data-add="quote" type="button">+ Citação</button>
+      <button data-add="entity" type="button">+ Entidade linkada</button>
+      <button data-add="note" type="button">+ Caixa destaque</button>
+      <button data-add="list" type="button">+ Lista</button>
+      <button data-add="separator" type="button">+ Separador</button>
+    </div>
+    <div id="blocks"></div>
+  </section>
+
+  <section class="panel actions">
+    <button id="generate" type="button">👁 Preview</button>
+    <button id="publishLocal" class="primary" type="button">💾 Publicar Local</button>
+  </section>
+
+  <section class="panel">
+    <h2>Status</h2>
+    <pre id="publishStatus">Aguardando publicação local.</pre>
+  </section>
+
+  <section class="panel">
+    <h2>Onde será colocado</h2>
+    <pre id="instructions">modules/artigos/seu-slug/</pre>
+  </section>
+
+  <section class="panel preview-panel">
+    <h2>Preview rápido</h2>
+    <div id="preview" class="preview"></div>
+  </section>
+
+  <section class="panel">
+    <h2>HTML gerado</h2>
+    <textarea id="outputHtml" rows="20" spellcheck="false"></textarea>
+  </section>
+
+  <section class="panel">
+    <h2>JSON gerado</h2>
+    <textarea id="outputJson" rows="14" spellcheck="false"></textarea>
+  </section>
+</main>
+<script src="cms.js"></script>
+</body>
+</html>

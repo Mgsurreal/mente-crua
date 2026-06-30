@@ -1,0 +1,29 @@
+[
+  {
+    "type": "Artigo",
+    "title": "Por que temos tanta necessidade de ter certeza?",
+    "subtitle": "Talvez o ser humano não busque a verdade tanto quanto busca segurança.",
+    "category": "Filosofia • Psicologia • Ego",
+    "url": "modules/artigos/a-ilusao-da-certeza/",
+    "tags": ["certeza", "ego", "verdade"],
+    "entities": []
+  },
+  {
+    "type": "Artigo",
+    "title": "O dia em que a crença vira identidade",
+    "subtitle": "Quando uma crença é questionada, o que realmente está sendo defendido?",
+    "category": "Psicologia • Crenças",
+    "url": "modules/artigos/crenca-vira-identidade/",
+    "tags": ["crença", "identidade", "ego"],
+    "entities": []
+  },
+  {
+    "type": "Pensador",
+    "title": "Carl Jung",
+    "subtitle": "Psicologia analítica, arquétipos e inconsciente coletivo.",
+    "category": "Psicologia",
+    "url": "modules/pensadores/jung/",
+    "tags": ["jung", "arquétipos", "inconsciente"],
+    "entities": ["Arquétipo", "Sombra", "Persona"]
+  }
+]
