@@ -57,3 +57,13 @@ Inclui:
 ## Observação importante
 
 O botão **Publicar Local** usa a File System Access API, que funciona melhor no Chrome/Edge. Se o navegador bloquear escrita em pastas, use os botões de baixar `index.html` e `data.json`.
+
+
+## Atlas CMS v0.5
+
+Primeira rodada de refinamento: abrir `data.json` existente, campo de tags e biblioteca com renomear/excluir imagem. A busca da Home permanece como requisito fixo do projeto.
+
+
+## Atlas CMS v0.5 Sprint 2
+
+Esta versão limpa páginas duplicadas da raiz, remove `index-christian.html`, adiciona criação de estrutura antes da edição, busca pequena no header, Google tag no template gerado e atualização automática da Home/Search ao publicar artigos.

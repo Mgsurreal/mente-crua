@@ -1,0 +1,36 @@
+{
+  "type": "artigos",
+  "typeLabel": "Artigo",
+  "title": "Quando o Pequeno Príncipe Morre Dentro de Nós",
+  "slug": "quando-o-pequeno-principe-morre-dentro-de-nos",
+  "folder": "modules/artigos/quando-o-pequeno-principe-morre-dentro-de-nos/",
+  "status": "published",
+  "createdAt": "2026-07-01T21:20:00.283Z",
+  "updatedAt": "2026-07-01T21:21:03.622Z",
+  "subtitle": "Como a maturidade destrói lentamente a parte mais inocente da nossa visão sobre as relações humanas.",
+  "category": "Filosofia",
+  "tags": [
+    "Pequeno Príncipe",
+    "Maturidade",
+    "Amizade",
+    "Relações Humanas",
+    "Psicologia",
+    "Filosofia",
+    "Natureza Humana",
+    "Egoísmo"
+  ],
+  "thumb": "img/pequeno-principe-maturidade.webp",
+  "home": {
+    "title": "Teste de postagem na home",
+    "description": "teste de postagem thumb",
+    "category": "Filosofia",
+    "thumb": "img/pequeno-principe-maturidade.webp",
+    "link": "modules/artigos/quando-o-pequeno-principe-morre-dentro-de-nos/"
+  },
+  "seo": {
+    "title": "Quando o Pequeno Príncipe Morre Dentro de Nós | O preço da maturidade",
+    "description": ""
+  },
+  "relationships": [],
+  "contentHtml": "<article>\n\n<h1>Quando o Pequeno Príncipe Morre Dentro de Nós</h1>\n<p><em>Como a maturidade destrói lentamente a parte mais inocente da nossa visão sobre as relações humanas.</em></p>\n\n<section>\n<h2>Existe um momento em que algo morre dentro de nós</h2>\n\n<p>Existe um momento na vida em que algo morre dentro de nós. Não é o corpo, não é a esperança e nem necessariamente a capacidade de sonhar. O que morre é aquela parte ingênua que acreditava que as pessoas enxergavam valor nas pessoas. Durante a infância e parte da juventude, carregamos dentro de nós um Pequeno Príncipe silencioso, observando o mundo com curiosidade e acreditando que os laços humanos são construídos pela afeição.</p>\n\n<!-- IMAGEM 01\nPrompt: O Pequeno Príncipe observando um planeta escuro enquanto a infância se desfaz. Atmosfera melancólica.\n-->\n<img src=\"img/imagem-01.webp\" alt=\"Representação simbólica da perda da ingenuidade.\">\n\n<p>Conforme os anos passam, percebemos que muitas relações não são sustentadas por afeto, mas por conveniência. Algumas amizades desaparecem quando deixamos de ser úteis. Aos poucos surge uma suspeita difícil de ignorar: talvez boa parte das relações humanas seja construída sobre aquilo que podemos oferecer.</p>\n</section>\n\n<section>\n\n<h2>O funeral da ingenuidade</h2>\n\n<p>É nesse ponto que o Pequeno Príncipe começa a agonizar. Afinal, ele acreditava que cativar significava criar vínculos duradouros. Mas a vida adulta apresenta exceções demais para quem deseja continuar acreditando em regras.</p>\n\n<blockquote>\n<p>\"A maturidade não destrói apenas ilusões. Muitas vezes ela enterra também a capacidade de confiar sem medo.\"</p>\n<footer>— Mente Crua</footer>\n</blockquote>\n\n<p>Talvez por isso personagens como o Pequeno Príncipe e o príncipe Míchkin pareçam tão deslocados. A bondade é admirada nos livros, mas frequentemente explorada na vida real.</p>\n\n<!-- IMAGEM 02\nPrompt: Um príncipe caminhando sozinho entre pessoas indiferentes em uma cidade moderna.\n-->\n<img src=\"img/imagem-02.webp\" alt=\"Solidão diante da maturidade.\">\n\n</section>\n\n<section>\n\n<h2>O preço da lucidez</h2>\n\n<p>Quando finalmente enxergamos os padrões, deixamos de chamar esse processo de perda. Passamos a chamá-lo de maturidade. O problema é que ganhar lucidez frequentemente significa perder encantamento.</p>\n\n<p>Talvez a maior ironia da vida adulta seja justamente esta: para sobreviver à realidade, somos obrigados a sacrificar parte da ingenuidade que um dia nos tornou profundamente humanos.</p>\n\n<!-- IMAGEM 03\nPrompt: Um céu estrelado refletido em um espelho quebrado simbolizando inocência e realidade.\n-->\n<img src=\"img/imagem-03.webp\" alt=\"A transição entre inocência e maturidade.\">\n\n<blockquote>\n<p>\"Os Pequenos Príncipes não desaparecem com o tempo. São lentamente executados pela realidade.\"</p>\n<footer>— Mente Crua</footer>\n</blockquote>\n\n</section>\n\n</article>"
+}

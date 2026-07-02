@@ -1,0 +1,54 @@
+/* ==========================================
+   COMPARTILHAMENTO
+========================================== */
+
+.share-section {
+    padding: 72px 0 88px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.share-section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    margin-bottom: 18px;
+}
+
+.share-section p {
+    color: var(--text-muted, #b9b9b9);
+    margin-bottom: 28px;
+}
+
+.share-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.share-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text, #fff);
+    text-decoration: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.share-button:hover {
+    background: rgba(255, 255, 255, 0.09);
+}
+
+.share-button img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+}

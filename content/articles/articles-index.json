@@ -1,16 +1,16 @@
 [
   {
     "title": "Por que temos tanta necessidade de ter certeza?",
-    "slug": "artigo-certeza",
+    "slug": "a-ilusao-da-certeza",
     "category": "Filosofia",
-    "thumb": "assets/img/artigos/thumb-certeza.jpg",
-    "sourceHtml": "artigo-certeza.html"
+    "thumb": "modules/artigos/a-ilusao-da-certeza/img/thumb-certeza.jpg",
+    "sourceHtml": "modules/artigos/a-ilusao-da-certeza/"
   },
   {
     "title": "O dia em que a crença vira identidade",
-    "slug": "artigo-crenca-vira-identidade",
+    "slug": "crenca-vira-identidade",
     "category": "Filosofia",
-    "thumb": "assets/img/artigos/thumb-ego.png",
-    "sourceHtml": "artigo-crenca-vira-identidade.html"
+    "thumb": "modules/artigos/crenca-vira-identidade/img/thumb-ego.png",
+    "sourceHtml": "modules/artigos/crenca-vira-identidade/"
   }
 ]

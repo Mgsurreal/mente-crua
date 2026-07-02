@@ -1,0 +1,20 @@
+<section class="share-section">
+  <div class="container article-container">
+    <h2>{{SHARE_TITLE}}</h2>
+    <p>Se fez você pensar, talvez faça alguém pensar também.</p>
+    <div class="share-actions">
+      <a class="share-button" href="https://api.whatsapp.com/send?text={{TITLE}}%20%25URL%25" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp">
+        <img src="{{ROOT}}assets/img/social/whatsapp.png" alt="WhatsApp">
+        <span>WhatsApp</span>
+      </a>
+      <a class="share-button" href="https://www.facebook.com/sharer/sharer.php?u=%25URL%25" target="_blank" rel="noopener" aria-label="Compartilhar no Facebook">
+        <img src="{{ROOT}}assets/img/social/facebook.png" alt="Facebook">
+        <span>Facebook</span>
+      </a>
+      <button class="share-button" type="button" onclick="navigator.clipboard && navigator.clipboard.writeText(location.href)" aria-label="Copiar link">
+        <img src="{{ROOT}}assets/img/social/link.png" alt="Copiar link">
+        <span>Copiar link</span>
+      </button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Enciclopédia da Inspiração — Mente Crua</title>
+  <style>
+    :root{
+      --bg:#0f0f0f;
+      --panel:#171717;
+      --panel2:#1d1d1d;
+      --text:#eeeeee;
+      --muted:#a8a8a8;
+      --line:#2b2b2b;
+      --red:#8b1e1e;
+      --red2:#b62b2b;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter, Arial, sans-serif;
+      line-height:1.65;
+    }
+    header{
+      border-bottom:1px solid var(--line);
+      background:#141414;
+      padding:18px 24px;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    .top{
+      max-width:1180px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+    .brand{
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:.9rem;
+    }
+    .mini-menu a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:14px;
+      font-size:.9rem;
+    }
+    .mini-menu a:hover{color:white}
+    main{
+      max-width:1180px;
+      margin:auto;
+      padding:48px 24px 70px;
+    }
+    .hero{
+      margin-bottom:38px;
+      max-width:900px;
+    }
+    .kicker{
+      color:var(--red2);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.75rem;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+    h1{
+      font-size:clamp(2.2rem,5vw,4.5rem);
+      line-height:1.05;
+      margin:0 0 18px;
+    }
+    .subtitle{
+      color:var(--muted);
+      font-size:1.1rem;
+      max-width:820px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:18px;
+    }
+    section.card{
+      background:linear-gradient(180deg,var(--panel),var(--panel2));
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+      min-height:250px;
+    }
+    section.card h2{
+      margin:0 0 12px;
+      font-size:1.25rem;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .desc{
+      color:var(--muted);
+      font-size:.92rem;
+      margin-bottom:14px;
+    }
+    ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      columns:1;
+    }
+    li{
+      padding:7px 0;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      color:#ddd;
+    }
+    li:last-child{border-bottom:none}
+    .tag{
+      display:inline-block;
+      border:1px solid var(--line);
+      color:var(--muted);
+      padding:4px 8px;
+      border-radius:999px;
+      font-size:.72rem;
+      margin-top:14px;
+    }
+    .note{
+      border-left:4px solid var(--red);
+      background:#151515;
+      padding:18px 20px;
+      margin:40px 0 0;
+      color:#ddd;
+      border-radius:0 12px 12px 0;
+    }
+    footer{
+      border-top:1px solid var(--line);
+      padding:24px;
+      color:var(--muted);
+      text-align:center;
+      background:#141414;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="top">
+    <div class="brand">Mente Crua</div>
+    <nav class="mini-menu">
+      <a href="../index.html">Home</a>
+      <a href="historias-originais.html">Histórias</a>
+      <a href="pensadores.html">Pensadores</a>
+      <a href="monstros-e-lendas.html">Monstros</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">Oficina interna • Mapa de criação</div>
+    <h1>Enciclopédia da Inspiração</h1>
+    <p class="subtitle">
+      Um índice vivo para alimentar artigos, séries, páginas de pensadores, livros, conceitos e futuras coleções do Mente Crua.
+      Não é uma página para o leitor: é um mapa para provocar ideias.
+    </p>
+  </div>
+
+  <div class="grid">
+
+    <section class="card">
+      <h2>📜 Histórias e Narrativas</h2>
+      <p class="desc">Fontes antigas, populares e literárias para artigos sobre moral, medo, infância, poder e desejo.</p>
+      <ul>
+        <li>Contos de fadas originais</li>
+        <li>Fábulas</li>
+        <li>Lendas urbanas</li>
+        <li>Mitos antigos</li>
+        <li>Folclore brasileiro</li>
+        <li>Folclore mundial</li>
+        <li>Parábolas</li>
+        <li>Epopeias</li>
+        <li>Sagas nórdicas</li>
+        <li>Contos orientais</li>
+        <li>Contos africanos</li>
+        <li>Contos celtas</li>
+      </ul>
+      <span class="tag">Gatilho para séries</span>
+    </section>
+
+    <section class="card">
+      <h2>👤 Pensadores</h2>
+      <p class="desc">Nomes que sustentam a espinha dorsal filosófica, psicológica e crítica da biblioteca.</p>
+      <ul>
+        <li>Sócrates</li>
+        <li>Platão</li>
+        <li>Aristóteles</li>
+        <li>Epicuro</li>
+        <li>Sêneca</li>
+        <li>Spinoza</li>
+        <li>Schopenhauer</li>
+        <li>Nietzsche</li>
+        <li>Freud</li>
+        <li>Jung</li>
+        <li>Camus</li>
+        <li>Hannah Arendt</li>
+      </ul>
+      <span class="tag">Base editorial</span>
+    </section>
+
+    <section class="card">
+      <h2>📚 Livros</h2>
+      <p class="desc">Obras que podem virar resenhas, artigos, páginas próprias e links para pensadores.</p>
+      <ul>
+        <li>A República</li>
+        <li>Ética</li>
+        <li>O Mundo como Vontade e Representação</li>
+        <li>Assim Falou Zaratustra</li>
+        <li>O Estrangeiro</li>
+        <li>O Príncipe</li>
+        <li>A Divina Comédia</li>
+        <li>Dom Quixote</li>
+        <li>Frankenstein</li>
+        <li>Drácula</li>
+        <li>Fausto</li>
+        <li>O Pequeno Príncipe</li>
+      </ul>
+      <span class="tag">Biblioteca futura</span>
+    </section>
+
+    <section class="card">
+      <h2>💡 Conceitos</h2>
+      <p class="desc">Ideias abstratas que podem conectar artigos, livros, pensadores e debates atuais.</p>
+      <ul>
+        <li>Verdade</li>
+        <li>Consciência</li>
+        <li>Livre-arbítrio</li>
+        <li>Moral</li>
+        <li>Ética</li>
+        <li>Justiça</li>
+        <li>Liberdade</li>
+        <li>Niilismo</li>
+        <li>Estoicismo</li>
+        <li>Ceticismo</li>
+        <li>Existencialismo</li>
+        <li>Felicidade</li>
+      </ul>
+      <span class="tag">Links internos</span>
+    </section>
+
+    <section class="card">
+      <h2>🐉 Mitologias</h2>
+      <p class="desc">Universos simbólicos para falar de medo, poder, morte, destino, desejo e civilização.</p>
+      <ul>
+        <li>Mitologia grega</li>
+        <li>Mitologia romana</li>
+        <li>Mitologia egípcia</li>
+        <li>Mitologia nórdica</li>
+        <li>Mitologia japonesa</li>
+        <li>Mitologia chinesa</li>
+        <li>Mitologia hindu</li>
+        <li>Mitologia celta</li>
+        <li>Mitologia africana</li>
+        <li>Mitologia maia</li>
+        <li>Mitologia asteca</li>
+        <li>Mitologia brasileira</li>
+      </ul>
+      <span class="tag">Simbologia</span>
+    </section>
+
+    <section class="card">
+      <h2>👹 Monstros e Lendas</h2>
+      <p class="desc">Criaturas que revelam medos coletivos, tabus sociais e metáforas humanas.</p>
+      <ul>
+        <li>Vampiros</li>
+        <li>Lobisomens</li>
+        <li>Dragões</li>
+        <li>Kraken</li>
+        <li>Medusa</li>
+        <li>Minotauro</li>
+        <li>Hidra</li>
+        <li>Cérbero</li>
+        <li>Banshee</li>
+        <li>Curupira</li>
+        <li>Boitatá</li>
+        <li>Saci</li>
+      </ul>
+      <span class="tag">Medos humanos</span>
+    </section>
+
+    <section class="card">
+      <h2>🏛 Civilizações</h2>
+      <p class="desc">Sociedades antigas e seus sistemas de crença, poder, arte, guerra e conhecimento.</p>
+      <ul>
+        <li>Egito Antigo</li>
+        <li>Grécia Antiga</li>
+        <li>Roma</li>
+        <li>Mesopotâmia</li>
+        <li>Babilônia</li>
+        <li>Pérsia</li>
+        <li>China Antiga</li>
+        <li>Japão Feudal</li>
+        <li>Vikings</li>
+        <li>Maias</li>
+        <li>Astecas</li>
+        <li>Incas</li>
+      </ul>
+      <span class="tag">História profunda</span>
+    </section>
+
+    <section class="card">
+      <h2>⚔ História</h2>
+      <p class="desc">Eventos e processos que ajudam a explicar o comportamento coletivo e as mudanças sociais.</p>
+      <ul>
+        <li>Guerras</li>
+        <li>Revoluções</li>
+        <li>Impérios</li>
+        <li>Ditaduras</li>
+        <li>Grandes Navegações</li>
+        <li>Revolução Industrial</li>
+        <li>Guerra Fria</li>
+        <li>Colonialismo</li>
+        <li>Inquisição</li>
+        <li>Iluminismo</li>
+        <li>Renascimento</li>
+        <li>Modernidade</li>
+      </ul>
+      <span class="tag">Contexto social</span>
+    </section>
+
+    <section class="card">
+      <h2>🎨 Arte</h2>
+      <p class="desc">Obras, movimentos e artistas que ajudam a pensar a condição humana por imagens e símbolos.</p>
+      <ul>
+        <li>Pinturas</li>
+        <li>Esculturas</li>
+        <li>Música</li>
+        <li>Literatura</li>
+        <li>Cinema</li>
+        <li>Teatro</li>
+        <li>Arquitetura</li>
+        <li>Surrealismo</li>
+        <li>Expressionismo</li>
+        <li>Romantismo</li>
+        <li>Renascimento</li>
+        <li>Arte sacra</li>
+      </ul>
+      <span class="tag">Imagem e sentido</span>
+    </section>
+
+    <section class="card">
+      <h2>🔬 Ciência</h2>
+      <p class="desc">Temas científicos que ajudam a tensionar crenças, percepção, realidade e comportamento.</p>
+      <ul>
+        <li>Astronomia</li>
+        <li>Física</li>
+        <li>Química</li>
+        <li>Biologia</li>
+        <li>Evolução</li>
+        <li>Neurociência</li>
+        <li>Inteligência Artificial</li>
+        <li>Matemática</li>
+        <li>Cosmologia</li>
+        <li>Genética</li>
+        <li>Psicologia cognitiva</li>
+        <li>Teoria do caos</li>
+      </ul>
+      <span class="tag">Razão e realidade</span>
+    </section>
+
+    <section class="card">
+      <h2>🧠 Psicologia</h2>
+      <p class="desc">Linhas, autores e temas para investigar o comportamento humano sem romantização.</p>
+      <ul>
+        <li>Freud</li>
+        <li>Jung</li>
+        <li>Behaviorismo</li>
+        <li>Gestalt</li>
+        <li>Psicologia cognitiva</li>
+        <li>Desenvolvimento infantil</li>
+        <li>Personalidade</li>
+        <li>Trauma</li>
+        <li>Arquétipos</li>
+        <li>Inconsciente</li>
+        <li>Autoengano</li>
+        <li>Desejo</li>
+      </ul>
+      <span class="tag">Comportamento</span>
+    </section>
+
+    <section class="card">
+      <h2>⛪ Religiões e Crenças</h2>
+      <p class="desc">Sistemas simbólicos, morais e metafísicos para análise crítica e histórica.</p>
+      <ul>
+        <li>Cristianismo</li>
+        <li>Judaísmo</li>
+        <li>Islamismo</li>
+        <li>Budismo</li>
+        <li>Hinduísmo</li>
+        <li>Xintoísmo</li>
+        <li>Espiritismo</li>
+        <li>Mitologias religiosas</li>
+        <li>Seitas</li>
+        <li>Rituais</li>
+        <li>Dogmas</li>
+        <li>Fé e poder</li>
+      </ul>
+      <span class="tag">Crítica e símbolo</span>
+    </section>
+
+    <section class="card">
+      <h2>🏰 Personagens</h2>
+      <p class="desc">Figuras literárias, míticas e culturais que podem virar análise psicológica e social.</p>
+      <ul>
+        <li>Robin Hood</li>
+        <li>Rei Arthur</li>
+        <li>Merlin</li>
+        <li>Drácula</li>
+        <li>Frankenstein</li>
+        <li>Sherlock Holmes</li>
+        <li>Tarzan</li>
+        <li>Dom Quixote</li>
+        <li>Fausto</li>
+        <li>Pinóquio</li>
+        <li>Alice</li>
+        <li>Pequeno Príncipe</li>
+      </ul>
+      <span class="tag">Arquétipos narrativos</span>
+    </section>
+
+    <section class="card">
+      <h2>🌍 Grandes Temas</h2>
+      <p class="desc">Temas universais para artigos amplos, séries e reflexões editoriais.</p>
+      <ul>
+        <li>Amor</li>
+        <li>Poder</li>
+        <li>Medo</li>
+        <li>Morte</li>
+        <li>Esperança</li>
+        <li>Fé</li>
+        <li>Guerra</li>
+        <li>Família</li>
+        <li>Educação</li>
+        <li>Tecnologia</li>
+        <li>Solidão</li>
+        <li>Liberdade</li>
+      </ul>
+      <span class="tag">Temas centrais</span>
+    </section>
+
+  </div>
+
+  <div class="note">
+    <strong>Uso interno:</strong> abrir esta página quando faltar direção. A ideia não é escolher um tema pronto, mas deixar uma conexão puxar outra até nascer um artigo.
+  </div>
+</main>
+
+<footer>
+  Mente Crua • Enciclopédia da Inspiração • Página interna de ideias
+</footer>
+
+</body>
+</html>

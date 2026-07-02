@@ -1,54 +1,23 @@
-const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => Array.from(document.querySelectorAll(selector));
-
-const blocksEl = $('#blocks');
-const outputHtml = $('#outputHtml');
-const outputJson = $('#outputJson');
-const instructions = $('#instructions');
-const folderHint = $('#folderHint');
-const preview = $('#preview');
-const publishStatus = $('#publishStatus');
-const mediaLibraryEl = $('#mediaLibrary');
-
-const CMS_VERSION = 'Mente Crua CMS v0.3';
-const importedImages = [];
-let purchaseLinks = [];
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
 
 const moduleLabels = {
-  'artigos': 'Artigo',
-  'pensadores': 'Pensador',
-  'conceitos': 'Conceito',
-  'personagens': 'Personagem',
-  'livros': 'Livro',
-  'arte-explica': 'A Arte Explica',
-  'antes-da-disney': 'A História Antes da Disney',
-  'mitologias': 'Mitologia',
+  artigos: 'Artigo',
+  pensadores: 'Pensador',
+  livros: 'Livro',
+  conceitos: 'Conceito',
+  personagens: 'Personagem',
+  'obras-de-arte': 'Obra de Arte',
+  mitologias: 'Mitologia',
   'escolas-filosoficas': 'Escola Filosófica'
 };
 
-const entityBase = {
-  'pensadores': '../../pensadores/',
-  'conceitos': '../../conceitos/',
-  'personagens': '../../personagens/',
-  'livros': '../../livros/',
-  'arte-explica': '../../arte-explica/',
-  'antes-da-disney': '../../antes-da-disney/',
-  'mitologias': '../../mitologias/',
-  'escolas-filosoficas': '../../escolas-filosoficas/'
-};
-
-// Cadastro inicial. Depois será lido dos data.json dos módulos.
-const internalMap = {
-  'Nietzsche': '../../pensadores/nietzsche/',
-  'Jung': '../../pensadores/jung/',
-  'Carl Jung': '../../pensadores/carl-jung/',
-  'Spinoza': '../../pensadores/spinoza/',
-  'Sócrates': '../../pensadores/socrates/',
-  'Freud': '../../pensadores/freud/',
-  'Narciso': '../../personagens/narciso/',
-  'Sísifo': '../../personagens/sisifo/',
-  'Ícaro': '../../personagens/icaro/'
-};
+let currentStep = 0;
+let projectRootHandle = null;
+let contentDirHandle = null;
+let imgDirHandle = null;
+let currentItem = null;
+let images = [];
 
 function slugify(value) {
   return String(value || '')
@@ -58,490 +27,396 @@ function slugify(value) {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 }
-
 function escapeHtml(value = '') {
-  return String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;');
+  return String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 }
-
-function preserveBreaks(value = '') {
-  return escapeHtml(value).replace(/\n{2,}/g, '</p><p>').replace(/\n/g, '<br>');
+function splitList(value = '') { return String(value).split(',').map(v => v.trim()).filter(Boolean); }
+function setLog(msg) { $('#log').textContent = msg; }
+function addLog(msg) { $('#log').textContent += `\n${msg}`; }
+function setStep(selector, ok) {
+  const el = $(selector);
+  if (!el) return;
+  el.classList.toggle('ok', !!ok);
+  el.textContent = el.textContent.replace(/^⚪|^🟢/, ok ? '🟢' : '⚪');
 }
+function syncUI() {
+  const projectEl = $('#projectStatus');
+  const contentEl = $('#contentStatus');
+  if (projectRootHandle) { projectEl.textContent = projectRootHandle.name; projectEl.classList.add('active-status'); }
+  else { projectEl.textContent = 'Nenhum projeto selecionado'; projectEl.classList.remove('active-status'); }
+  if (currentItem) { contentEl.textContent = `${moduleLabels[currentItem.type] || currentItem.type}: ${currentItem.title}`; contentEl.classList.add('active-status'); }
+  else { contentEl.textContent = 'Nenhum conteúdo aberto'; contentEl.classList.remove('active-status'); }
 
-function linkInternalTerms(text) {
-  let result = text;
-  Object.entries(internalMap).forEach(([name, url]) => {
-    const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const pattern = new RegExp(`(^|[^\\wÀ-ÿ])(${escapedName})(?=$|[^\\wÀ-ÿ])`, 'g');
-    result = result.replace(pattern, `$1<a href="${url}">$2</a>`);
-  });
-  return result;
+  setStep('#stepProject', !!projectRootHandle);
+  setStep('#stepStructure', !!currentItem && !!contentDirHandle);
+  setStep('#stepHome', !!$('#homeTitle').value.trim() && !!$('#homeDescription').value.trim());
+  setStep('#stepImages', images.length > 0);
+  setStep('#stepHtml', !!$('#contentHtml').value.trim());
 }
-
-function currentFolder() {
-  const moduleType = $('#moduleType').value;
-  const slug = $('#slug').value || 'seu-slug';
-  return `modules/${moduleType}/${slug}/`;
+function goToStep(index) {
+  currentStep = Math.max(0, Math.min(4, index));
+  $$('.wizard-page').forEach(p => p.classList.toggle('active', Number(p.dataset.page) === currentStep));
+  $$('.steps .step').forEach(b => b.classList.toggle('active', Number(b.dataset.step) === currentStep));
+  syncUI();
 }
-
-function updateFolderHint() {
-  const folder = currentFolder();
-  folderHint.textContent = `Destino: ${folder}`;
-  instructions.textContent = `${folder}\n├── index.html\n├── data.json\n└── img/\n    ├── thumb.webp\n    └── imagens-importadas`;
+async function ensureDir(parent, name) { return await parent.getDirectoryHandle(name, { create: true }); }
+async function writeFile(dir, name, content, type = 'text/plain') {
+  const fh = await dir.getFileHandle(name, { create: true });
+  const w = await fh.createWritable();
+  await w.write(new Blob([content], { type }));
+  await w.close();
 }
-
-function updateModuleFields() {
-  const moduleType = $('#moduleType').value;
-  $('#articleFields').classList.toggle('hidden', moduleType !== 'artigos');
-  $('#thinkerFields').classList.toggle('hidden', moduleType !== 'pensadores');
-  $('#bookFields').classList.toggle('hidden', moduleType !== 'livros');
-  $('#extraFields').classList.toggle('hidden', !['arte-explica', 'antes-da-disney', 'mitologias', 'personagens', 'conceitos', 'escolas-filosoficas'].includes(moduleType));
-  updateFolderHint();
-  generate();
+async function readJsonIfExists(dir, name) {
+  try { const fh = await dir.getFileHandle(name); const f = await fh.getFile(); return JSON.parse(await f.text()); }
+  catch (_) { return null; }
 }
-
-$('#title').addEventListener('input', (event) => {
-  const slugInput = $('#slug');
-  if (!slugInput.dataset.manual) slugInput.value = slugify(event.target.value);
-  updateFolderHint();
-  generate();
-});
-
-['subtitle','category','thumb','author','seo','relations','thinkers','concepts','period','birth','death','portrait','mainIdeas','works','context','connection','bookAuthor','bookYear','bookSummary'].forEach((id) => {
-  const el = $('#' + id);
-  if (el) el.addEventListener('input', generate);
-});
-
-$('#slug').addEventListener('input', () => {
-  $('#slug').dataset.manual = 'true';
-  $('#slug').value = slugify($('#slug').value);
-  updateFolderHint();
-  generate();
-});
-
-$('#moduleType').addEventListener('change', updateModuleFields);
-$$('[data-add]').forEach((button) => button.addEventListener('click', () => { addBlock(button.dataset.add); generate(); }));
-$('#clearBlocks').addEventListener('click', () => { blocksEl.innerHTML = ''; generate(); });
-$('#imageImporter').addEventListener('change', importImages);
-$('#addPurchaseLink')?.addEventListener('click', () => addPurchaseLink());
-
-
-function addPurchaseLink(value = {}) {
-  purchaseLinks.push({ store: value.store || 'Amazon', url: value.url || '' });
-  renderPurchaseLinks();
-  generate();
+async function readTextIfExists(dir, name) {
+  try { const fh = await dir.getFileHandle(name); const f = await fh.getFile(); return await f.text(); }
+  catch (_) { return null; }
 }
-
-function renderPurchaseLinks() {
-  const wrap = $('#purchaseLinks');
-  if (!wrap) return;
-  if (!purchaseLinks.length) {
-    wrap.innerHTML = '<p class="hint">Nenhuma loja adicionada ainda.</p>';
-    return;
-  }
-  wrap.innerHTML = '';
-  purchaseLinks.forEach((link, index) => {
-    const row = document.createElement('div');
-    row.className = 'purchase-link-row';
-    row.innerHTML = `
-      <label>Loja
-        <select data-purchase-store="${index}">
-          ${['Amazon','Shopee','Mercado Livre','Estante Virtual','Kindle','Kobo','Google Play Livros','Outro'].map((name) => `<option value="${name}" ${link.store === name ? 'selected' : ''}>${name}</option>`).join('')}
-        </select>
-      </label>
-      <label>Link
-        <input data-purchase-url="${index}" placeholder="https://..." value="${escapeHtml(link.url)}">
-      </label>
-      <button type="button" class="remove" data-remove-purchase="${index}">remover</button>
-    `;
-    wrap.appendChild(row);
-  });
-  $$('[data-purchase-store]').forEach((field) => field.onchange = () => {
-    purchaseLinks[field.dataset.purchaseStore].store = field.value;
-    generate();
-  });
-  $$('[data-purchase-url]').forEach((field) => field.oninput = () => {
-    purchaseLinks[field.dataset.purchaseUrl].url = field.value.trim();
-    generate();
-  });
-  $$('[data-remove-purchase]').forEach((button) => button.onclick = () => {
-    purchaseLinks.splice(Number(button.dataset.removePurchase), 1);
-    renderPurchaseLinks();
-    generate();
-  });
-}
-
-function renderPurchaseLinksHtml(links = []) {
-  const valid = links.filter((link) => link.store && link.url);
-  if (!valid.length) return '';
-  return `<section class="buy-links"><h2>Onde comprar</h2><div class="buy-links-grid">${valid.map((link) => `<a href="${escapeHtml(link.url)}" target="_blank" rel="nofollow sponsored noopener">${escapeHtml(link.store)}</a>`).join('')}</div></section>`;
-}
-
-function addBlock(type, value = {}) {
-  const div = document.createElement('div');
-  div.className = 'block';
-  div.dataset.type = type;
-
-  const bodies = {
-    paragraph: `<textarea rows="7" placeholder="Texto do parágrafo">${escapeHtml(value.content || '')}</textarea>`,
-    heading: `<input placeholder="Título interno" value="${escapeHtml(value.content || '')}">`,
-    image: `
-      <input class="src" placeholder="img/imagem-01.webp" value="${escapeHtml(value.src || '')}">
-      <input class="alt" placeholder="ALT da imagem" value="${escapeHtml(value.alt || '')}">
-      <input class="caption" placeholder="Legenda opcional" value="${escapeHtml(value.caption || '')}">
-    `,
-    quote: `
-      <textarea rows="4" placeholder="Citação">${escapeHtml(value.content || '')}</textarea>
-      <input class="author" placeholder="Autor" value="${escapeHtml(value.author || '')}">
-    `,
-    entity: `
-      <select class="entity-module">
-        <option value="pensadores">Pensador</option>
-        <option value="conceitos">Conceito</option>
-        <option value="personagens">Personagem</option>
-        <option value="livros">Livro</option>
-        <option value="arte-explica">Arte</option>
-        <option value="antes-da-disney">Antes da Disney</option>
-      </select>
-      <input class="entity-name" placeholder="Ex: Jung, Narciso, Niilismo" value="${escapeHtml(value.name || '')}">
-      <input class="entity-url" placeholder="Link automático ou manual" value="${escapeHtml(value.url || '')}">
-    `,
-    note: `<textarea rows="4" placeholder="Texto da caixa de destaque">${escapeHtml(value.content || '')}</textarea>`,
-    list: `<textarea rows="5" placeholder="Um item por linha">${escapeHtml((value.items || []).join('\n'))}</textarea>`,
-    separator: `<p class="hint">Separador visual. Não precisa preencher nada.</p>`
-  };
-
-  div.innerHTML = `
-    <div class="block-head">
-      <strong>${type}</strong>
-      <div class="block-tools">
-        <button class="move up" type="button">↑</button>
-        <button class="move down" type="button">↓</button>
-        <button class="clone" type="button">duplicar</button>
-        <button class="remove" type="button">remover</button>
-      </div>
-    </div>
-    ${bodies[type] || bodies.paragraph}
-  `;
-
-  if (type === 'entity' && value.module) div.querySelector('.entity-module').value = value.module;
-  div.querySelector('.remove').onclick = () => { div.remove(); generate(); };
-  div.querySelector('.clone').onclick = () => { addBlock(type, readBlock(div)); generate(); };
-  div.querySelector('.up').onclick = () => { if (div.previousElementSibling) blocksEl.insertBefore(div, div.previousElementSibling); generate(); };
-  div.querySelector('.down').onclick = () => { if (div.nextElementSibling) blocksEl.insertBefore(div.nextElementSibling, div); generate(); };
-  div.querySelectorAll('input, textarea, select').forEach((field) => {
-    field.addEventListener('input', () => {
-      if (type === 'entity') updateEntityUrl(div);
-      generate();
-    });
-    field.addEventListener('change', () => {
-      if (type === 'entity') updateEntityUrl(div);
-      generate();
-    });
-  });
-  blocksEl.appendChild(div);
-}
-
-function updateEntityUrl(block) {
-  const moduleType = block.querySelector('.entity-module').value;
-  const name = block.querySelector('.entity-name').value.trim();
-  const urlInput = block.querySelector('.entity-url');
-  if (!urlInput.dataset.manual && name) urlInput.value = `${entityBase[moduleType] || '../../'}${slugify(name)}/`;
-}
-
-function readBlock(block) {
-  const type = block.dataset.type;
-  if (type === 'paragraph') return { type, content: block.querySelector('textarea').value.trim() };
-  if (type === 'heading') return { type, content: block.querySelector('input').value.trim() };
-  if (type === 'image') return { type, src: block.querySelector('.src').value.trim(), alt: block.querySelector('.alt').value.trim(), caption: block.querySelector('.caption').value.trim() };
-  if (type === 'quote') return { type, content: block.querySelector('textarea').value.trim(), author: block.querySelector('.author').value.trim() };
-  if (type === 'entity') return { type, module: block.querySelector('.entity-module').value, name: block.querySelector('.entity-name').value.trim(), url: block.querySelector('.entity-url').value.trim() };
-  if (type === 'note') return { type, content: block.querySelector('textarea').value.trim() };
-  if (type === 'list') return { type, items: block.querySelector('textarea').value.split('\n').map((item) => item.trim()).filter(Boolean) };
-  if (type === 'separator') return { type };
-  return { type };
-}
-
-function readLines(selector) {
-  return ($(selector)?.value || '').split('\n').map((item) => item.trim()).filter(Boolean);
-}
-
-function splitComma(selector) {
-  return ($(selector)?.value || '').split(',').map((item) => item.trim()).filter(Boolean);
-}
-
-function collectData() {
-  const moduleType = $('#moduleType').value;
+function updateDerivedFields() {
   const title = $('#title').value.trim();
-  const slug = $('#slug').value.trim() || slugify(title) || 'seu-slug';
-
-  const data = {
-    module: moduleType,
-    moduleLabel: moduleLabels[moduleType],
+  const slug = $('#slug').dataset.manual ? slugify($('#slug').value) : slugify(title);
+  $('#slug').value = slug;
+  if (!$('#homeTitle').value.trim()) $('#homeTitle').value = title;
+  $('#homeLink').value = slug ? `modules/${$('#moduleType').value}/${slug}/` : '';
+  $('#destination').textContent = $('#homeLink').value || `modules/${$('#moduleType').value}/slug/`;
+  syncUI();
+}
+async function selectProjectRoot() {
+  try {
+    const handle = await window.showDirectoryPicker({ mode: 'readwrite' });
+    // raiz correta deve conter index.html ou ser capaz de criar modules.
+    projectRootHandle = handle;
+    setLog(`✔ Projeto selecionado: ${handle.name}`);
+    syncUI();
+    return true;
+  } catch (_) {
+    setLog('Projeto não selecionado.');
+    return false;
+  }
+}
+async function requireProject() {
+  if (projectRootHandle) return true;
+  setLog('Selecione a raiz do projeto Mente-Crua.');
+  return await selectProjectRoot();
+}
+function collectData(status = 'draft') {
+  const type = $('#moduleType').value;
+  const title = $('#title').value.trim();
+  const slug = $('#slug').value.trim() || slugify(title);
+  const folder = `modules/${type}/${slug}/`;
+  const homeTitle = $('#homeTitle').value.trim() || title;
+  const homeDescription = $('#homeDescription').value.trim() || $('#seoDescription').value.trim() || $('#subtitle').value.trim();
+  const homeThumb = $('#homeThumb').value.trim() || 'img/thumb.webp';
+  return {
+    type,
+    typeLabel: moduleLabels[type] || type,
     title,
     subtitle: $('#subtitle').value.trim(),
     slug,
+    folder,
     category: $('#category').value.trim(),
-    thumb: $('#thumb').value.trim() || 'img/thumb.webp',
-    author: $('#author').value.trim() || 'Mente Crua',
-    seoDescription: $('#seo').value.trim(),
-    relations: splitComma('#relations'),
-    folder: `modules/${moduleType}/${slug}/`,
-    createdBy: CMS_VERSION,
-    media: importedImages.map((image) => ({ fileName: image.targetName, path: image.path, type: image.file.type || image.kind })),
-    blocks: []
+    tags: splitList($('#tags').value),
+    thumb: homeThumb,
+    home: { title: homeTitle, description: homeDescription, thumb: homeThumb, link: folder },
+    seo: { title: $('#seoTitle').value.trim() || title, description: $('#seoDescription').value.trim() || homeDescription },
+    relationships: splitList($('#relationships').value),
+    contentHtml: $('#contentHtml').value.trim(),
+    status,
+    updatedAt: new Date().toISOString()
   };
-
-  if (moduleType === 'artigos') {
-    data.thinkers = splitComma('#thinkers');
-    data.concepts = splitComma('#concepts');
+}
+function fillForm(data) {
+  $('#moduleType').value = data.type || 'artigos';
+  $('#title').value = data.title || '';
+  $('#slug').value = data.slug || slugify(data.title || '');
+  $('#slug').dataset.manual = 'true';
+  $('#homeTitle').value = data.home?.title || data.title || '';
+  $('#homeDescription').value = data.home?.description || data.seo?.description || data.subtitle || '';
+  $('#homeThumb').value = data.home?.thumb || data.thumb || '';
+  $('#subtitle').value = data.subtitle || '';
+  $('#category').value = data.category || '';
+  $('#tags').value = Array.isArray(data.tags) ? data.tags.join(', ') : (data.tags || '');
+  $('#seoTitle').value = data.seo?.title || '';
+  $('#seoDescription').value = data.seo?.description || '';
+  $('#relationships').value = Array.isArray(data.relationships) ? data.relationships.join(', ') : (data.relationships || '');
+  $('#contentHtml').value = data.contentHtml || '';
+  updateDerivedFields();
+}
+async function setCurrentContent({ dirHandle, imgHandle, data }) {
+  contentDirHandle = dirHandle;
+  imgDirHandle = imgHandle || await ensureDir(dirHandle, 'img');
+  currentItem = { type: data.type || $('#moduleType').value, title: data.title, slug: data.slug, folder: data.folder };
+  fillForm(data);
+  await refreshMediaLibrary();
+  syncUI();
+}
+async function createContent() {
+  try {
+    if (!await requireProject()) return;
+    const title = $('#title').value.trim();
+    if (!title) return alert('Digite o nome do conteúdo.');
+    const type = $('#moduleType').value;
+    const slug = $('#slug').value.trim() || slugify(title);
+    const modulesDir = await ensureDir(projectRootHandle, 'modules');
+    const moduleDir = await ensureDir(modulesDir, type);
+    const dirHandle = await ensureDir(moduleDir, slug);
+    const imgHandle = await ensureDir(dirHandle, 'img');
+    const existing = await readJsonIfExists(dirHandle, 'data.json');
+    const data = existing || { ...collectData('draft'), createdAt: new Date().toISOString() };
+    await writeFile(dirHandle, 'data.json', JSON.stringify(data, null, 2), 'application/json');
+    if (!await readTextIfExists(dirHandle, 'index.html')) await writeFile(dirHandle, 'index.html', '<!-- Será gerado pelo Atlas ao publicar. -->', 'text/html');
+    await setCurrentContent({ dirHandle, imgHandle, data });
+    setLog(`✔ Conteúdo criado e aberto:\n${data.folder}\n├── data.json\n├── index.html\n└── img/`);
+    goToStep(2);
+  } catch (err) { setLog(`❌ Criar Conteúdo: ${err.message}`); }
+}
+async function openContent() {
+  try {
+    if (!await requireProject()) return;
+    const dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+    const data = await readJsonIfExists(dirHandle, 'data.json');
+    if (!data) throw new Error('A pasta escolhida não possui data.json. Escolha a pasta do conteúdo.');
+    const imgHandle = await ensureDir(dirHandle, 'img');
+    await setCurrentContent({ dirHandle, imgHandle, data });
+    setLog(`✔ Conteúdo aberto: ${data.title}`);
+    goToStep(2);
+  } catch (err) { setLog(`❌ Abrir Conteúdo: ${err.message || 'cancelado'}`); }
+}
+function safeFileName(name) {
+  const ext = (name.match(/\.[^.]+$/)?.[0] || '').toLowerCase();
+  const base = slugify(name.replace(/\.[^.]+$/, '')) || 'imagem';
+  return `${base}${ext}`;
+}
+async function uniqueFileName(dir, fileName) {
+  const ext = (fileName.match(/\.[^.]+$/)?.[0] || '');
+  const base = fileName.replace(/\.[^.]+$/, '');
+  let candidate = fileName;
+  let i = 2;
+  while (true) {
+    try { await dir.getFileHandle(candidate); candidate = `${base}-${i}${ext}`; i++; }
+    catch (_) { return candidate; }
   }
-
-  if (moduleType === 'pensadores') {
-    data.period = $('#period').value.trim();
-    data.birth = $('#birth').value.trim();
-    data.death = $('#death').value.trim();
-    data.portrait = $('#portrait').value.trim() || 'img/retrato.webp';
-    data.mainIdeas = readLines('#mainIdeas');
-    data.works = readLines('#works');
+}
+async function importImages() {
+  if (!currentItem || !imgDirHandle) return alert('Crie ou abra um conteúdo antes de adicionar imagens.');
+  let fileHandles = [];
+  try {
+    fileHandles = await window.showOpenFilePicker({
+      multiple: true,
+      types: [{
+        description: 'Imagens',
+        accept: { 'image/*': ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'] }
+      }]
+    });
+  } catch (_) {
+    setLog('Seleção de imagens cancelada.');
+    return;
   }
+  if (!fileHandles.length) return;
 
-  if (moduleType === 'livros') {
-    data.bookAuthor = $('#bookAuthor').value.trim();
-    data.bookYear = $('#bookYear').value.trim();
-    data.bookSummary = $('#bookSummary').value.trim();
-    data.purchaseLinks = purchaseLinks.filter((link) => link.store && link.url);
+  setLog(`➕ Adicionando ${fileHandles.length} imagem(ns)...`);
+  let ok = 0;
+  for (const handle of fileHandles) {
+    try {
+      const file = await handle.getFile();
+      const name = await uniqueFileName(imgDirHandle, safeFileName(file.name));
+      const fh = await imgDirHandle.getFileHandle(name, { create: true });
+      const w = await fh.createWritable();
+      await w.write(file);
+      await w.close();
+      ok++;
+      addLog(`✔ ${name}`);
+    } catch (err) {
+      addLog(`❌ ${handle.name || 'imagem'}: ${err.message}`);
+    }
   }
-
-  if (['arte-explica', 'antes-da-disney', 'mitologias', 'personagens', 'conceitos', 'escolas-filosoficas'].includes(moduleType)) {
-    data.context = $('#context').value.trim();
-    data.connection = $('#connection').value.trim();
+  await refreshMediaLibrary();
+  syncUI();
+  goToStep(2);
+  addLog(`✅ Biblioteca atualizada: ${ok}/${fileHandles.length} imagem(ns).`);
+}
+async function refreshMediaLibrary() {
+  const box = $('#mediaLibrary');
+  if (!imgDirHandle) { box.innerHTML = '<p class="hint">Crie ou abra um conteúdo para usar a biblioteca.</p>'; images = []; return; }
+  images = [];
+  for await (const [name, handle] of imgDirHandle.entries()) if (handle.kind === 'file') images.push({ name, handle, path: `img/${name}` });
+  images.sort((a,b)=>a.name.localeCompare(b.name));
+  renderMediaLibrary();
+}
+async function renderMediaLibrary() {
+  const box = $('#mediaLibrary');
+  if (!images.length) { box.innerHTML = '<p class="hint">Nenhuma imagem adicionada ainda.</p>'; return; }
+  box.innerHTML = '';
+  const thumb = $('#homeThumb').value.trim();
+  for (const item of images) {
+    const file = await item.handle.getFile();
+    const url = URL.createObjectURL(file);
+    const card = document.createElement('div');
+    card.className = `media-card ${thumb === item.path ? 'is-thumb' : ''}`;
+    card.innerHTML = `<img src="${url}" alt=""><div class="media-body"><div class="media-name">${escapeHtml(item.name)}</div><div class="media-actions"><button type="button" data-thumb="${escapeHtml(item.path)}">${thumb === item.path ? '✅ Thumb atual' : 'Usar thumb'}</button><button type="button" data-copy="${escapeHtml(item.path)}">Copiar caminho</button><button type="button" data-delete="${escapeHtml(item.name)}">Excluir</button></div></div>`;
+    box.appendChild(card);
   }
-
-  $$('.block').forEach((block) => data.blocks.push(readBlock(block)));
-  return data;
 }
-
-function renderBlocks(blocks) {
-  return blocks.map((block) => {
-    if (block.type === 'paragraph' && block.content) return `<p>${linkInternalTerms(preserveBreaks(block.content))}</p>`;
-    if (block.type === 'heading' && block.content) return `<h2>${escapeHtml(block.content)}</h2>`;
-    if (block.type === 'image' && block.src) return `<figure class="article-image"><img src="${escapeHtml(block.src)}" alt="${escapeHtml(block.alt)}">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ''}</figure>`;
-    if (block.type === 'quote' && block.content) return `<blockquote><p>${escapeHtml(block.content)}</p>${block.author ? `<cite>${escapeHtml(block.author)}</cite>` : ''}</blockquote>`;
-    if (block.type === 'entity' && block.name) return `<p class="entity-link"><a href="${escapeHtml(block.url || '#')}">${escapeHtml(block.name)}</a></p>`;
-    if (block.type === 'note' && block.content) return `<aside class="note-box">${preserveBreaks(block.content)}</aside>`;
-    if (block.type === 'list' && block.items?.length) return `<ul>\n${block.items.map((item) => `  <li>${linkInternalTerms(escapeHtml(item))}</li>`).join('\n')}\n</ul>`;
-    if (block.type === 'separator') return '<hr>';
-    return '';
-  }).filter(Boolean).join('\n\n');
+$('#mediaLibrary').addEventListener('click', async (e) => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+  if (btn.dataset.thumb) { $('#homeThumb').value = btn.dataset.thumb; await renderMediaLibrary(); syncUI(); setLog(`✔ Thumb da Home definida: ${btn.dataset.thumb}`); }
+  if (btn.dataset.copy) { await navigator.clipboard?.writeText(btn.dataset.copy); setLog(`✔ Caminho copiado: ${btn.dataset.copy}`); }
+  if (btn.dataset.delete) { if (!confirm(`Excluir ${btn.dataset.delete}?`)) return; await imgDirHandle.removeEntry(btn.dataset.delete); await refreshMediaLibrary(); syncUI(); setLog(`✔ Imagem excluída: ${btn.dataset.delete}`); }
+});
+function cleanArticleHtml(html = '') {
+  let value = String(html || '').trim();
+  if (!value) return '<article><p>Conteúdo não informado.</p></article>';
+  if (/<!doctype|<html|<body/i.test(value)) {
+    const doc = new DOMParser().parseFromString(value, 'text/html');
+    const article = doc.querySelector('article');
+    value = article ? article.outerHTML : (doc.body?.innerHTML || value);
+  }
+  if (!/^<article[\s>]/i.test(value)) value = `<article>\n${value}\n</article>`;
+  return value;
 }
-
-function renderPreview(data) {
-  const meta = [data.moduleLabel, data.category].filter(Boolean).join(' • ');
-  preview.innerHTML = `
-    <p class="meta">${escapeHtml(meta)}</p>
-    <h1>${escapeHtml(data.title || 'Título do conteúdo')}</h1>
-    ${data.subtitle ? `<p>${escapeHtml(data.subtitle)}</p>` : ''}
-    ${data.thumb ? `<figure><img src="../${escapeHtml(data.thumb)}" alt="thumb"><figcaption>Preview da thumb: ${escapeHtml(data.thumb)}</figcaption></figure>` : ''}
-    ${renderBlocks(data.blocks) || '<p class="meta">Adicione blocos para ver o conteúdo aqui.</p>'}
-  `;
-}
-
-function renderRelated(data) {
-  const parts = [];
-  if (data.thinkers?.length) parts.push(`<p class="article-meta"><strong>Pensadores citados:</strong> ${data.thinkers.map(escapeHtml).join(', ')}</p>`);
-  if (data.concepts?.length) parts.push(`<p class="article-meta"><strong>Conceitos:</strong> ${data.concepts.map(escapeHtml).join(', ')}</p>`);
-  if (data.relations?.length) parts.push(`<p class="article-meta"><strong>Relacionamentos:</strong> ${data.relations.map(escapeHtml).join(', ')}</p>`);
-  if (data.period || data.birth || data.death) parts.push(`<p class="article-meta"><strong>Período:</strong> ${escapeHtml([data.period, data.birth && data.death ? `${data.birth}–${data.death}` : data.birth || data.death].filter(Boolean).join(' • '))}</p>`);
-  if (data.bookAuthor || data.bookYear) parts.push(`<p class="article-meta"><strong>Livro:</strong> ${escapeHtml([data.bookAuthor, data.bookYear].filter(Boolean).join(' • '))}</p>`);
-  if (data.purchaseLinks?.length) parts.push(`<p class="article-meta"><strong>Compra:</strong> ${data.purchaseLinks.map((link) => escapeHtml(link.store)).join(', ')}</p>`);
-  return parts.join('\n    ');
-}
-
-function renderSchema(data) {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': data.module === 'artigos' ? 'Article' : 'WebPage',
-    headline: data.title,
-    description: data.seoDescription,
-    image: data.thumb,
-    author: { '@type': 'Organization', name: data.author || 'Mente Crua' }
-  };
-  return JSON.stringify(schema, null, 2).replaceAll('</script>', '<\\/script>');
-}
-
-function renderHtml(data) {
-  const body = renderBlocks(data.blocks);
-  const relation = renderRelated(data);
-  const seoTitle = `${data.title || 'Novo conteúdo'} | Mente Crua`;
-
+function articlePage(data) {
+  const root = '../../../';
+  const title = escapeHtml(data.seo?.title || data.title);
+  const desc = escapeHtml(data.seo?.description || data.home?.description || data.subtitle || '');
+  const article = cleanArticleHtml(data.contentHtml);
   return `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${escapeHtml(seoTitle)}</title>
-<meta name="description" content="${escapeHtml(data.seoDescription)}">
-<meta name="author" content="${escapeHtml(data.author)}">
-<meta property="og:title" content="${escapeHtml(data.title)}">
-<meta property="og:description" content="${escapeHtml(data.seoDescription)}">
-<meta property="og:image" content="${escapeHtml(data.thumb)}">
-<meta property="og:type" content="article">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="../../../assets/css/main.css">
-<link rel="icon" type="image/png" href="../../../assets/img/favicon-v1.png">
-<script type="application/ld+json">
-${renderSchema(data)}
-</script>
+<title>${title}</title>
+<meta name="description" content="${desc}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="${root}assets/css/main.css">
+<link rel="icon" type="image/png" href="${root}assets/img/favicon-v1.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HTMGLEHCF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4HTMGLEHCF');</script>
+<style>.article-container{max-width:860px;margin:0 auto;padding:50px 20px}.article-hero h1{font-size:clamp(36px,6vw,64px);line-height:1.05}.article-subtitle{font-size:20px;color:#bbb}.article-thumb{width:100%;border-radius:18px;margin:28px 0}.article-body article{font-size:18px;line-height:1.9}.article-body img{max-width:100%;border-radius:16px;margin:28px 0}.share-actions{display:flex;gap:12px;flex-wrap:wrap}.share-button img{width:22px!important;height:22px!important;object-fit:contain}.share-button{display:inline-flex;align-items:center;gap:8px}</style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="logo" href="../../../index.html">Mente Crua</a>
-    <nav class="main-nav">
-      <a href="../../../index.html">Home</a>
-      <a href="../../artigos/">Artigos</a>
-      <a href="../../pensadores/">Pensadores</a>
-    </nav>
-  </div>
-</header>
+<header class="site-header"><div class="container header-content"><div class="logo"><a href="${root}index.html"><img src="${root}assets/img/logo-site.png" alt="Mente Crua"></a></div><nav class="menu"><a href="${root}index.html">Home</a><a href="${root}index.html#artigos">Artigos</a><a href="${root}index.html#temas">Temas</a><a href="${root}modules/pensadores/">Pensadores</a><a href="${root}sobre.html">Sobre</a><a href="${root}contato.html">Contato</a></nav><div class="site-search" role="search"><input class="siteSearchInput" type="search" placeholder="Buscar..." aria-label="Buscar no Mente Crua"><div class="siteSearchResults home-search-results"></div></div></div></header>
 <main>
-<section class="article-hero">
-  <div class="container article-container">
-    <p class="tag">${escapeHtml(data.moduleLabel)}${data.category ? ' • ' + escapeHtml(data.category) : ''}</p>
-    <h1>${escapeHtml(data.title)}</h1>
-    ${data.subtitle ? `<p>${escapeHtml(data.subtitle)}</p>` : ''}
-    ${relation}
-  </div>
-</section>
-<section class="article-section">
-  <div class="container article-container">
-    <article class="article-content">
-${body}
-      ${data.module === 'livros' ? renderPurchaseLinksHtml(data.purchaseLinks) : ''}
-    </article>
-  </div>
-</section>
+<header class="article-hero article-container"><p class="tag">${escapeHtml(data.category || 'Mente Crua')}</p><h1>${escapeHtml(data.title)}</h1>${data.subtitle ? `<p class="article-subtitle">${escapeHtml(data.subtitle)}</p>` : ''}${data.thumb ? `<img class="article-thumb" src="${escapeHtml(data.thumb)}" alt="${escapeHtml(data.title)}">` : ''}</header>
+<section class="article-container article-body">${article}</section>
+<section class="article-container share-section"><h2>Compartilhe esta reflexão</h2><div class="share-actions"><a class="share-button" href="https://api.whatsapp.com/send?text=${encodeURIComponent(data.title)}" target="_blank" rel="noopener"><img src="${root}assets/img/social/whatsapp.png" alt="WhatsApp"><span>WhatsApp</span></a><a class="share-button" href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" rel="noopener"><img src="${root}assets/img/social/facebook.png" alt="Facebook"><span>Facebook</span></a><button class="share-button" onclick="navigator.clipboard&&navigator.clipboard.writeText(location.href)"><img src="${root}assets/img/social/link.png" alt="Copiar link"><span>Copiar link</span></button></div></section>
 </main>
-<footer class="site-footer">
-  <div class="container">
-    <p>Mente Crua — ideias sem filtro para quem ainda gosta de pensar.</p>
-  </div>
-</footer>
+<footer class="footer"><div class="container footer-content"><div><h3>Mente Crua</h3><p>Ideias sem filtro para quem ainda gosta de pensar.</p></div><nav><a href="${root}index.html">Home</a><a href="${root}sobre.html">Sobre</a><a href="${root}contato.html">Contato</a></nav></div></footer>
+<script src="${root}assets/js/search.js"></script>
 </body>
 </html>`;
 }
-
-function generate() {
-  const data = collectData();
-  const html = renderHtml(data);
-  outputHtml.value = html;
-  outputJson.value = JSON.stringify(data, null, 2);
-  updateFolderHint();
-  renderPreview(data);
-  return { data, html };
+function homeCard(data) {
+  const home = data.home || {};
+  const title = home.title || data.title;
+  const desc = home.description || data.seo?.description || data.subtitle || '';
+  const thumb = home.thumb || data.thumb || '';
+  const url = home.link || data.folder;
+  const thumbSrc = thumb.startsWith('modules/') || thumb.startsWith('assets/') ? thumb : `${data.folder}${thumb}`;
+  return `<article class="post-card">
+  <a href="${escapeHtml(url)}" class="post-thumb"><img src="${escapeHtml(thumbSrc)}" alt="${escapeHtml(title)}"></a>
+  ${data.category ? `<span class="post-category">${escapeHtml(data.category)}</span>` : ''}
+  <h3>${escapeHtml(title)}</h3>
+  <p>${escapeHtml(desc)}</p>
+  <a href="${escapeHtml(url)}">Ler artigo →</a>
+</article>`;
 }
-
-function downloadFile(filename, content, type) {
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(new Blob([content], { type }));
-  link.download = filename;
-  link.click();
-  URL.revokeObjectURL(link.href);
-}
-
-function cleanFileName(name) {
-  const dot = name.lastIndexOf('.');
-  const base = dot > -1 ? name.slice(0, dot) : name;
-  const ext = dot > -1 ? name.slice(dot + 1).toLowerCase() : '';
-  return `${slugify(base) || 'imagem'}${ext ? '.' + ext : ''}`;
-}
-
-function importImages(event) {
-  const files = Array.from(event.target.files || []);
-  files.forEach((file) => {
-    const targetName = cleanFileName(file.name);
-    importedImages.push({ file, targetName, path: `img/${targetName}`, kind: file.type || targetName.split('.').pop() });
-  });
-  event.target.value = '';
-  renderMediaLibrary();
-  generate();
-}
-
-function renderMediaLibrary() {
-  if (!importedImages.length) {
-    mediaLibraryEl.innerHTML = '<p class="hint">Nenhuma imagem importada ainda.</p>';
-    return;
+async function collectPublishedArticles() {
+  const out = [];
+  const modulesDir = await ensureDir(projectRootHandle, 'modules');
+  let artigosDir;
+  try { artigosDir = await modulesDir.getDirectoryHandle('artigos'); } catch (_) { return out; }
+  for await (const [slug, dir] of artigosDir.entries()) {
+    if (dir.kind !== 'directory') continue;
+    const data = await readJsonIfExists(dir, 'data.json');
+    if (data?.status === 'published') out.push(data);
   }
-  mediaLibraryEl.innerHTML = '';
-  importedImages.forEach((image, index) => {
-    const card = document.createElement('div');
-    card.className = 'media-card';
-    const url = URL.createObjectURL(image.file);
-    card.innerHTML = `
-      <img src="${url}" alt="${escapeHtml(image.targetName)}">
-      <code>${escapeHtml(image.path)}</code>
-      <div class="media-actions">
-        <button type="button" data-use-thumb="${index}">usar thumb</button>
-        <button type="button" data-add-image="${index}">inserir bloco</button>
-        <button type="button" data-copy-path="${index}">copiar caminho</button>
-      </div>
-    `;
-    mediaLibraryEl.appendChild(card);
-  });
-  $$('[data-use-thumb]').forEach((button) => button.onclick = () => { $('#thumb').value = importedImages[button.dataset.useThumb].path; generate(); });
-  $$('[data-add-image]').forEach((button) => button.onclick = () => { const img = importedImages[button.dataset.addImage]; addBlock('image', { src: img.path, alt: $('#title').value || img.targetName }); generate(); });
-  $$('[data-copy-path]').forEach((button) => button.onclick = async () => { await navigator.clipboard?.writeText(importedImages[button.dataset.copyPath].path); });
+  return out.sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')));
+}
+async function updateHomeWithItems(items, onlyThese = false) {
+  const start = '<!-- ATLAS:RECENT_POSTS_START -->';
+  const end = '<!-- ATLAS:RECENT_POSTS_END -->';
+  const homeHandle = await projectRootHandle.getFileHandle('index.html');
+  const file = await homeHandle.getFile();
+  let html = await file.text();
+  if (!html.includes(start) || !html.includes(end)) throw new Error('Marcadores da Home não encontrados.');
+  const cards = items.map(homeCard).join('\n\n');
+  html = html.replace(new RegExp(`${start}[\\s\\S]*?${end}`), `${start}\n${cards}\n${end}`);
+  const w = await homeHandle.createWritable();
+  await w.write(new Blob([html], { type: 'text/html' }));
+  await w.close();
 }
 
-async function ensureDir(handle, parts) {
-  let current = handle;
-  for (const part of parts) current = await current.getDirectoryHandle(part, { create: true });
-  return current;
+async function updateHome() {
+  const published = await collectPublishedArticles();
+  const data = collectData('published');
+  const exists = published.some(item => item.folder === data.folder);
+  const items = exists ? published : [data, ...published];
+  await updateHomeWithItems(items);
 }
-
-async function writeFile(dirHandle, fileName, content, type = 'text/plain') {
-  const fileHandle = await dirHandle.getFileHandle(fileName, { create: true });
-  const writable = await fileHandle.createWritable();
-  await writable.write(new Blob([content], { type }));
-  await writable.close();
-}
-
-async function copyImportedImages(itemDir) {
-  const imgDir = await itemDir.getDirectoryHandle('img', { create: true });
-  for (const image of importedImages) {
-    const fileHandle = await imgDir.getFileHandle(image.targetName, { create: true });
-    const writable = await fileHandle.createWritable();
-    await writable.write(image.file);
-    await writable.close();
-  }
-}
-
-async function publishLocal() {
-  const { data, html } = generate();
-  if (!('showDirectoryPicker' in window)) {
-    publishStatus.textContent = 'Seu navegador não liberou escrita em pastas. Use Chrome/Edge atual ou baixe index.html + data.json manualmente.';
-    return;
-  }
+async function publishHomeCardOnly() {
   try {
-    publishStatus.textContent = 'Escolha a pasta RAIZ do projeto, aquela que contém index.html, assets/ e modules/. Depois confirme a permissão.';
-    const rootHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
-    const itemDir = await ensureDir(rootHandle, ['modules', data.module, data.slug]);
-    await writeFile(itemDir, 'index.html', html, 'text/html');
-    await writeFile(itemDir, 'data.json', JSON.stringify(data, null, 2), 'application/json');
-    await copyImportedImages(itemDir);
-    publishStatus.innerHTML = `Publicado localmente com sucesso.\n\nDestino:\n${data.folder}\n\nArquivos criados/atualizados:\n- index.html\n- data.json\n- ${importedImages.length} imagem(ns) em img/\n\nAgora teste no navegador e faça o commit manual.`;
-  } catch (error) {
-    publishStatus.textContent = `Publicação local cancelada ou falhou.\n\n${error.message}`;
+    if (!await requireProject()) return;
+    const title = $('#title').value.trim();
+    if (!title) return alert('Informe o nome do conteúdo primeiro.');
+    updateDerivedFields();
+    const data = collectData(currentItem ? (await readJsonIfExists(contentDirHandle, 'data.json'))?.status || 'draft' : 'draft');
+    setLog('🏠 Publicando card na Home...');
+    await updateHomeWithItems([data], true);
+    setStep('#stepHome', true);
+    syncUI();
+    addLog('✔ Card da Home publicado. Confira a Home agora.');
+  } catch (err) {
+    addLog(`❌ Home: ${err.message}`);
   }
 }
 
-$('#generate').onclick = generate;
-$('#publishLocal').onclick = publishLocal;
-updateModuleFields();
-addBlock('paragraph', { content: '' });
-renderPurchaseLinks();
-generate();
+async function buildSearchIndex() {
+  const items = (await collectPublishedArticles()).map(data => ({ title:data.title, subtitle:data.subtitle||data.home?.description||'', type:data.type, category:data.category||'', tags:data.tags||[], url:data.folder, thumb:data.thumb?`${data.folder}${data.thumb}`:'', text:[data.title,data.subtitle,data.category,(data.tags||[]).join(' '),(data.relationships||[]).join(' ')].join(' ') }));
+  const searchDir = await ensureDir(projectRootHandle, 'search');
+  await writeFile(searchDir, 'search-index.json', JSON.stringify(items, null, 2), 'application/json');
+}
+async function buildSitemap() {
+  const items = await collectPublishedArticles();
+  const urls = ['index.html', ...items.map(i => i.folder)];
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u=>`  <url><loc>https://mentecrua.com.br/${escapeHtml(u)}</loc></url>`).join('\n')}\n</urlset>`;
+  await writeFile(projectRootHandle, 'sitemap.xml', xml, 'application/xml');
+}
+async function publish() {
+  if (!projectRootHandle || !contentDirHandle || !currentItem) return alert('Crie ou abra um conteúdo antes de publicar.');
+  try {
+    setLog('🚀 Publicando...');
+    const data = collectData('published');
+    data.createdAt = (await readJsonIfExists(contentDirHandle, 'data.json'))?.createdAt || new Date().toISOString();
+    await writeFile(contentDirHandle, 'data.json', JSON.stringify(data, null, 2), 'application/json');
+    addLog('✔ data.json');
+    await writeFile(contentDirHandle, 'index.html', articlePage(data), 'text/html');
+    addLog('✔ index.html');
+    await updateHome();
+    addLog('✔ Home');
+    await buildSearchIndex();
+    addLog('✔ Busca');
+    await buildSitemap();
+    addLog('✔ Sitemap');
+    currentItem = { type:data.type, title:data.title, slug:data.slug, folder:data.folder };
+    setStep('#stepPublished', true);
+    syncUI();
+    addLog('🎉 Publicação concluída.');
+  } catch (err) { addLog(`❌ ${err.message}`); }
+}
+
+$('#changeProject').addEventListener('click', selectProjectRoot);
+$('#createContent').addEventListener('click', createContent);
+$('#openContent').addEventListener('click', openContent);
+$('#addImagesButton').addEventListener('click', importImages);
+$('#publishHomeCard').addEventListener('click', publishHomeCardOnly);
+$('#publish').addEventListener('click', publish);
+$$('.steps .step').forEach(btn => btn.addEventListener('click', () => goToStep(Number(btn.dataset.step))));
+$$('.next').forEach(btn => btn.addEventListener('click', () => goToStep(currentStep + 1)));
+['title','moduleType','slug','homeTitle','homeDescription','homeThumb','contentHtml'].forEach(id => $('#'+id).addEventListener('input', () => { if (id === 'slug') $('#slug').dataset.manual = 'true'; updateDerivedFields(); }));
+updateDerivedFields();
+goToStep(0);

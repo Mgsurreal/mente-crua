@@ -1,37 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-```
-<url>
-    <loc>https://mente-crua.surreal-marcosrg.workers.dev/</loc>
-    <priority>1.0</priority>
-</url>
-
-<url>
-    <loc>https://mente-crua.surreal-marcosrg.workers.dev/sobre.html</loc>
-    <priority>0.8</priority>
-</url>
-
-<url>
-    <loc>https://mente-crua.surreal-marcosrg.workers.dev/contato.html</loc>
-    <priority>0.7</priority>
-</url>
-
-<url>
-    <loc>https://mente-crua.surreal-marcosrg.workers.dev/privacidade.html</loc>
-    <priority>0.5</priority>
-</url>
-
-<url>
-    <loc>https://mente-crua.surreal-marcosrg.workers.dev/cookies.html</loc>
-    <priority>0.5</priority>
-</url>
-
-<url>
-    <loc>https://mente-crua.surreal-marcosrg.workers.dev/termos.html</loc>
-    <priority>0.5</priority>
-</url>
-```
-
+  <url><loc>index.html</loc></url>
+  <url><loc>sobre.html</loc></url>
+  <url><loc>contato.html</loc></url>
+  <url><loc>modules/artigos/quando-o-pequeno-principe-morre-dentro-de-nos/</loc></url>
 </urlset>
