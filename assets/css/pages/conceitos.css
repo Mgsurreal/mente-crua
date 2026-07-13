@@ -1,0 +1,28 @@
+﻿/* Hero — conceitos */
+.conceitos-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1600 / 592;
+    min-height: 320px;
+    overflow: hidden;
+
+    background-image: url("../../img/conceitos/hero/hero-conceitos.webp");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #070707;
+
+    border-bottom: 1px solid rgba(206, 200, 193, .08);
+}
+
+.conceitos-hero .container {
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .conceitos-hero {
+        aspect-ratio: auto;
+        min-height: clamp(220px, 58vw, 320px);
+        background-position: center center;
+    }
+}

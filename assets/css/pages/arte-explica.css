@@ -1,0 +1,39 @@
+﻿/* Hero — arte-explica */
+.arte-explica-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1600 / 592;
+    min-height: 320px;
+    overflow: hidden;
+
+    background-image: url("../../img/arte-explica/hero/hero-arte-explica.svg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #070707;
+
+    border-bottom: 1px solid rgba(206, 200, 193, .08);
+}
+
+.arte-explica-hero .container {
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .arte-explica-hero {
+        aspect-ratio: auto;
+        min-height: clamp(220px, 58vw, 320px);
+        background-position: center center;
+    }
+}
+
+.mc-category-drawer-icon{
+
+    width:72px;
+    height:72px;
+
+    object-fit:contain;
+
+    display:block;
+
+}

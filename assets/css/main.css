@@ -12,4 +12,4 @@
 @import url("pages/article.css");
 @import url("pages/thinkers.css");
 @import url("layout/footer.css");
-@import url("utilities/responsive.css");
+@import url("utilities/responsive.css?v=footer-bg-fix");

@@ -1,0 +1,126 @@
+﻿/* Hero — pensadores */
+.pensadores-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1600 / 592;
+    min-height: 320px;
+    overflow: hidden;
+
+    background-image: url("../../img/pensadores/hero/hero-pensadores.webp");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #070707;
+
+    border-bottom: 1px solid rgba(206, 200, 193, .08);
+}
+
+.pensadores-hero .container {
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .pensadores-hero {
+        aspect-ratio: auto;
+        min-height: clamp(220px, 58vw, 320px);
+        background-position: center center;
+    }
+}
+
+/* ==========================================================
+   FOOTER — PENSADORES
+   Mesmo componente global, com ambientação própria.
+========================================================== */
+
+.mc-footer#footer.footer-pensadores {
+    position: relative;
+    overflow: hidden;
+    margin-top: 0 !important;
+
+    background-color: #070707 !important;
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(7, 7, 7, .08) 0%,
+            rgba(7, 7, 7, .28) 34%,
+            rgba(7, 7, 7, .74) 100%
+        ),
+        url("../../img/pensadores/footer/footer-pensadores.webp") !important;
+
+    background-size: cover !important;
+    background-position: right bottom !important;
+    background-repeat: no-repeat !important;
+
+    border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+/* O fundo global da Home usa um background com !important.
+   Nesta categoria ele precisa ser ocultado, senão cobre a arte própria. */
+.mc-footer#footer.footer-pensadores .mc-footer-bg {
+    display: none !important;
+}
+
+.mc-footer#footer.footer-pensadores .mc-footer-overlay {
+    position: relative;
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, .76) 0%,
+            rgba(0, 0, 0, .58) 48%,
+            rgba(0, 0, 0, .30) 72%,
+            rgba(0, 0, 0, .18) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, .08) 0%,
+            rgba(0, 0, 0, .50) 100%
+        ) !important;
+}
+
+.mc-footer#footer.footer-pensadores .mc-footer-main {
+    grid-template-columns:
+        minmax(240px, 1.35fr)
+        .78fr
+        .78fr
+        minmax(230px, 1fr)
+        210px !important;
+
+    gap: 34px !important;
+    align-items: start !important;
+}
+
+.mc-footer#footer.footer-pensadores .mc-footer-art-space {
+    min-height: 250px;
+    pointer-events: none;
+}
+
+@media (max-width: 1120px) {
+    .mc-footer#footer.footer-pensadores .mc-footer-main {
+        grid-template-columns:
+            minmax(230px, 1.25fr)
+            minmax(120px, .8fr)
+            minmax(120px, .8fr)
+            minmax(220px, 1fr) !important;
+    }
+
+    .mc-footer#footer.footer-pensadores .mc-footer-art-space {
+        display: none;
+    }
+}
+
+@media (max-width: 780px) {
+    .mc-footer#footer.footer-pensadores {
+        background-position: 68% bottom !important;
+    }
+
+    .mc-footer#footer.footer-pensadores .mc-footer-main {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+
+    .mc-footer#footer.footer-pensadores .mc-footer-art-space {
+        display: none;
+    }
+}

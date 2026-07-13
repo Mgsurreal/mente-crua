@@ -1,0 +1,397 @@
+/* ==========================================================
+   MENTE CRUA — GAVETA LATERAL DE CATEGORIAS
+   Componente global das páginas de categoria.
+========================================================== */
+
+:root {
+    --mc-drawer-width: min(356px, 92vw);
+    --mc-drawer-bg: #090909;
+    --mc-drawer-red: #741419;
+    --mc-drawer-red-hover: #8f1b21;
+    --mc-drawer-bronze: #b8975c;
+    --mc-drawer-text: #ddd7cf;
+    --mc-drawer-border: rgba(184, 151, 92, .24);
+    --mc-drawer-speed: 560ms;
+}
+
+.mc-category-drawer,
+.mc-category-drawer * {
+    box-sizing: border-box;
+}
+
+.mc-category-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+}
+
+.mc-category-drawer.is-open {
+    pointer-events: auto;
+}
+
+.mc-category-drawer-backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: rgba(0, 0, 0, .52);
+    opacity: 0;
+    cursor: default;
+    transition: opacity var(--mc-drawer-speed) ease;
+}
+
+.mc-category-drawer.is-open .mc-category-drawer-backdrop {
+    opacity: 1;
+}
+
+.mc-category-drawer-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: var(--mc-drawer-width);
+    height: 100%;
+    padding: 30px 22px 26px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    color: var(--mc-drawer-text);
+    background:
+        radial-gradient(circle at 0 10%, rgba(116, 20, 25, .17), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.018), transparent 18%),
+        var(--mc-drawer-bg);
+
+    border-left: 1px solid var(--mc-drawer-border);
+    border-right: 0;
+    box-shadow: -22px 0 64px rgba(0, 0, 0, .62);
+    transform: translateX(100%);
+    transition: transform var(--mc-drawer-speed) cubic-bezier(.16, .84, .22, 1);
+}
+
+.mc-category-drawer.is-open .mc-category-drawer-panel {
+    transform: translateX(0);
+}
+
+.mc-category-drawer-header {
+    position: relative;
+    margin-bottom: 18px;
+    padding: 14px 46px 20px 0;
+    border-bottom: 1px solid rgba(184, 151, 92, .18);
+}
+
+.mc-category-drawer-title {
+    margin: 0;
+    color: #e3ded6;
+    font-family: Cinzel, serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+.mc-category-drawer-close {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(184, 151, 92, .28);
+    border-radius: 50%;
+    color: var(--mc-drawer-bronze);
+    background: rgba(0, 0, 0, .22);
+    font: 400 22px/1 Inter, sans-serif;
+    cursor: pointer;
+    transition: border-color .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+.mc-category-drawer-close:hover,
+.mc-category-drawer-close:focus-visible {
+    color: #d6b373;
+    border-color: rgba(214, 179, 115, .62);
+    box-shadow: 0 0 16px rgba(184, 151, 92, .12);
+    outline: none;
+}
+
+.mc-category-drawer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+    padding: 0 0 24px;
+    list-style: none;
+}
+
+.mc-category-drawer-item {
+    min-width: 0;
+}
+
+.mc-category-drawer-card {
+    position: relative;
+    min-height: 128px;
+    padding: 13px 9px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    color: var(--mc-drawer-text) !important;
+    text-align: center;
+    text-decoration: none !important;
+    border: 1px solid rgba(184, 151, 92, .18);
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.024), transparent 34%),
+        rgba(255,255,255,.012);
+    overflow: hidden;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.mc-category-drawer-card:hover,
+.mc-category-drawer-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(184, 151, 92, .5);
+    background:
+        linear-gradient(180deg, rgba(116, 20, 25, .14), transparent 65%),
+        rgba(255,255,255,.02);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, .27);
+    outline: none;
+}
+
+.mc-category-drawer-card[aria-current="page"] {
+    border-color: rgba(184, 151, 92, .6);
+    background:
+        linear-gradient(180deg, rgba(116, 20, 25, .22), transparent 66%),
+        rgba(255,255,255,.02);
+}
+
+.mc-category-drawer-card[aria-current="page"]::after {
+    content: "Você está aqui";
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: rgba(184, 151, 92, .8);
+    font-family: Inter, sans-serif;
+    font-size: .46rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.mc-category-drawer-icon {
+    display: block;
+    width: 58px;
+    height: 58px;
+    max-width: 58px;
+    max-height: 58px;
+    object-fit: contain;
+    filter: saturate(.92) brightness(.94);
+}
+
+.mc-category-drawer-name {
+    display: block;
+    color: #ddd7cf;
+    font-family: Cinzel, serif;
+    font-size: .67rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: .045em;
+    text-transform: uppercase;
+}
+
+/* Puxador artístico fixo na lateral direita. */
+.mc-category-drawer-tab {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    left: auto;
+    z-index: 9999;
+    width: 44px;
+    min-height: 168px;
+    padding: 14px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border: 1px solid rgba(184, 151, 92, .38);
+    border-right: 0;
+    border-radius: 12px 0 0 12px;
+    color: #dfd0ba;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.045), transparent 24%),
+        linear-gradient(180deg, var(--mc-drawer-red-hover), #5e0f13);
+    box-shadow: -7px 0 24px rgba(0, 0, 0, .45), inset 1px 0 rgba(255,255,255,.04);
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: width .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.mc-category-drawer-tab:hover,
+.mc-category-drawer-tab:focus-visible {
+    width: 49px;
+    border-color: rgba(214, 179, 115, .64);
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.06), transparent 24%),
+        linear-gradient(180deg, #9e262c, #6c1217);
+    box-shadow: -8px 0 28px rgba(0,0,0,.52), 0 0 20px rgba(116,20,25,.14);
+    outline: none;
+}
+
+.mc-category-drawer-tab-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: Cinzel, serif;
+    font-size: .62rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+.mc-category-drawer-tab-ornament {
+    color: var(--mc-drawer-bronze);
+    font-size: .68rem;
+    line-height: 1;
+}
+
+.mc-category-drawer-tab[aria-expanded="true"] {
+    width: 46px;
+    min-height: 74px;
+    right: var(--mc-drawer-width);
+    border-right: 1px solid rgba(184, 151, 92, .38);
+    border-radius: 12px 0 0 12px;
+}
+
+.mc-category-drawer-tab[aria-expanded="true"] .mc-category-drawer-tab-label,
+.mc-category-drawer-tab[aria-expanded="true"] .mc-category-drawer-tab-ornament {
+    display: none;
+}
+
+.mc-category-drawer-tab[aria-expanded="true"]::before {
+    content: ">";
+    color: var(--mc-drawer-bronze);
+    font-family: Cinzel, serif;
+    font-size: 1.35rem;
+    line-height: 1;
+}
+
+body.mc-category-drawer-open {
+    overflow: hidden;
+}
+
+@media (max-width: 560px) {
+    :root {
+        --mc-drawer-width: min(340px, 94vw);
+    }
+
+    .mc-category-drawer-panel {
+        padding: 24px 17px 22px;
+    }
+
+    .mc-category-drawer-grid {
+        gap: 10px;
+    }
+
+    .mc-category-drawer-card {
+        min-height: 118px;
+    }
+
+    .mc-category-drawer-icon {
+        width: 52px;
+        height: 52px;
+        max-width: 52px;
+        max-height: 52px;
+    }
+
+    .mc-category-drawer-tab {
+        width: 40px;
+        min-height: 146px;
+    }
+
+    .mc-category-drawer-tab[aria-expanded="true"] {
+        right: var(--mc-drawer-width);
+        min-height: 68px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mc-category-drawer-backdrop,
+    .mc-category-drawer-panel,
+    .mc-category-drawer-card,
+    .mc-category-drawer-tab {
+        transition: none !important;
+    }
+}
+
+/* ==========================================================
+   AJUSTE FINAL — MOVIMENTO E TRANSPARÊNCIA
+   Regras de alta prioridade para evitar sobrescritas.
+========================================================== */
+
+:root {
+    --mc-drawer-speed: 900ms !important;
+}
+
+.mc-category-drawer .mc-category-drawer-panel {
+    background:
+        radial-gradient(circle at 0 10%, rgba(116, 20, 25, .10), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, .025), transparent 20%),
+        rgba(8, 8, 8, .78) !important;
+
+    -webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(8px) !important;
+
+    opacity: .72 !important;
+    transform: translate3d(100%, 0, 0) !important;
+    will-change: transform, opacity;
+
+    transition:
+        transform 900ms cubic-bezier(.20, .78, .16, 1),
+        opacity 700ms ease !important;
+
+    box-shadow:
+        -42px 0 90px rgba(0, 0, 0, .58),
+        inset 1px 0 rgba(255, 255, 255, .04) !important;
+}
+
+.mc-category-drawer.is-open .mc-category-drawer-panel {
+    opacity: .94 !important;
+    transform: translate3d(0, 0, 0) !important;
+}
+
+.mc-category-drawer .mc-category-drawer-backdrop {
+    background: rgba(0, 0, 0, .22) !important;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+
+    opacity: 0 !important;
+    transition: opacity 650ms ease 120ms !important;
+}
+
+.mc-category-drawer.is-open .mc-category-drawer-backdrop {
+    opacity: 1 !important;
+}
+
+/* Mantém animação mesmo se o sistema estiver com redução de movimento ativa. */
+@media (prefers-reduced-motion: reduce) {
+    .mc-category-drawer .mc-category-drawer-panel {
+        transition:
+            transform 900ms cubic-bezier(.20, .78, .16, 1),
+            opacity 700ms ease !important;
+    }
+
+    .mc-category-drawer .mc-category-drawer-backdrop {
+        transition: opacity 650ms ease 120ms !important;
+    }
+}

@@ -1,243 +1,222 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Pensadores | Mente Crua</title>
-
-    <meta name="description"
-        content="Conheça filósofos, psicólogos e pensadores que influenciaram as reflexões do Mente Crua.">
-
+    <meta name="description" content="Galeria dos Pensadores. Filósofos, cientistas, escritores e intelectuais cujas ideias atravessaram séculos e continuam transformando a forma como compreendemos o mundo.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/main.css">
-
+    <link rel="stylesheet" href="../../assets/css/components/category-drawer.css">
+    <link rel="stylesheet" href="../../assets/css/pages/pensadores.css">
     <link rel="icon" type="image/png" href="../../assets/img/favicon-v1.png">
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HTMGLEHCF"></script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-4HTMGLEHCF');
-    </script>
-
 </head>
-
 <body>
-
+<div class="mc-parallax mc-parallax-left"></div>
+<div class="mc-parallax mc-parallax-right"></div>
 <header class="site-header">
-
     <div class="container header-content">
-
         <div class="logo">
-
-            <a href="../../index.html">
-                <img src="../../assets/img/logo-site.png" alt="Mente Crua">
-            </a>
-
+            <a href="../../index.html" class="editor-note">"Comece por aqui..."</a>
         </div>
 
-        <nav class="menu">
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="site-menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
 
-            <a href="../../index.html">Home</a>
-            <a href="../../index.html#artigos">Artigos</a>
-            <a href="../../index.html#temas">Temas</a>
-            <a href="./" class="active">Pensadores</a>
+        <nav class="menu" id="site-menu">
+            <a href="../../index.html">Início</a>
+            <a href="../../modules/artigos/">Artigos</a>
+            <a href="../../modules/pensadores/" class="active">Pensadores</a>
+            <a href="../../modules/livros/">Livros</a>
+            <a href="../../modules/conceitos/">Conceitos</a>
             <a href="../../sobre.html">Sobre</a>
             <a href="../../contato.html">Contato</a>
-
         </nav>
-
 
         <div class="site-search" role="search">
             <input class="siteSearchInput" type="search" placeholder="Buscar..." aria-label="Buscar no Mente Crua">
             <div class="siteSearchResults home-search-results"></div>
         </div>
-
     </div>
-
 </header>
-
 <main>
-
-<section class="pensadores-section">
-
-    <div class="container">
-
-        <p class="tag">
-            Biblioteca
-        </p>
-
-        <h1>
-            Pensadores
-        </h1>
-
-        <p class="hero-text">
-            Grandes ideias sobrevivem porque continuam sendo capazes de incomodar.
-            Conheça alguns dos filósofos, psicólogos e pensadores que inspiram as reflexões do Mente Crua.
-        </p>
-
-        <p class="pensadores-count">
-            📚 2 pensadores disponíveis
-        </p>
-
-        <div class="pensadores-grid">
-
-            <!-- NIETZSCHE -->
-
-            <a href="nietzsche/" class="pensador-card">
-
-                <img
-                    src="../../assets/img/pensadores/nietzsche-caricatura.png"
-                    alt="Friedrich Nietzsche">
-
-                <div class="pensador-card-content">
-
-                    <h2>
-                        Friedrich Nietzsche
-                    </h2>
-
-                    <div class="pensador-meta">
-                        🇩🇪 Filósofo alemão • 1844–1900
-                    </div>
-
-                    <p>
-                        Moral • Niilismo • Verdade
-                    </p>
-
-                </div>
-
-            </a>
-
-            <!-- JUNG -->
-
-            <a href="jung/" class="pensador-card">
-
-                <img
-                    src="../../assets/img/pensadores/jung-caricatura.png"
-                    alt="Carl Gustav Jung">
-
-                <div class="pensador-card-content">
-
-                    <h2>
-                        Carl Gustav Jung
-                    </h2>
-
-                    <div class="pensador-meta">
-                        🇨🇭 Psicólogo suíço • 1875–1961
-                    </div>
-
-                    <p>
-                        Inconsciente • Arquétipos • Sombra
-                    </p>
-
-                </div>
-
-            </a>
-
-            <!-- SÓCRATES -->
-
-<a href="socrates.html" class="pensador-card">
-
-    <img
-        src="../../assets/img/pensadores/socrates-caricatura.jpeg"
-        alt="Sócrates">
-
-    <div class="pensador-card-content">
-
-        <h2>
-            Sócrates
-        </h2>
-
-        <div class="pensador-meta">
-            🇬🇷 Filósofo grego • 470 a.C.–399 a.C.
+    <section class="pensadores-hero" aria-labelledby="category-title">
+        <div class="container">
+            <h1 id="category-title" class="visually-hidden">Pensadores</h1>
+            <p class="visually-hidden">Galeria dos Pensadores. Filósofos, cientistas, escritores e intelectuais cujas ideias atravessaram séculos e continuam transformando a forma como compreendemos o mundo.</p>
         </div>
-
-        <p>
-            Ética • Maiêutica • Autoconhecimento
-        </p>
-
-    </div>
-
-</a>
-
-<!-- SPINOZA -->
-
-<a href="spinoza.html" class="pensador-card">
-
-    <img
-        src="../../assets/img/pensadores/spinoza-caricatura.jpeg"
-        alt="Baruch Spinoza">
-
-    <div class="pensador-card-content">
-
-        <h2>
-            Baruch Spinoza
-        </h2>
-
-        <div class="pensador-meta">
-            🇳🇱 Filósofo neerlandês • 1632–1677
+    </section>
+    <section class="category-future" aria-label="Conteúdo em desenvolvimento">
+        <div class="container">
+            <!-- FUTURO CONTEÚDO DA CATEGORIA — ATLAS -->
         </div>
-
-        <p>
-            Razão • Natureza • Liberdade
-        </p>
-
-    </div>
-
-</a>
-
-        </div>
-
-    </div>
-
-</section>
-
+    </section>
 </main>
+<footer class="mc-footer footer-pensadores" id="footer">
+    <div class="mc-footer-bg"></div>
 
-<footer class="site-footer">
+    <div class="mc-footer-overlay">
+        <section
+            class="mc-footer-newsletter"
+            id="newsletter"
+            aria-labelledby="newsletter-title"
+        >
+            <div class="container mc-footer-newsletter-inner">
+                <div class="editorial-section-title" aria-hidden="true">
+                    <span class="editorial-line"></span>
+                    <span class="editorial-symbol">◆</span>
+                    <span class="editorial-line"></span>
+                </div>
 
-    <div class="container footer-content">
+                <div class="mc-footer-newsletter-copy">
+                    <h2 id="newsletter-title">Não pare por aqui.</h2>
 
-        <p>&copy; 2026 Mente Crua</p>
+                    <p>
+                        Receba novos artigos, reflexões e perguntas sempre que
+                        uma nova ideia chegar à biblioteca.
+                    </p>
+                </div>
 
-        <div class="footer-links">
+                <form class="mc-footer-form" action="#" method="post">
+                    <label class="sr-only" for="footer-newsletter-email">
+                        Seu e-mail
+                    </label>
 
-            <a href="../privacidade.html">Política de Privacidade</a>
-            <a href="../cookies.html">Política de Cookies</a>
-            <a href="../termos.html">Termos de Uso</a>
+                    <input
+                        id="footer-newsletter-email"
+                        type="email"
+                        name="email"
+                        placeholder="Seu melhor e-mail"
+                    >
 
+                    <button type="submit">Assinar</button>
+                </form>
+            </div>
+        </section>
+
+        <div class="container mc-footer-main">
+            <div class="mc-footer-brand">
+                <h2>Mente Crua</h2>
+
+                <p>
+                    Uma biblioteca digital para quem desconfia das certezas,
+                    questiona o óbvio e acredita que boas perguntas valem mais
+                    do que respostas fáceis.
+                </p>
+
+                <div class="mc-footer-social" aria-label="Redes sociais">
+                    <a
+                        href="https://www.facebook.com/MenteCrua"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Facebook"
+                    >
+                        <img
+                            src="../../assets/img/social/facebook-bronze.svg"
+                            alt=""
+                        >
+                    </a>
+
+                    <a
+                        href="https://www.instagram.com/msmentecrua/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                    >
+                        <img
+                            src="../../assets/img/social/instagram-bronze.svg"
+                            alt=""
+                        >
+                    </a>
+
+                    <a
+                        href="https://www.youtube.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="YouTube"
+                    >
+                        <img
+                            src="../../assets/img/social/youtube-bronze.svg"
+                            alt=""
+                        >
+                    </a>
+
+                    <a
+                        href="https://x.com/MarcosSurreal"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="X"
+                    >
+                        <img
+                            src="../../assets/img/social/x-bronze.svg"
+                            alt=""
+                        >
+                    </a>
+
+                                    <a href="#" target="_blank" aria-label="X">
+            <img src="../../assets/img/social/quora-bronze.svg" alt="">
+        </a>
+
+                <a href="#" target="_blank" aria-label="X">
+            <img src="../../assets/img/social/tiktok-bronze.svg" alt="">
+        </a>
+                </div>
+            </div>
+
+            <nav class="mc-footer-column" aria-label="Explorar">
+                <h3>Explorar</h3>
+
+                <a href="../artigos/">Artigos</a>
+                <a href="../../index.html#biblioteca">Categorias</a>
+                <a href="../pensadores/">Pensadores</a>
+                <a href="../livros/">Livros</a>
+                <a href="../../sobre.html">Sobre</a>
+            </nav>
+
+            <nav class="mc-footer-column" aria-label="Biblioteca">
+                <h3>Biblioteca</h3>
+
+                <a href="../conceitos/">Conceitos</a>
+                <a href="../mitologia/">Mitologia</a>
+                <a href="../historia/">História</a>
+                <a href="../psicologia/">Psicologia</a>
+                <a href="../ciencia/">Ciência</a>
+            </nav>
+
+            <div class="mc-footer-support">
+                <h3>Apoie o Mente Crua</h3>
+
+                <p>
+                    Se este projeto faz sentido para você, considere apoiar
+                    sua continuidade.
+                </p>
+
+                <a class="mc-footer-button" href="../../contato.html">
+                    Apoiar o projeto
+                </a>
+
+                <small>ou faça uma doação via PIX</small>
+            </div>
+
+            <div class="mc-footer-art-space" aria-hidden="true"></div>
         </div>
 
-        <div class="footer-social">
+        <div class="container mc-footer-bottom">
+            <p>A biblioteca nunca fecha.</p>
 
-            <a href="#" target="_blank" rel="noopener noreferrer">
-                <img src="../assets/img/social/instagram.png" alt="Instagram">
-            </a>
-
-            <a href="#" target="_blank" rel="noopener noreferrer">
-                <img src="../assets/img/social/facebook.png" alt="Facebook">
-            </a>
-
-            <a href="#">
-                <img src="../assets/img/social/link.png" alt="Copiar Link">
-            </a>
-
+            <small>
+                &copy; 2026 Mente Crua. Todos os direitos reservados.
+                <a href="../../privacidade.html">Política de Privacidade</a>
+                <a href="../../termos.html">Termos de Uso</a>
+            </small>
         </div>
-
     </div>
-
 </footer>
-
 <script src="../../assets/js/search.js"></script>
+<script src="../../assets/js/site.js" data-base="../../"></script>
+    <script src="../../assets/js/category-drawer.js"></script>
 </body>
-
 </html>

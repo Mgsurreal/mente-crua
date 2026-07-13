@@ -35,8 +35,8 @@ function articlePageHtml(data) {
 <header class="site-header">
   <div class="container header-content">
     <div class="logo"><a href="../../../index.html"><img src="../../../assets/img/logo-site.png" alt="Mente Crua"></a></div>
-    <nav class="menu">
-      <a href="../../../index.html">Home</a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="site-menu" aria-expanded="false"><span></span><span></span><span></span></button><nav class="menu" id="site-menu">
+      <a href="../../../index.html">Início</a>
       <a href="../../../index.html#artigos">Artigos</a>
       <a href="../../../index.html#temas">Temas</a>
       <a href="../../pensadores/">Pensadores</a>

@@ -1,0 +1,33 @@
+﻿.category-hero {
+    width: 100%;
+    aspect-ratio: 1600 / 592;
+    max-height: calc(100vh - 76px);
+    overflow: hidden;
+    background-color: #070707;
+    background-image: var(--category-hero);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-bottom: 1px solid rgba(206, 200, 193, .08);
+}
+
+.category-hero .container { height: 100%; }
+
+.category-future { min-height: clamp(180px, 24vw, 360px); }
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 768px) {
+    .category-hero { max-height: none; }
+}

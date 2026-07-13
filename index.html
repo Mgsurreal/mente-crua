@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -8,10 +8,10 @@
 
     <meta name="description" content="Reflexões sobre filosofia, comportamento humano, tecnologia, sociedade e pensamento crítico. Ideias sem filtro para quem ainda gosta de pensar.">
 
-    <!-- Fonte principal do site -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Fontes do Mente Crua -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Special+Elite&display=swap" rel="stylesheet">
 
     <!-- CSS principal -->
     <link rel="stylesheet" href="assets/css/main.css">
@@ -33,138 +33,101 @@
 
 <body>
 
+    <!-- ==========================================
+     PARALLAX LATERAL
+     Fundo decorativo fixo nas laterais da Home.
+========================================== -->
+
+<div class="mc-parallax mc-parallax-left"></div>
+<div class="mc-parallax mc-parallax-right"></div>
+
 <!-- ==========================================
-     HEADER
-     Menu principal do site
+     HEADER PADRÃO
 ========================================== -->
 <header class="site-header">
     <div class="container header-content">
-
-<!-- ==========================================
-     LOGO
-========================================== -->
 <div class="logo">
-
-    <a href="index.html">
-
-        <img
-            src="assets/img/logo-site.png"
-            alt="Mente Crua">
-
+    <a href="index.html" class="editor-note">
+        Comece por aqui...
     </a>
-
 </div>
 
-        <nav class="menu">
-            <a href="index.html"class="active">Home</a>
-            <a href="#artigos">Artigos</a>
-            <a href="#temas">Temas</a>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="site-menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="menu" id="site-menu">
+            <a href="index.html" class="active">Início</a>
+            <a href="modules/artigos/">Artigos</a>
             <a href="modules/pensadores/">Pensadores</a>
+            <a href="modules/livros/">Livros</a>
+            <a href="modules/conceitos/">Conceitos</a>
             <a href="sobre.html">Sobre</a>
             <a href="contato.html">Contato</a>
         </nav>
-
 
         <div class="site-search" role="search">
             <input class="siteSearchInput" type="search" placeholder="Buscar..." aria-label="Buscar no Mente Crua">
             <div class="siteSearchResults home-search-results"></div>
         </div>
-
     </div>
 </header>
 
 <main>
 
-
 <!-- ==========================================
-     HERO
-     Primeira dobra da Home
+     FACHADA DA BIBLIOTECA
+     Banner exclusivo da Home
 ========================================== -->
-
-<section class="hero">
-
+<section class="hero home-hero">
     <div class="container hero-layout">
 
-        <!-- Texto principal -->
-        <div class="hero-content">
+        <!-- Conteúdo semântico invisível
+             A arte do banner mostra estes textos visualmente.
+             Este bloco mantém SEO, acessibilidade e estrutura correta da página. -->
+        <h1 class="visually-hidden">
+            Mente Crua
+        </h1>
 
-            <p class="tag">
-                Filosofia • Sociedade • Comportamento
-            </p>
+        <p class="visually-hidden">
+            Perguntas que já são respostas.
+        </p>
 
-            <h1>
-                Ideias sem filtro para quem ainda gosta de pensar.
-            </h1>
+        <p class="visually-hidden">
+            Uma biblioteca digital para quem desconfia das certezas,
+            questiona o óbvio e prefere uma boa pergunta a uma resposta pronta.
+        </p>
 
-            <p class="hero-text">
-                Reflexões sobre comportamento humano, filosofia,
-                tecnologia, sociedade e pensamento crítico em uma era
-                de distrações, opiniões instantâneas e certezas absolutas.
-            </p>
+        <p class="visually-hidden">
+            Filosofia • Reflexão • Mitologia • Psicologia • Verdade.
+        </p>
 
-            <a href="#artigos" class="btn">
-                Ler artigos
-            </a>
-
-        </div>
-
-        <!-- Imagem principal do Hero -->
-
+        <p class="visually-hidden">
+            Pense. Questione. Desconfie. Compreenda. Evolua.
+        </p>
 
     </div>
-
 </section>
-
-<section class="home-search-section">
-  <div class="container">
-    <div class="home-search-box">
-      <p class="tag">Biblioteca Mente Crua</p>
-      <h2>Buscar no acervo</h2>
-      <input id="homeSearchInput" type="search" placeholder="Buscar artigos, pensadores, conceitos, livros...">
-      <div id="homeSearchResults" class="home-search-results"></div>
-    </div>
-  </div>
-</section>
-
-
-    <!-- ==========================================
-         ARTIGO EM DESTAQUE
-         Principal conteúdo em evidência na Home
-    ========================================== -->
-    <section class="featured" id="artigos">
-        <div class="container">
-
-            <h2>Artigo em destaque</h2>
-
-            <article class="featured-card">
-                <div>
-                    <span class="category">Filosofia • Psicologia • Ego</span>
-
-                    <h3>Por que temos tanta necessidade de ter certeza?</h3>
-
-                    <p>
-                        Talvez o ser humano não busque a verdade tanto quanto busca segurança.
-                    </p>
-
-                    <a href="modules/artigos/a-ilusao-da-certeza/" class="read-more">Ler artigo →</a>
-                </div>
-            </article>
-
-        </div>
-    </section>
 
 <!-- ==========================================
      ARTIGOS RECENTES
-     Lista dos últimos artigos publicados
+     Atlas mantém este bloco atualizado
 ========================================== -->
-<section class="recent-posts">
-
+<section class="recent-posts" id="artigos">
     <div class="container">
-
-        <h2>Artigos Recentes</h2>
+        <div class="section-head">
+            <div>
+                <p class="section-kicker">Artigos recentes</p>
+                <h2>Novas ideias na mesa</h2>
+            </div>
+            <p>
+                Quatro entradas recentes para começar a visita. O restante permanece nas categorias.
+            </p>
+        </div>
 
         <div class="posts-grid">
-
 <!-- ATLAS:RECENT_POSTS_START -->
 
 <!--
@@ -250,132 +213,288 @@
 
             </article>
 <!-- ATLAS:RECENT_POSTS_END -->
-
         </div>
-
     </div>
-
 </section>
 
+<!-- ==========================================
+     EXPLORAR POR CATEGORIA
+     Oito portas principais da biblioteca
+========================================== -->
+<section class="library-gates" id="biblioteca">
+    <div class="container">
 
-    <!-- ==========================================
-         TEMAS DO BLOG
-         Categorias principais de conteúdo
-    ========================================== -->
-    <section class="themes" id="temas">
-        <div class="container">
-
-            <h2>Temas do blog</h2>
-
-            <div class="theme-grid">
-                <div class="theme-card">Filosofia</div>
-                <div class="theme-card">Comportamento Humano</div>
-                <div class="theme-card">Pensamento Crítico</div>
-                <div class="theme-card">Tecnologia e Sociedade</div>
-                <div class="theme-card">Psicologia</div>
-                <div class="theme-card">Vida Moderna</div>
+        <div class="section-head">
+            <div>
+                <p class="section-kicker">Categorias</p>
+                <h2>Explorar por Categoria</h2>
             </div>
+        </div>
+
+        <div class="gates-grid">
+
+            <a class="gate-card" href="modules/pensadores/">
+                <div class="gate-icon">
+                    <img src="assets/img/categorias/pensadores.png" alt="Busto grego representando Pensadores">
+                </div>
+                <h3>Pensadores</h3>
+                <p>Grandes pensadores da humanidade.</p>
+            </a>
+
+            <a class="gate-card" href="modules/livros/">
+                <div class="gate-icon">
+                    <img src="assets/img/categorias/livros.png" alt="Livro antigo aberto representando Livros">
+                </div>
+                <h3>Livros</h3>
+                <p>Obras que atravessam gerações.</p>
+            </a>
+
+            <a class="gate-card" href="modules/conceitos/">
+                <div class="gate-icon">
+                    <img src="assets/img/categorias/conceitos.png" alt="Cubo impossível representando Conceitos">
+                </div>
+                <h3>Conceitos</h3>
+                <p>Ideias que mudam perspectivas.</p>
+            </a>
+
+            <a class="gate-card" href="modules/antes-da-disney/">
+                <div class="gate-icon">
+                    <img src="assets/img/categorias/antes-da-disney.png" alt="Castelo representando Antes da Disney">
+                </div>
+                <h3>Antes da Disney</h3>
+                <p>As histórias antes da adaptação.</p>
+            </a>
+
+            <a class="gate-card" href="modules/mitologia/">
+                <div class="gate-icon">
+                    <img src="assets/img/categorias/mitologia.png" alt="Elmo antigo representando Mitologia">
+                </div>
+                <h3>Mitologia</h3>
+                <p>Deuses, símbolos e arquétipos.</p>
+            </a>
+
+            <a class="gate-card" href="modules/historia/">
+                <div class="gate-icon">
+                    <img src="assets/img/categorias/historia.png" alt="Coluna clássica representando História">
+                </div>
+                <h3>História</h3>
+                <p>Civilizações, impérios e revoluções.</p>
+            </a>
+
+            <a class="gate-card" href="modules/psicologia/">
+                <div class="gate-icon">
+                    <img src="assets/img/categorias/psicologia.png" alt="Cérebro representando Psicologia">
+                </div>
+                <h3>Psicologia</h3>
+                <p>A mente sob diferentes olhares.</p>
+            </a>
+
+            <a class="gate-card" href="modules/ciencia/">
+                <div class="gate-icon">
+                    <img src="assets/img/categorias/ciencia.png" alt="Átomo representando Ciência">
+                </div>
+                <h3>Ciência</h3>
+                <p>O método para compreender o mundo.</p>
+            </a>
 
         </div>
-    </section>
 
-</main>
+        <a class="special-category-plaque" href="modules/arte-explica/">
+            <span class="special-category-label">Categoria especial</span>
+            <strong>A Arte Explica</strong>
+            <span>Aprenda a enxergar aquilo que a maioria apenas olha.</span>
+        </a>
+    </div>
+</section>
 
 <!-- ==========================================
-     FOOTER
-     Rodapé principal do site
+     PENSADOR EM DESTAQUE + FRASE DO DIA
+     Bloco editorial em duas colunas
 ========================================== -->
-<footer class="site-footer footer-bg">
+<section class="home-editorial" id="pensador">
+    <div class="container">
 
-    <div class="footer-overlay">
+        <div class="editorial-grid">
 
-        <div class="container footer-grid">
+            <article class="thinker-feature-card">
+                <div class="editorial-section-title">
+                    <span class="editorial-line"></span>
+                    <span class="editorial-symbol">◆</span>
+                    <span class="editorial-line"></span>
+                </div>
 
-            <!-- Navegação -->
-            <div class="footer-column">
-                <h3>Navegação</h3>
+                <p class="section-kicker">Pensador em Destaque</p>
 
-                <a href="index.html">Início</a>
-                <a href="index.html#artigos">Artigos</a>
-                <a href="modules/pensadores/">Pensadores</a>
-                <a href="index.html#temas">Temas</a>
-                <a href="sobre.html">Sobre</a>
-                <a href="contato.html">Contato</a>
-            </div>
+                <div class="thinker-feature-layout">
+                    <div class="thinker-portrait">
+                        <img src="assets/img/pensadores/nietzsche-caricatura.png" alt="Friedrich Nietzsche">
+                    </div>
 
-            <!-- Categorias -->
-            <div class="footer-column">
-                <h3>Categorias</h3>
+                    <div class="thinker-copy">
+                        <h2>Friedrich Nietzsche</h2>
 
-                <a href="#">Filosofia</a>
-                <a href="#">Mitologia</a>
-                <a href="#">Psicologia</a>
-                <a href="#">Reflexão</a>
-                <a href="#">Verdade</a>
-                <a href="#">Perguntas</a>
-            </div>
+                        <p>
+                            Questionou a moral, a religião, a obediência e as certezas confortáveis.
+                            Um pensador para quem prefere encarar o abismo a viver anestesiado.
+                        </p>
 
-            <!-- Redes sociais -->
-            <div class="footer-column">
-                <h3>Conecte-se</h3>
+                        <a href="modules/pensadores/nietzsche/" class="editorial-link">
+                            Conhecer Nietzsche →
+                        </a>
+                    </div>
+                </div>
+            </article>
 
-                <a href="https://www.facebook.com/MenteCrua" target="_blank">Facebook</a>
-                <a href="https://www.instagram.com/msmentecrua/" target="_blank">Instagram</a>
-                <a href="https://www.tiktok.com/@marcossurreal" target="_blank">TikTok</a>
-                <a href="#">Pinterest</a>
-                <a href="#">YouTube</a>
-                <a href="https://x.com/MarcosSurreal" target="_blank">X / Twitter</a>
-                <a href="https://pt.quora.com/profile/Mente-Crua" target="_blank">Quora</a>
-            </div>
+            <aside class="daily-quote-card" id="frase-do-dia">
+                <div class="editorial-section-title">
+                    <span class="editorial-line"></span>
+                    <span class="editorial-symbol">❝</span>
+                    <span class="editorial-line"></span>
+                </div>
 
-            <!-- Sobre -->
-            <div class="footer-column footer-about">
-                <h3>Sobre o Mente Crua</h3>
+                <p class="section-kicker">Frase do Dia</p>
 
-                <p>
-                    Exploramos perguntas que incomodam, verdades que libertam
-                    e ideias que desafiam o óbvio.
-                </p>
+                <blockquote data-daily-quote-text>
+                    “Quem nunca muda de ideia talvez nunca tenha pensado.”
+                </blockquote>
 
-                <strong>
-                    Perguntas que já são respostas.
-                </strong>
-            </div>
+                <cite data-daily-quote-author>
+                    — Mente Crua
+                </cite>
+            </aside>
 
         </div>
+    </div>
+</section>
 
-        <!-- Frases -->
-        <div class="container footer-quotes">
+<!-- ==========================================
+     FOOTER — MENTE CRUA / RENASCIMENTO GÓTICO
+     Newsletter integrada + assinatura da biblioteca
+========================================== -->
+<footer class="mc-footer" id="footer">
+    <div class="mc-footer-bg"></div>
+    <div class="mc-footer-overlay">
 
-            <blockquote>
-                Não é sobre o que você acredita.<br>
-                É sobre por que acredita nisso.
-                <cite>— Mente Crua</cite>
-            </blockquote>
+        <section class="mc-footer-newsletter" id="newsletter" aria-labelledby="newsletter-title">
+            <div class="container mc-footer-newsletter-inner">
+<div class="editorial-section-title">
+    <span class="editorial-line"></span>
+    <span class="editorial-symbol">◆</span>
+    <span class="editorial-line"></span>
+</div>
 
-            <blockquote>
-                A dúvida é o início da sabedoria.<br>
-                Mas poucos têm coragem de começar por ela.
-                <cite>— Mente Crua</cite>
-            </blockquote>
+                <div class="mc-footer-newsletter-copy">
+                    <h2 id="newsletter-title">Não pare por aqui.</h2>
+                    <p>
+Receba novos artigos, reflexões e perguntas sempre que uma nova ideia chegar à biblioteca
+                    </p>
+                </div>
 
-        </div>
+                <form class="mc-footer-form" action="#" method="post">
+                    <label class="sr-only" for="footer-newsletter-email">Seu e-mail</label>
+                    <input id="footer-newsletter-email" type="email" name="email" placeholder="Seu melhor e-mail">
+                    <button type="submit">Assinar</button>
+                </form>
+            </div>
+        </section>
 
-        <!-- Copyright -->
-        <div class="footer-bottom">
-            <p>
-                &copy; 2026 Mente Crua. Todos os direitos reservados.
-                <span>|</span>
-                <a href="privacidade.html">Política de Privacidade</a>
-                <span>|</span>
-                <a href="termos.html">Termos de Uso</a>
-            </p>
-        </div>
+        <div class="container mc-footer-main">
+
+<div class="mc-footer-brand">
+
+    <h2>Mente Crua</h2>
+
+    <p>
+        Uma biblioteca digital para quem desconfia das certezas,
+        questiona o óbvio e acredita que boas perguntas valem mais
+        do que respostas fáceis.
+    </p>
+
+    <!-- ==========================================
+         REDES SOCIAIS
+         Medalhões em bronze.
+         Ícones discretos para manter a identidade
+         visual editorial do Mente Crua.
+    ========================================== -->
+
+    <div class="mc-footer-social" aria-label="Redes sociais">
+
+        <a href="https://www.facebook.com/MenteCrua" target="_blank" aria-label="Facebook">
+            <img src="assets/img/social/facebook-bronze.svg" alt="">
+        </a>
+
+        <a href="https://www.instagram.com/msmentecrua/" target="_blank" aria-label="Instagram">
+            <img src="assets/img/social/instagram-bronze.svg" alt="">
+        </a>
+
+        <a href="https://www.youtube.com/" target="_blank" aria-label="YouTube">
+            <img src="assets/img/social/youtube-bronze.svg" alt="">
+        </a>
+
+        <a href="https://x.com/MarcosSurreal" target="_blank" aria-label="X">
+            <img src="assets/img/social/x-bronze.svg" alt="">
+        </a>
+
+                <a href="#" target="_blank" aria-label="X">
+            <img src="assets/img/social/quora-bronze.svg" alt="">
+        </a>
+
+                <a href="#" target="_blank" aria-label="X">
+            <img src="assets/img/social/tiktok-bronze.svg" alt="">
+        </a>
 
     </div>
 
+</div>
+
+            <nav class="mc-footer-column" aria-label="Explorar">
+                <h3>Explorar</h3>
+                <a href="modules/artigos/">Artigos</a>
+                <a href="index.html#biblioteca">Categorias</a>
+                <a href="modules/pensadores/">Pensadores</a>
+                <a href="modules/livros/">Livros</a>
+                <a href="sobre.html">Sobre</a>
+            </nav>
+
+            <nav class="mc-footer-column" aria-label="Biblioteca">
+                <h3>Biblioteca</h3>
+                <a href="modules/conceitos/">Conceitos</a>
+                <a href="modules/mitologia/">Mitologia</a>
+                <a href="modules/historia/">História</a>
+                <a href="modules/psicologia/">Psicologia</a>
+                <a href="modules/ciencia/">Ciência</a>
+            </nav>
+
+            <div class="mc-footer-support">
+                <h3>Apoie o Mente Crua</h3>
+                <p>
+                    Se este projeto faz sentido para você, considere apoiar sua continuidade.
+                </p>
+                <a class="mc-footer-button" href="contato.html">Apoiar o projeto</a>
+                <small>ou faça uma doação via PIX</small>
+            </div>
+
+            <div class="mc-footer-avatar-wrap">
+                <div class="mc-footer-avatar-frame">
+                    <img src="assets/img/footer/avatar-mente-crua.webp" alt="Avatar oficial do Mente Crua">
+                </div>
+            </div>
+        </div>
+
+        <div class="container mc-footer-bottom">
+<p>A biblioteca nunca fecha.</p>
+            <small>
+                &copy; 2026 Mente Crua. Todos os direitos reservados.
+                <a href="privacidade.html">Política de Privacidade</a>
+                <a href="termos.html">Termos de Uso</a>
+            </small>
+        </div>
+
+    </div>
 </footer>
 
 <script src="assets/js/search.js"></script>
+<script src="assets/js/site.js" data-base=""></script>
 </body>
 </html>
+

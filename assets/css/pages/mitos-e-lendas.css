@@ -1,0 +1,28 @@
+﻿/* Hero — mitos-e-lendas */
+.mitos-e-lendas-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1600 / 592;
+    min-height: 320px;
+    overflow: hidden;
+
+    background-image: url("../../img/mitos-e-lendas/hero/hero-mitos-e-lendas.webp");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #070707;
+
+    border-bottom: 1px solid rgba(206, 200, 193, .08);
+}
+
+.mitos-e-lendas-hero .container {
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .mitos-e-lendas-hero {
+        aspect-ratio: auto;
+        min-height: clamp(220px, 58vw, 320px);
+        background-position: center center;
+    }
+}

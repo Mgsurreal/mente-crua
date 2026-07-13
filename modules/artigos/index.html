@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artigos | Mente Crua</title>
+    <meta name="description" content="Artigos do Mente Crua sobre filosofia, psicologia, comportamento humano, sociedade, ciência e pensamento crítico.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Special+Elite&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/components/category-drawer.css">
+    <link rel="stylesheet" href="../../assets/css/pages/artigos.css">
+    <link rel="icon" type="image/png" href="../../assets/img/favicon-v1.png">
+</head>
+
+<body>
+
+<div class="mc-parallax mc-parallax-left"></div>
+<div class="mc-parallax mc-parallax-right"></div>
+
+<header class="site-header">
+    <div class="container header-content">
+        <div class="logo">
+            <a href="../../index.html" class="editor-note">"Comece por aqui..."</a>
+        </div>
+
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="site-menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="menu" id="site-menu">
+            <a href="../../index.html">Início</a>
+            <a href="../../modules/artigos/" class="active">Artigos</a>
+            <a href="../../modules/pensadores/">Pensadores</a>
+            <a href="../../modules/livros/">Livros</a>
+            <a href="../../modules/conceitos/">Conceitos</a>
+            <a href="../../sobre.html">Sobre</a>
+            <a href="../../contato.html">Contato</a>
+        </nav>
+
+        <div class="site-search" role="search">
+            <input class="siteSearchInput" type="search" placeholder="Buscar..." aria-label="Buscar no Mente Crua">
+            <div class="siteSearchResults home-search-results"></div>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <!-- ==========================================
+         HERO — SALA DOS MANUSCRITOS
+    ========================================== -->
+<section class="articles-hero">
+    <div class="container">
+        <h1 class="visually-hidden">Artigos</h1>
+        <p class="visually-hidden">
+            Sala dos Manuscritos. Ideias que não entregam respostas prontas. Elas entregam perguntas melhores.
+        </p>
+    </div>
+</section>
+    <!-- ==========================================
+         INTRODUÇÃO EDITORIAL
+    ========================================== -->
+    <section class="articles-intro">
+        <div class="container articles-intro-grid">
+            <div>
+                <h2>Textos para quem ainda aceita pensar devagar.</h2>
+            </div>
+
+            <p>
+                Filosofia, psicologia, comportamento humano, sociedade, ciência e pensamento crítico.
+                Cada artigo é uma entrada para uma pergunta maior.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FILTROS — ATLAS:FILTERS
+    ========================================== -->
+    <section class="articles-filters" aria-label="Filtrar artigos">
+        <div class="container">
+            <div class="filter-row">
+                <a href="#" class="active">Todos</a>
+                <a href="#">Filosofia</a>
+                <a href="#">Psicologia</a>
+                <a href="#">Sociedade</a>
+                <a href="#">Ciência</a>
+                <a href="#">História</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         LISTA DE ARTIGOS — ATLAS:ARTICLES_LIST
+    ========================================== -->
+    <section class="articles-list">
+        <div class="container">
+            <div class="articles-grid">
+
+                <article class="article-card">
+                    <a href="a-ilusao-da-certeza/" class="article-card-thumb">
+                        <img src="a-ilusao-da-certeza/img/thumb-certeza.jpg" alt="Rosto humano dividido entre certeza e dúvida">
+                    </a>
+
+                    <div class="article-card-body">
+                        <h2>
+                            <a href="a-ilusao-da-certeza/">
+                                Por que temos tanta necessidade de ter certeza?
+                            </a>
+                        </h2>
+
+                        <p>
+                            Talvez o ser humano não busque a verdade tanto quanto busca segurança.
+                        </p>
+
+                        <span class="article-card-meta">Filosofia • Psicologia • Ego</span>
+
+                        <div class="article-card-footer">
+                            <span>6 min de leitura</span>
+                            <a href="a-ilusao-da-certeza/">Ler artigo →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <a href="crenca-vira-identidade/" class="article-card-thumb">
+                        <img src="../../assets/img/artigos/thumb-ego.png" alt="Representação simbólica de crença e identidade">
+                    </a>
+
+                    <div class="article-card-body">
+                        <h2>
+                            <a href="crenca-vira-identidade/">
+                                O dia em que a crença vira identidade
+                            </a>
+                        </h2>
+
+                        <p>
+                            Quando uma crença é questionada, o que realmente está sendo defendido?
+                        </p>
+
+                        <span class="article-card-meta">Psicologia • Crenças • Comportamento Humano</span>
+
+                        <div class="article-card-footer">
+                            <span>5 min de leitura</span>
+                            <a href="crenca-vira-identidade/">Ler artigo →</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PAGINAÇÃO — ATLAS:PAGINATION
+    ========================================== -->
+    <section class="articles-pagination">
+        <div class="container">
+            <nav class="pagination" aria-label="Paginação de artigos">
+                <a href="#" class="disabled">← Anteriores</a>
+                <span class="current">1</span>
+                <a href="#">2</a>
+                <a href="#">Próximos →</a>
+            </nav>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         QUOTE EDITORIAL — COMPONENTE GLOBAL
+    ========================================== -->
+    <section class="editorial-quote">
+        <div class="container editorial-quote-inner">
+            <div class="editorial-quote-line" aria-hidden="true"></div>
+            <div class="editorial-quote-symbol" aria-hidden="true">✦</div>
+            <blockquote>
+                <p>
+                    Cada resposta costuma encerrar uma conversa.
+                    <br>
+                    Uma boa pergunta costuma iniciar outra.
+                </p>
+                <footer>— Mente Crua</footer>
+            </blockquote>
+            <div class="editorial-quote-line" aria-hidden="true"></div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ==========================================
+     FOOTER — MENTE CRUA / SALA DOS MANUSCRITOS
+     Estrutura global da biblioteca
+========================================== -->
+<footer class="mc-footer footer-artigos" id="footer">
+    <div class="mc-footer-bg"></div>
+    <div class="mc-footer-overlay">
+
+        <section class="mc-footer-newsletter" id="newsletter" aria-labelledby="newsletter-title">
+            <div class="container mc-footer-newsletter-inner">
+                <div class="editorial-section-title">
+                    <span class="editorial-line"></span>
+                    <span class="editorial-symbol">◆</span>
+                    <span class="editorial-line"></span>
+                </div>
+
+                <div class="mc-footer-newsletter-copy">
+                    <h2 id="newsletter-title">Não pare por aqui.</h2>
+                    <p>
+                        Receba novos artigos, reflexões e perguntas sempre que uma nova ideia chegar à biblioteca.
+                    </p>
+                </div>
+
+                <form class="mc-footer-form" action="#" method="post">
+                    <label class="sr-only" for="footer-newsletter-email">Seu e-mail</label>
+                    <input id="footer-newsletter-email" type="email" name="email" placeholder="Seu melhor e-mail">
+                    <button type="submit">Assinar</button>
+                </form>
+            </div>
+        </section>
+
+        <div class="container mc-footer-main">
+            <div class="mc-footer-brand">
+                <h2>Mente Crua</h2>
+
+                <p>
+                    Uma biblioteca digital para quem desconfia das certezas,
+                    questiona o óbvio e acredita que boas perguntas valem mais
+                    do que respostas fáceis.
+                </p>
+
+                <div class="mc-footer-social" aria-label="Redes sociais">
+                    <a href="https://www.facebook.com/MenteCrua" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <img src="../../assets/img/social/facebook-bronze.svg" alt="">
+                    </a>
+
+                    <a href="https://www.instagram.com/msmentecrua/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <img src="../../assets/img/social/instagram-bronze.svg" alt="">
+                    </a>
+
+                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <img src="../../assets/img/social/youtube-bronze.svg" alt="">
+                    </a>
+
+                    <a href="https://x.com/MarcosSurreal" target="_blank" rel="noopener noreferrer" aria-label="X">
+                        <img src="../../assets/img/social/x-bronze.svg" alt="">
+                    </a>
+
+                                                            <a href="#" target="_blank" aria-label="Quora">
+                        <img src="../../assets/img/social/quora-bronze.svg" alt="">
+                    </a>
+
+                <a href="#" target="_blank" aria-label="TikTok">
+                        <img src="../../assets/img/social/tiktok-bronze.svg" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <nav class="mc-footer-column" aria-label="Explorar">
+                <h3>Explorar</h3>
+                <a href="../artigos/">Artigos</a>
+                <a href="../../index.html#biblioteca">Categorias</a>
+                <a href="../pensadores/">Pensadores</a>
+                <a href="../livros/">Livros</a>
+                <a href="../../sobre.html">Sobre</a>
+            </nav>
+
+            <nav class="mc-footer-column" aria-label="Biblioteca">
+                <h3>Biblioteca</h3>
+                <a href="../conceitos/">Conceitos</a>
+                <a href="../mitologia/">Mitologia</a>
+                <a href="../historia/">História</a>
+                <a href="../psicologia/">Psicologia</a>
+                <a href="../ciencia/">Ciência</a>
+            </nav>
+
+            <div class="mc-footer-support">
+                <h3>Apoie o Mente Crua</h3>
+                <p>
+                    Se este projeto faz sentido para você, considere apoiar sua continuidade.
+                </p>
+                <a class="mc-footer-button" href="../../contato.html">Apoiar o projeto</a>
+                <small>ou faça uma doação via PIX</small>
+            </div>
+
+            <!-- Reserva visual equivalente à coluna da arte da Home.
+                 Aqui o escriba já faz parte do background do footer. -->
+            <div class="mc-footer-art-space" aria-hidden="true"></div>
+
+        </div>
+
+        <div class="container mc-footer-bottom">
+            <p>A biblioteca nunca fecha.</p>
+            <small>
+                &copy; 2026 Mente Crua. Todos os direitos reservados.
+                <a href="../../privacidade.html">Política de Privacidade</a>
+                <a href="../../termos.html">Termos de Uso</a>
+            </small>
+        </div>
+
+    </div>
+</footer>
+
+<script src="../../assets/js/search.js"></script>
+<script src="../../assets/js/site.js" data-base="../../"></script>
+<script src="../../assets/js/category-drawer.js"></script>
+</body>
+</html>
