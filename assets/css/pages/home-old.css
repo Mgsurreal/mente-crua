@@ -2359,35 +2359,3 @@ main,
     .special-category-plaque { padding: 16px 18px; }
     .special-category-plaque > span:last-child { font-size: .82rem; }
 }
-
-/* ===================================================
-   CORREÇÃO MOBILE — HERO DA HOME
-   Mantém a arte inteira visível no celular, sem usar
-   a altura fixa de 720px do desktop.
-=================================================== */
-
-@media (max-width: 720px) {
-    .home-hero {
-        width: 100%;
-        min-height: 0 !important;
-        height: auto !important;
-        padding: 0 !important;
-        aspect-ratio: 16 / 9;
-        background-size: contain !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        background-color: #070707;
-    }
-
-    .home-hero .container {
-        width: 100%;
-        min-height: 100% !important;
-        padding: 0 !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .home-hero {
-        aspect-ratio: 16 / 9;
-    }
-}

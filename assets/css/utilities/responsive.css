@@ -26,3 +26,73 @@
         linear-gradient(90deg, rgba(0,0,0,.34), rgba(0,0,0,.08) 50%, rgba(0,0,0,.34)),
         linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.20)) !important;
 }
+
+/* ===================================================
+   RESPONSIVIDADE GLOBAL — RESPIRO LATERAL NO MOBILE
+   Evita textos, cards e formulários colados ou cortados
+   nas bordas da tela.
+=================================================== */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img,
+video,
+iframe,
+svg {
+    max-width: 100%;
+}
+
+@media (max-width: 780px) {
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .container > *,
+    .section-head > *,
+    .editorial-grid > *,
+    .thinker-feature-layout > *,
+    .mc-footer-newsletter-inner > *,
+    .mc-footer-main > * {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    blockquote,
+    a,
+    span {
+        overflow-wrap: break-word;
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+}
