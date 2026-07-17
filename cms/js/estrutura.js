@@ -31,8 +31,12 @@ async function createContent() {
         thumb: $('#homeThumb').value.trim(),
         link: `modules/${type}/${slug}/`
       },
-      seo: { title: '', description: '' },
+      seo: { title: '', description: '', ogImage: '' },
       relationships: [],
+      language: 'pt-BR',
+      presentation: { heroImage: '', theme: 'light', accentColor: '#8f2424', heroPosition: 'center' },
+      sidebar: { autoToc: true, library: [], explore: [] },
+      advertising: { sidebar: true, middle: true, end: false },
       contentHtml: ''
     };
     await writeFile(contentDir, 'data.json', JSON.stringify(data, null, 2), 'application/json');

@@ -4,11 +4,13 @@
 
 .articles-hero {
     position: relative;
-    min-height: 520px;
+    width: 100%;
+    aspect-ratio: 1900 / 520;
+    min-height: 320px;
     padding: 0;
     overflow: hidden;
 
-    background-image: url("../../img/banner/hero-artigos.webp");
+    background-image: url("../../img/banner/hero-artigos-final.webp");
     background-size: cover;
     background-position: center 25%;
     background-repeat: no-repeat;
@@ -469,119 +471,4 @@ main,
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-}
-
-/* ==========================================
-   FOOTER — AMBIENTE SALA DOS MANUSCRITOS
-   Mantém a estrutura global e troca apenas o ambiente.
-========================================== */
-
-.mc-footer#footer.footer-artigos {
-    margin-top: 0 !important;
-    border-top: 1px solid rgba(139,30,30,.26) !important;
-
-    background-color: #070707 !important;
-    background-image:
-        linear-gradient(
-            180deg,
-            rgba(7,7,7,.20) 0%,
-            rgba(7,7,7,.42) 46%,
-            rgba(7,7,7,.78) 100%
-        ),
-        radial-gradient(circle at 18% 22%, rgba(139,30,30,.10), transparent 34%),
-        radial-gradient(circle at 82% 26%, rgba(184,154,106,.08), transparent 30%),
-        url("../../img/artigos/footer/footer-artigos.webp") !important;
-
-    background-position: center bottom !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-}
-
-.mc-footer#footer.footer-artigos::before,
-.mc-footer#footer.footer-artigos .mc-footer-bg {
-    display: none !important;
-}
-
-.mc-footer#footer.footer-artigos .mc-footer-overlay {
-    position: relative !important;
-    z-index: 1 !important;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,.66) 0%,
-            rgba(0,0,0,.28) 48%,
-            rgba(0,0,0,.46) 100%
-        ),
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,.06) 0%,
-            rgba(0,0,0,.38) 100%
-        ) !important;
-}
-
-.mc-footer#footer.footer-artigos .mc-footer-newsletter {
-    background: rgba(7,7,7,.28) !important;
-    border-top: 0 !important;
-    backdrop-filter: blur(1px);
-}
-
-/* O escriba já faz parte do ambiente do fundo.
-   A moldura com a cabeça não existe nesta categoria. */
-.mc-footer#footer.footer-artigos .mc-footer-avatar-wrap {
-    display: none !important;
-}
-
-.mc-footer#footer.footer-artigos .mc-footer-main {
-    grid-template-columns:
-        minmax(240px, 1.35fr)
-        .78fr
-        .78fr
-        minmax(230px, 1fr)
-        210px !important;
-
-    gap: 34px !important;
-    align-items: start !important;
-}
-
-.mc-footer#footer.footer-artigos .mc-footer-art-space {
-    min-height: 250px;
-    pointer-events: none;
-}
-
-.editorial-quote {
-    margin-bottom: 0;
-}
-
-.editorial-quote + .mc-footer {
-    margin-top: 0 !important;
-}
-
-@media (max-width: 1120px) {
-    .mc-footer#footer.footer-artigos .mc-footer-main {
-        grid-template-columns:
-            minmax(230px, 1.25fr)
-            minmax(120px, .8fr)
-            minmax(120px, .8fr)
-            minmax(220px, 1fr) !important;
-    }
-
-    .mc-footer#footer.footer-artigos .mc-footer-art-space {
-        display: none;
-    }
-}
-
-@media (max-width: 780px) {
-    .mc-footer#footer.footer-artigos {
-        background-position: 68% bottom !important;
-    }
-
-    .mc-footer#footer.footer-artigos .mc-footer-main {
-        grid-template-columns: 1fr !important;
-        gap: 28px !important;
-    }
-
-    .mc-footer#footer.footer-artigos .mc-footer-art-space {
-        display: none;
-    }
 }

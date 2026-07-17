@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Central de Prompts | Mente Crua</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../admin.css">
+  <link rel="stylesheet" href="prompts.css">
+  <link rel="icon" type="image/png" href="../../assets/img/favicon-v1.png">
+</head>
+<body>
+  <header class="admin-header">
+    <a class="brand" href="../"><span>Mente Crua</span><small>Central de Prompts</small></a>
+    <nav><a href="../">Voltar ao ADM</a><a href="../../cms/">Abrir Atlas</a></nav>
+  </header>
+
+  <main>
+    <section class="hero prompt-hero">
+      <p class="eyebrow">Do primeiro campo à publicação</p>
+      <h1>Prompts que alimentam o Atlas.</h1>
+      <p>Use o roteiro completo para produzir um artigo inteiro ou copie apenas a peça visual necessária. Os textos carregam diretamente da documentação oficial.</p>
+      <div class="local-notice"><strong>Fluxo recomendado:</strong> comece pelo Prompt Mestre. Use os prompts isolados somente para refazer ou produzir uma peça específica.</div>
+    </section>
+
+    <section aria-labelledby="complete-title">
+      <div class="section-heading"><p>Produção completa</p><h2 id="complete-title">Artigo do início ao fim</h2></div>
+      <article class="prompt-card prompt-card--master" data-prompt-source="../../docs/PROMPT-MESTRE-ARTIGO-ATLAS.md">
+        <div class="prompt-card-head"><div><span>01 · Atlas</span><h3>Prompt Mestre do Artigo</h3><p>Recebe suas ideias livres e organiza texto, imagens, HTML, lateral, SEO e campos do Atlas.</p></div><button type="button" data-copy-prompt>Copiar prompt</button></div>
+        <details><summary>Ver prompt completo</summary><pre data-prompt-content>Carregando…</pre></details>
+      </article>
+    </section>
+
+    <section aria-labelledby="visual-title">
+      <div class="section-heading"><p>Peças isoladas</p><h2 id="visual-title">Imagens do artigo</h2></div>
+      <div class="prompt-grid">
+        <article class="prompt-card" data-prompt-source="../../docs/PROMPT-BANNER-ARTIGO.md"><div class="prompt-card-head"><div><span>02 · 1900 × 420</span><h3>Banner do artigo</h3><p>Banner compacto com categoria, título e subtítulo desenhados.</p></div><button type="button" data-copy-prompt>Copiar</button></div><details><summary>Ver prompt</summary><pre data-prompt-content>Carregando…</pre></details></article>
+        <article class="prompt-card" data-prompt-source="../../docs/PROMPT-THUMB-ARTIGO.md"><div class="prompt-card-head"><div><span>03 · 1200 × 675</span><h3>Imagem de chamada</h3><p>Cena limpa e sem texto para Home, categorias e recomendações.</p></div><button type="button" data-copy-prompt>Copiar</button></div><details><summary>Ver prompt</summary><pre data-prompt-content>Carregando…</pre></details></article>
+        <article class="prompt-card" data-prompt-source="../../docs/PROMPT-OG-ARTIGO.md"><div class="prompt-card-head"><div><span>04 · 1200 × 630</span><h3>Imagem OG</h3><p>A mesma cena da chamada, com título para compartilhamento.</p></div><button type="button" data-copy-prompt>Copiar</button></div><details><summary>Ver prompt</summary><pre data-prompt-content>Carregando…</pre></details></article>
+        <article class="prompt-card" data-prompt-source="../../docs/PROMPT-ILUSTRACAO-EDITORIAL.md"><div class="prompt-card-head"><div><span>05 · Revista</span><h3>Ilustração editorial</h3><p>Imagem contextual menor para alternar ao lado dos textos.</p></div><button type="button" data-copy-prompt>Copiar</button></div><details><summary>Ver prompt</summary><pre data-prompt-content>Carregando…</pre></details></article>
+        <article class="prompt-card" data-prompt-source="../../docs/PROMPT-IMAGEM-LARGA.md"><div class="prompt-card-head"><div><span>06 · Impacto</span><h3>Imagem larga</h3><p>Passagem horizontal ocasional para momentos importantes.</p></div><button type="button" data-copy-prompt>Copiar</button></div><details><summary>Ver prompt</summary><pre data-prompt-content>Carregando…</pre></details></article>
+      </div>
+    </section>
+  </main>
+  <footer><p>Central de Prompts · Mente Crua</p><small>A ideia nasce livre. O Atlas organiza o resto.</small></footer>
+  <div class="copy-toast" role="status" aria-live="polite"></div>
+  <script src="prompts.js"></script>
+</body>
+</html>

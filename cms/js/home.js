@@ -30,9 +30,11 @@ function appendOrUpdateCard(existingHtml, newCard, slug) {
   const old = wrapper.querySelector(`[data-atlas-slug="${CSS.escape(slug)}"]`);
   if (old) {
     old.outerHTML = newCard;
-    return wrapper.innerHTML.trim();
+  } else {
+    wrapper.insertAdjacentHTML('afterbegin', newCard);
   }
-  return `${newCard}\n${existingHtml.trim()}`.trim();
+  Array.from(wrapper.querySelectorAll('.post-card')).slice(4).forEach((card) => card.remove());
+  return wrapper.innerHTML.trim();
 }
 
 async function publishHomeCard(options = {}) {

@@ -1,0 +1,425 @@
+/* AMBIENTAÇÕES DOS FOOTERS DE CATEGORIA */
+
+/* Encaixe editorial compartilhado.
+   Preserva a proporção original e mantém X0–100 visível na largura do footer.
+   A ancoragem inferior prioriza a base da composição sem achatar personagens.
+   O !important é necessário para vencer o fallback global de responsive.css. */
+.mc-footer#footer.footer-artigos,
+.mc-footer#footer.footer-pensadores,
+.mc-footer#footer.footer-livros,
+.mc-footer#footer.footer-conceitos,
+.mc-footer#footer.footer-antes-da-disney,
+.mc-footer#footer.footer-mitos-e-lendas,
+.mc-footer#footer.footer-mitologia,
+.mc-footer#footer.footer-historia,
+.mc-footer#footer.footer-psicologia,
+.mc-footer#footer.footer-ciencia,
+.mc-footer#footer.footer-arte-explica {
+    background-size: 100% auto !important;
+    background-position: center bottom !important;
+    background-repeat: no-repeat !important;
+}
+
+/* ==========================================
+   FOOTER — AMBIENTE SALA DOS MANUSCRITOS
+   Mantém a estrutura global e troca apenas o ambiente.
+========================================== */
+
+.mc-footer#footer.footer-artigos {
+    margin-top: 0 !important;
+    border-top: 1px solid rgba(139,30,30,.26) !important;
+
+    background-color: #070707 !important;
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(7,7,7,.03) 0%,
+            rgba(7,7,7,.12) 46%,
+            rgba(7,7,7,.36) 100%
+        ),
+        radial-gradient(circle at 18% 22%, rgba(139,30,30,.10), transparent 34%),
+        radial-gradient(circle at 82% 26%, rgba(184,154,106,.08), transparent 30%),
+        url("../../img/artigos/footer/footer-artigos.webp") !important;
+
+}
+
+.mc-footer#footer.footer-artigos::before,
+.mc-footer#footer.footer-artigos .mc-footer-bg {
+    display: none !important;
+}
+
+.mc-footer#footer.footer-artigos .mc-footer-overlay {
+    position: relative !important;
+    z-index: 1 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.42) 0%,
+            rgba(0,0,0,.14) 48%,
+            rgba(0,0,0,.20) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.02) 0%,
+            rgba(0,0,0,.17) 100%
+        ) !important;
+}
+
+.mc-footer#footer.footer-artigos .mc-footer-newsletter {
+    background: rgba(7,7,7,.18) !important;
+    border-top: 0 !important;
+    backdrop-filter: blur(1px);
+}
+
+/* O escriba já faz parte do ambiente do fundo.
+   A moldura com a cabeça não existe nesta categoria. */
+.mc-footer#footer.footer-artigos .mc-footer-avatar-wrap {
+    display: none !important;
+}
+
+.mc-footer#footer.footer-artigos .mc-footer-main {
+    grid-template-columns:
+        minmax(240px, 1.35fr)
+        .78fr
+        .78fr
+        minmax(230px, 1fr)
+        210px !important;
+
+    gap: 34px !important;
+    align-items: start !important;
+}
+
+.mc-footer#footer.footer-artigos .mc-footer-art-space {
+    min-height: 250px;
+    pointer-events: none;
+}
+
+.editorial-quote {
+    margin-bottom: 0;
+}
+
+.editorial-quote + .mc-footer {
+    margin-top: 0 !important;
+}
+
+@media (max-width: 1120px) {
+    .mc-footer#footer.footer-artigos .mc-footer-main {
+        grid-template-columns:
+            minmax(230px, 1.25fr)
+            minmax(120px, .8fr)
+            minmax(120px, .8fr)
+            minmax(220px, 1fr) !important;
+    }
+
+    .mc-footer#footer.footer-artigos .mc-footer-art-space {
+        display: none;
+    }
+}
+
+@media (max-width: 780px) {
+    .mc-footer#footer.footer-artigos .mc-footer-main {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+
+    .mc-footer#footer.footer-artigos .mc-footer-art-space {
+        display: none;
+    }
+}
+
+/* ==========================================================
+   FOOTER — PENSADORES
+   Mesmo componente global, com ambientação própria.
+========================================================== */
+
+.mc-footer#footer.footer-pensadores {
+    position: relative;
+    overflow: hidden;
+    margin-top: 0 !important;
+
+    background-color: #070707 !important;
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(7, 7, 7, .03) 0%,
+            rgba(7, 7, 7, .12) 34%,
+            rgba(7, 7, 7, .38) 100%
+        ),
+        url("../../img/pensadores/footer/footer-pensadores.webp") !important;
+
+    border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+/* O fundo global da Home usa um background com !important.
+   Nesta categoria ele precisa ser ocultado, senão cobre a arte própria. */
+.mc-footer#footer.footer-pensadores .mc-footer-bg {
+    display: none !important;
+}
+
+.mc-footer#footer.footer-pensadores .mc-footer-overlay {
+    position: relative;
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, .54) 0%,
+            rgba(0, 0, 0, .40) 42%,
+            rgba(0, 0, 0, .14) 72%,
+            rgba(0, 0, 0, .03) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, .02) 0%,
+            rgba(0, 0, 0, .20) 100%
+        ) !important;
+}
+
+.mc-footer#footer.footer-pensadores .mc-footer-main {
+    grid-template-columns:
+        minmax(240px, 1.35fr)
+        .78fr
+        .78fr
+        minmax(230px, 1fr)
+        210px !important;
+
+    gap: 34px !important;
+    align-items: start !important;
+}
+
+
+@media (max-width: 1120px) {
+    .mc-footer#footer.footer-pensadores .mc-footer-main {
+        grid-template-columns:
+            minmax(230px, 1.25fr)
+            minmax(120px, .8fr)
+            minmax(120px, .8fr)
+            minmax(220px, 1fr) !important;
+    }
+}
+
+@media (max-width: 780px) {
+    .mc-footer#footer.footer-pensadores .mc-footer-main {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+}
+
+/* =====================================================
+   FOOTER — CIÊNCIA
+===================================================== */
+
+.mc-footer#footer.footer-ciencia{
+    position:relative;
+    overflow:hidden;
+    margin-top:0!important;
+    background-color:#070707!important;
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.34) 0%,
+            rgba(0,0,0,.26) 42%,
+            rgba(0,0,0,.12) 70%,
+            rgba(0,0,0,.06) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.02) 0%,
+            rgba(0,0,0,.22) 100%
+        ),
+        url("../../img/ciencia/footer/footer-ciencia.webp") !important;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.mc-footer#footer.footer-ciencia .mc-footer-bg{
+    display:none!important;
+}
+
+/* Evita o escurecimento duplo do fallback global sem perder legibilidade. */
+.mc-footer#footer.footer-ciencia .mc-footer-overlay {
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.24), rgba(0,0,0,.06) 52%, rgba(0,0,0,.16)),
+        linear-gradient(180deg, rgba(0,0,0,.01), rgba(0,0,0,.16)) !important;
+}
+
+/* Categorias preparadas para receber suas artes finais.
+   Padrão: assets/img/CATEGORIA/footer/footer-CATEGORIA.webp */
+.mc-footer#footer.footer-livros,
+.mc-footer#footer.footer-conceitos,
+.mc-footer#footer.footer-antes-da-disney,
+.mc-footer#footer.footer-mitos-e-lendas,
+.mc-footer#footer.footer-mitologia,
+.mc-footer#footer.footer-historia,
+.mc-footer#footer.footer-psicologia,
+.mc-footer#footer.footer-arte-explica {
+    position: relative;
+    overflow: hidden;
+    margin-top: 0 !important;
+    background-color: #070707 !important;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.mc-footer#footer.footer-livros .mc-footer-bg,
+.mc-footer#footer.footer-conceitos .mc-footer-bg,
+.mc-footer#footer.footer-antes-da-disney .mc-footer-bg,
+.mc-footer#footer.footer-mitos-e-lendas .mc-footer-bg,
+.mc-footer#footer.footer-historia .mc-footer-bg,
+.mc-footer#footer.footer-psicologia .mc-footer-bg,
+.mc-footer#footer.footer-arte-explica .mc-footer-bg {
+    display: none !important;
+}
+
+.mc-footer#footer.footer-livros .mc-footer-overlay,
+.mc-footer#footer.footer-conceitos .mc-footer-overlay,
+.mc-footer#footer.footer-antes-da-disney .mc-footer-overlay,
+.mc-footer#footer.footer-mitos-e-lendas .mc-footer-overlay,
+.mc-footer#footer.footer-historia .mc-footer-overlay,
+.mc-footer#footer.footer-psicologia .mc-footer-overlay,
+.mc-footer#footer.footer-arte-explica .mc-footer-overlay {
+    position: relative;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.32), rgba(0,0,0,.07) 52%, rgba(0,0,0,.20)),
+        linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.20)) !important;
+}
+
+.mc-footer#footer.footer-livros .mc-footer-main,
+.mc-footer#footer.footer-conceitos .mc-footer-main,
+.mc-footer#footer.footer-antes-da-disney .mc-footer-main,
+.mc-footer#footer.footer-mitos-e-lendas .mc-footer-main,
+.mc-footer#footer.footer-historia .mc-footer-main,
+.mc-footer#footer.footer-psicologia .mc-footer-main,
+.mc-footer#footer.footer-arte-explica .mc-footer-main {
+    grid-template-columns:
+        minmax(240px, 1.35fr)
+        .78fr
+        .78fr
+        minmax(230px, 1fr)
+        210px !important;
+    gap: 34px !important;
+    align-items: start !important;
+}
+
+.mc-footer#footer.footer-livros {
+    background-image: url("../../img/livros/footer/footer-livros.webp") !important;
+}
+
+.mc-footer#footer.footer-conceitos {
+    background-image: url("../../img/conceitos/footer/footer-conceitos.webp") !important;
+}
+
+/* Ajuste exclusivo de Conceitos para manter a assinatura fora da estátua. */
+@media (min-width: 1121px) {
+    .mc-footer#footer.footer-conceitos .mc-footer-form {
+        width: 330px;
+        justify-self: start;
+    }
+}
+
+.mc-footer#footer.footer-antes-da-disney {
+    background-image: url("../../img/antes-da-disney/footer/footer-antes-da-disney.webp") !important;
+}
+
+.mc-footer#footer.footer-mitos-e-lendas {
+    background-image: url("../../img/mitos-e-lendas/footer/footer-mitos-e-lendas.webp") !important;
+}
+
+.mc-footer#footer.footer-mitologia {
+    position: relative;
+    overflow: hidden;
+    margin-top: 0 !important;
+    background-color: #070707 !important;
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.46) 0%,
+            rgba(0,0,0,.30) 44%,
+            rgba(0,0,0,.14) 72%,
+            rgba(0,0,0,.08) 100%
+        ),
+        linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.24)),
+        url("../../img/mitologia/footer/footer-mitologia.webp") !important;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.mc-footer#footer.footer-mitologia .mc-footer-bg {
+    display: none !important;
+}
+
+.mc-footer#footer.footer-mitologia .mc-footer-overlay {
+    position: relative;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.28), rgba(0,0,0,.06) 52%, rgba(0,0,0,.18)),
+        linear-gradient(180deg, rgba(0,0,0,.01), rgba(0,0,0,.18)) !important;
+}
+
+.mc-footer#footer.footer-mitologia .mc-footer-main {
+    grid-template-columns:
+        minmax(240px, 1.35fr)
+        .78fr
+        .78fr
+        minmax(230px, 1fr)
+        210px !important;
+    gap: 34px !important;
+    align-items: start !important;
+}
+
+@media (max-width: 1120px) {
+    .mc-footer#footer.footer-mitologia .mc-footer-main {
+        grid-template-columns:
+            minmax(230px, 1.25fr)
+            minmax(120px, .8fr)
+            minmax(120px, .8fr)
+            minmax(220px, 1fr) !important;
+    }
+}
+
+@media (max-width: 780px) {
+    .mc-footer#footer.footer-mitologia .mc-footer-main {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+}
+
+.mc-footer#footer.footer-historia {
+    background-image: url("../../img/historia/footer/footer-historia.webp") !important;
+}
+
+.mc-footer#footer.footer-psicologia {
+    background-image: url("../../img/psicologia/footer/footer-psicologia.webp") !important;
+}
+
+.mc-footer#footer.footer-arte-explica {
+    background-image: url("../../img/arte-explica/footer/footer-arte-explica.webp") !important;
+}
+
+@media (max-width: 1120px) {
+    .mc-footer#footer.footer-livros .mc-footer-main,
+    .mc-footer#footer.footer-conceitos .mc-footer-main,
+    .mc-footer#footer.footer-antes-da-disney .mc-footer-main,
+    .mc-footer#footer.footer-mitos-e-lendas .mc-footer-main,
+    .mc-footer#footer.footer-historia .mc-footer-main,
+    .mc-footer#footer.footer-psicologia .mc-footer-main,
+    .mc-footer#footer.footer-arte-explica .mc-footer-main {
+        grid-template-columns:
+            minmax(230px, 1.25fr)
+            minmax(120px, .8fr)
+            minmax(120px, .8fr)
+            minmax(220px, 1fr) !important;
+    }
+}
+
+@media (max-width: 780px) {
+    .mc-footer#footer.footer-livros .mc-footer-main,
+    .mc-footer#footer.footer-conceitos .mc-footer-main,
+    .mc-footer#footer.footer-antes-da-disney .mc-footer-main,
+    .mc-footer#footer.footer-mitos-e-lendas .mc-footer-main,
+    .mc-footer#footer.footer-historia .mc-footer-main,
+    .mc-footer#footer.footer-psicologia .mc-footer-main,
+    .mc-footer#footer.footer-arte-explica .mc-footer-main {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+}

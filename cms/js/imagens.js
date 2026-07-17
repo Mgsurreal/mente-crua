@@ -31,6 +31,8 @@ async function renderMediaLibrary() {
         <div class="media-name">${escapeHtml(item.name)}</div>
         <div class="media-actions">
           <button type="button" data-thumb="${escapeHtml(item.path)}">${thumb === item.path ? '✅ Thumb' : 'Usar thumb'}</button>
+          <button type="button" data-hero="${escapeHtml(item.path)}">Usar banner</button>
+          <button type="button" data-og="${escapeHtml(item.path)}">Usar OG</button>
           <button type="button" data-copy="${escapeHtml(item.path)}">Copiar caminho</button>
         </div>
       </div>`;
@@ -117,7 +119,18 @@ function handleMediaClick(event) {
     $('#thumb').value = btn.dataset.thumb;
     $('#homeThumb').value = btn.dataset.thumb;
     renderMediaLibrary();
+    scheduleLocalDraft();
     setLog(`🖼 IMAGENS\n✔ Thumb definida: ${btn.dataset.thumb}`);
+  }
+  if (btn.dataset.hero) {
+    $('#heroImage').value = btn.dataset.hero;
+    scheduleLocalDraft();
+    setLog(`🖼 IMAGENS\n✔ Banner definido: ${btn.dataset.hero}`);
+  }
+  if (btn.dataset.og) {
+    $('#ogImage').value = btn.dataset.og;
+    scheduleLocalDraft();
+    setLog(`🖼 IMAGENS\n✔ Imagem OG definida: ${btn.dataset.og}`);
   }
   if (btn.dataset.copy) {
     navigator.clipboard?.writeText(btn.dataset.copy);

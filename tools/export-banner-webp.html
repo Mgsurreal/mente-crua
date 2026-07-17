@@ -1,0 +1,3 @@
+<!doctype html><meta charset="utf-8"><title>Exportando</title><img id="source" hidden><script>
+const params=new URLSearchParams(location.search);const image=document.querySelector('#source');image.src=params.get('src');image.addEventListener('load',()=>{const canvas=document.createElement('canvas');canvas.width=1900;canvas.height=520;canvas.getContext('2d').drawImage(image,0,0,1900,520);document.body.textContent=canvas.toDataURL('image/webp',Number(params.get('quality')||.9));document.title='CONCLUIDO'});
+</script>

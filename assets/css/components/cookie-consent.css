@@ -1,0 +1,106 @@
+.mc-cookie-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    align-items: end;
+    padding: 22px;
+    background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,.58));
+    pointer-events: none;
+}
+
+.mc-cookie-layer[hidden] { display: none; }
+
+.mc-cookie-panel {
+    width: min(760px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+    border: 1px solid rgba(177,42,42,.55);
+    border-radius: 10px;
+    background: rgba(10,9,8,.97);
+    box-shadow: 0 24px 70px rgba(0,0,0,.62);
+    color: #b9b3ac;
+    pointer-events: auto;
+}
+
+.mc-cookie-eyebrow {
+    margin: 0 0 8px;
+    color: #b38a43;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+.mc-cookie-panel h2 {
+    margin: 0 0 10px;
+    color: #eee8e1;
+    font-family: var(--font-title, "Cinzel", serif);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 500;
+}
+
+.mc-cookie-panel p { margin: 0; line-height: 1.6; }
+.mc-cookie-panel a { color: #d2aa64; }
+
+.mc-cookie-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.mc-cookie-button {
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid rgba(179,138,67,.5);
+    border-radius: 6px;
+    background: transparent;
+    color: #eee8e1;
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.mc-cookie-button--primary {
+    border-color: #a42727;
+    background: linear-gradient(180deg, #a42727, #791919);
+}
+
+.mc-cookie-button:hover { filter: brightness(1.12); }
+
+.mc-cookie-preferences {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.mc-cookie-option {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: center;
+}
+
+.mc-cookie-option strong { display: block; color: #eee8e1; }
+.mc-cookie-option small { display: block; margin-top: 3px; line-height: 1.45; }
+.mc-cookie-option input { width: 20px; height: 20px; accent-color: #9f2424; }
+
+.mc-cookie-settings-link {
+    border: 0;
+    padding: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .mc-cookie-layer { padding: 10px; }
+    .mc-cookie-panel { padding: 20px 17px; }
+    .mc-cookie-actions { display: grid; }
+    .mc-cookie-button { width: 100%; }
+}

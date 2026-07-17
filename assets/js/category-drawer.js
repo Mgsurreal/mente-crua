@@ -34,6 +34,7 @@
         "/modules/antes-da-disney/",
         "/modules/mitologia/",
         "/modules/historia/",
+        "/modules/mitos-e-lendas/",
         "/modules/psicologia/",
         "/modules/ciencia/",
         "/modules/arte-explica/"
@@ -75,11 +76,6 @@
             "conceitos.png"
         ],
         [
-            "antes-da-disney",
-            "Antes da Disney",
-            "antes-da-disney.png"
-        ],
-        [
             "mitologia",
             "Mitologia",
             "mitologia.png"
@@ -88,6 +84,11 @@
             "historia",
             "História",
             "historia.png"
+        ],
+        [
+            "mitos-e-lendas",
+            "Mitos e Lendas",
+            "mitos-e-lendas.png"
         ],
         [
             "psicologia",
@@ -103,6 +104,11 @@
             "arte-explica",
             "A Arte Explica",
             "arte-explica.png"
+        ],
+        [
+            "antes-da-disney",
+            "Antes da Disney",
+            "antes-da-disney.png"
         ]
     ];
 

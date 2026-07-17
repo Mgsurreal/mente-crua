@@ -8,7 +8,7 @@ const moduleLabels = {
   conceitos: 'Conceito',
   personagens: 'Personagem',
   'obras-de-arte': 'Obra de Arte',
-  mitologias: 'Mitologia',
+  mitologia: 'Mitologia',
   'escolas-filosoficas': 'Escola Filosófica'
 };
 

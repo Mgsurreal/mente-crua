@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Encaixe panorâmico</title></head>
+<body>
+<p id="status">Recompondo…</p><pre id="output" hidden></pre>
+<script>
+(async function () {
+  const params = new URLSearchParams(location.search);
+  const source = params.get('src');
+  const targetWidth = 1900;
+  const targetHeight = 520;
+  const quality = .94;
+  if (!source) throw new Error('Imagem não informada.');
+
+  const image = new Image();
+  image.src = new URL(source, location.href).href;
+  await image.decode();
+
+  const canvas = document.createElement('canvas');
+  canvas.width = targetWidth;
+  canvas.height = targetHeight;
+  const ctx = canvas.getContext('2d', { alpha: false });
+
+  /* Ambiente de fundo: utiliza a própria obra ampliada e suavizada.
+     Ele só ocupa as extensões laterais e não substitui a arte principal. */
+  const coverScale = Math.max(targetWidth / image.naturalWidth, targetHeight / image.naturalHeight);
+  const coverWidth = image.naturalWidth * coverScale;
+  const coverHeight = image.naturalHeight * coverScale;
+  ctx.save();
+  ctx.filter = 'blur(18px) brightness(.68) saturate(.82)';
+  ctx.drawImage(image, (targetWidth - coverWidth) / 2, (targetHeight - coverHeight) / 2, coverWidth, coverHeight);
+  ctx.restore();
+
+  const shade = ctx.createLinearGradient(0, 0, targetWidth, 0);
+  shade.addColorStop(0, 'rgba(0,0,0,.34)');
+  shade.addColorStop(.18, 'rgba(0,0,0,.08)');
+  shade.addColorStop(.82, 'rgba(0,0,0,.08)');
+  shade.addColorStop(1, 'rgba(0,0,0,.34)');
+  ctx.fillStyle = shade;
+  ctx.fillRect(0, 0, targetWidth, targetHeight);
+
+  /* A obra completa entra por contain: nenhum pixel é cortado ou deformado. */
+  const containScale = Math.min(targetWidth / image.naturalWidth, targetHeight / image.naturalHeight);
+  const contentWidth = image.naturalWidth * containScale;
+  const contentHeight = image.naturalHeight * containScale;
+  const x = (targetWidth - contentWidth) / 2;
+  const y = (targetHeight - contentHeight) / 2;
+
+  const layer = document.createElement('canvas');
+  layer.width = targetWidth;
+  layer.height = targetHeight;
+  const layerCtx = layer.getContext('2d');
+  layerCtx.drawImage(image, x, y, contentWidth, contentHeight);
+  const feather = 76;
+  const mask = layerCtx.createLinearGradient(x, 0, x + contentWidth, 0);
+  mask.addColorStop(0, 'rgba(0,0,0,0)');
+  mask.addColorStop(Math.min(.12, feather / contentWidth), 'rgba(0,0,0,1)');
+  mask.addColorStop(Math.max(.88, 1 - feather / contentWidth), 'rgba(0,0,0,1)');
+  mask.addColorStop(1, 'rgba(0,0,0,0)');
+  layerCtx.globalCompositeOperation = 'destination-in';
+  layerCtx.fillStyle = mask;
+  layerCtx.fillRect(x, y, contentWidth, contentHeight);
+  ctx.drawImage(layer, 0, 0);
+
+  const blob = await new Promise((resolve, reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error('WebP indisponível.')), 'image/webp', quality));
+  const reader = new FileReader();
+  const dataUrl = await new Promise((resolve, reject) => { reader.onload = () => resolve(reader.result); reader.onerror = reject; reader.readAsDataURL(blob); });
+  document.querySelector('#output').textContent = dataUrl;
+  document.querySelector('#status').textContent = `OK|${targetWidth}|${targetHeight}|${blob.size}`;
+}()).catch(error => { document.querySelector('#status').textContent = `ERRO|${error.message}`; });
+</script>
+</body>
+</html>

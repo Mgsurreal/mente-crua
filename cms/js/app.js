@@ -1,4 +1,7 @@
-document.querySelectorAll('.step').forEach((btn) => btn.addEventListener('click', () => gotoStep(btn.dataset.step)));
+document.querySelectorAll('.step').forEach((btn) => btn.addEventListener('click', () => {
+  gotoStep(btn.dataset.step);
+  scheduleLocalDraft();
+}));
 document.querySelectorAll('[data-next]').forEach((btn) => btn.addEventListener('click', () => gotoStep(btn.dataset.next)));
 
 $('#btnProject').addEventListener('click', selectProjectRoot);
@@ -8,7 +11,19 @@ $('#btnOpenContent').addEventListener('click', openContent);
 $('#btnAddImages').addEventListener('click', addImages);
 $('#imageInput').addEventListener('change', handleImageInputChange);
 $('#mediaLibrary').addEventListener('click', handleMediaClick);
+$('#btnSaveDraft').addEventListener('click', saveEditor);
 $('#btnSaveEditor').addEventListener('click', publishArticle);
+$('#btnClearDraft').addEventListener('click', clearLocalDraft);
+
+document.addEventListener('input', (event) => {
+  if (event.target.matches('input[id], select[id], textarea[id]')) scheduleLocalDraft();
+});
+document.addEventListener('change', (event) => {
+  if (event.target.matches('input[id], select[id], textarea[id]')) scheduleLocalDraft();
+});
+window.addEventListener('beforeunload', () => {
+  if (atlasDraftDirty) saveLocalDraft();
+});
 
 $('#contentName').addEventListener('input', () => {
   updateDestinationFields();
@@ -21,5 +36,7 @@ $('#contentSlug').addEventListener('input', () => {
   updateDestinationFields();
 });
 
+const recoveredDraft = restoreLocalDraft();
 updateDestinationFields();
 refreshStatus();
+if (recoveredDraft) setLog('Rascunho local recuperado. Continue de onde parou.');

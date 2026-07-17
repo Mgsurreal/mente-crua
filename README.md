@@ -28,7 +28,6 @@ modules/
   livros/
   arte-explica/
   antes-da-disney/
-  mitologias/
   escolas-filosoficas/
 ```
 

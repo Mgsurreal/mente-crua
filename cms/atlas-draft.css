@@ -1,0 +1,14 @@
+.ghost-danger {
+  background: transparent;
+  border-color: rgba(180, 52, 52, .45);
+  color: #c98b82;
+}
+
+.ghost-danger:hover {
+  border-color: #a92c2c;
+  color: #f0c6bf;
+}
+
+.steps {
+  grid-template-columns: repeat(4, 1fr);
+}

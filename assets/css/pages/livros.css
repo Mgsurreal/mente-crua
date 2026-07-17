@@ -2,11 +2,11 @@
 .livros-hero {
     position: relative;
     width: 100%;
-    aspect-ratio: 1600 / 592;
+    aspect-ratio: 1900 / 520;
     min-height: 320px;
     overflow: hidden;
 
-    background-image: url("../../img/livros/hero/hero-livros.webp");
+    background-image: url("../../img/livros/hero/hero-livros-final.webp");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

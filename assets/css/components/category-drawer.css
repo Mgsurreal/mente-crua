@@ -197,6 +197,11 @@
     filter: saturate(.92) brightness(.94);
 }
 
+/* Mantém a arte original colorida e harmoniza apenas sua exibição na gaveta. */
+.mc-category-drawer-icon[src$="arte-explica.png"] {
+    filter: grayscale(1) sepia(.42) saturate(.72) brightness(1.04) contrast(1.05);
+}
+
 .mc-category-drawer-name {
     display: block;
     color: #ddd7cf;

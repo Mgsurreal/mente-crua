@@ -2,11 +2,11 @@
 .historia-hero {
     position: relative;
     width: 100%;
-    aspect-ratio: 1600 / 592;
+    aspect-ratio: 1900 / 520;
     min-height: 320px;
     overflow: hidden;
 
-    background-image: url("../../img/historia/hero/hero-historia.webp");
+    background-image: url("../../img/historia/hero/hero-historia-final.webp");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

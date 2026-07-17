@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atlas CMS v15 Editor Publica</title>
+  <title>Atlas CMS — Publicação Oficial</title>
   <link rel="stylesheet" href="cms.css">
-</head>
+  <link rel="stylesheet" href="atlas-options.css">
+  <link rel="stylesheet" href="atlas-draft.css">
+<link rel="icon" type="image/png" href="../assets/img/favicon-v1.png"></head>
 <body>
   <main class="atlas-app">
     <header class="atlas-top">
       <div>
-        <p class="tag">Atlas CMS • V1 Modular</p>
+        <p class="tag">Atlas CMS • Template Oficial</p>
         <h1>Publicar sem perder o contexto.</h1>
         <p>Home, Estrutura, Imagens, Editor e Publicador funcionam como módulos independentes.</p>
       </div>
@@ -19,7 +21,10 @@
         <span id="projectStatus">Nenhum projeto definido</span>
         <strong>Conteúdo atual</strong>
         <span id="contentStatus">Nenhum conteúdo aberto</span>
+        <strong>Rascunho local</strong>
+        <span id="draftStatus" class="ok" aria-live="polite">Proteção automática ativa</span>
         <button id="btnProject" type="button">⚙ Definir/Trocar Projeto</button>
+        <button id="btnClearDraft" type="button" class="ghost-danger">Limpar rascunho local</button>
       </aside>
     </header>
 
@@ -68,13 +73,7 @@
           </label>
           <label>Tipo
             <select id="contentType">
-              <option value="artigos">Artigo</option>
-              <option value="pensadores">Pensador</option>
-              <option value="livros">Livro</option>
-              <option value="conceitos">Conceito</option>
-              <option value="personagens">Personagem</option>
-              <option value="obras">Obra</option>
-              <option value="mitologias">Mitologia</option>
+              <option value="artigos">Artigo — publicação oficial</option>
             </select>
           </label>
           <label>Slug
@@ -116,8 +115,19 @@
           <label>Subtítulo
             <input id="subtitle" placeholder="Frase de apoio">
           </label>
-          <label>Categoria
-            <input id="category" placeholder="Filosofia">
+          <label>Categoria oficial
+            <select id="category">
+              <option value="pensadores">Pensadores</option>
+              <option value="livros">Livros</option>
+              <option value="conceitos">Conceitos</option>
+              <option value="mitologia">Mitologia</option>
+              <option value="historia">História</option>
+              <option value="mitos-e-lendas">Mitos e Lendas</option>
+              <option value="psicologia">Psicologia</option>
+              <option value="ciencia">Ciência</option>
+              <option value="arte-explica">A Arte Explica</option>
+              <option value="antes-da-disney">Antes da Disney</option>
+            </select>
           </label>
           <label>Tags
             <input id="tags" placeholder="Pequeno Príncipe, maturidade, filosofia">
@@ -128,17 +138,69 @@
           <label>Thumb do artigo
             <input id="thumb" placeholder="img/thumb.webp">
           </label>
+          <label>Imagem OG — 1200 × 630 px
+            <input id="ogImage" placeholder="img/og.webp">
+          </label>
+          <label>Banner do artigo — 1900 × 420 px
+            <input id="heroImage" placeholder="img/banner.webp">
+          </label>
+          <label>Clima visual
+            <select id="articleTheme">
+              <option value="light">Editorial claro</option>
+              <option value="dark">Editorial escuro</option>
+              <option value="dense">Denso cinematográfico</option>
+            </select>
+          </label>
+          <label>Foco vertical do banner
+            <select id="heroPosition">
+              <option value="top">Topo</option>
+              <option value="center" selected>Centro</option>
+              <option value="bottom">Base</option>
+            </select>
+          </label>
+          <label>Idioma do artigo
+            <select id="articleLanguage">
+              <option value="pt-BR">Português</option><option value="en">Inglês</option><option value="es">Espanhol</option><option value="it">Italiano</option>
+            </select>
+          </label>
+          <label>Cor de destaque
+            <input id="accentColor" type="color" value="#8f2424">
+          </label>
+          <label>Autor
+            <input id="author" value="Equipe Mente Crua">
+          </label>
+          <label>Data de publicação
+            <input id="publishedAt" type="date">
+          </label>
+          <label>Tempo de leitura (minutos)
+            <input id="readingTime" type="number" min="1" value="8">
+          </label>
           <label class="full">Descrição SEO
             <textarea id="seoDescription" rows="3"></textarea>
           </label>
           <label class="full">Relacionamentos
-            <textarea id="relationships" rows="3"></textarea>
+            <textarea id="relationships" rows="3" placeholder="Freud, A sombra, Arquétipos"></textarea>
+          </label>
+          <label class="full">Biblioteca complementar
+            <textarea id="sidebarLibrary" rows="3" placeholder="O homem e seus símbolos | modules/livros/"></textarea>
+          </label>
+          <label class="full">Conteúdos complementares
+            <textarea id="sidebarExplore" rows="3" placeholder="Documentário sobre Jung | https://..."></textarea>
           </label>
         </div>
+        <fieldset class="atlas-options">
+          <legend>Lateral e publicidade</legend>
+          <label><input id="autoToc" type="checkbox" checked> Criar índice automático pelos subtítulos</label>
+          <label><input id="adSidebar" type="checkbox" checked> Publicidade lateral</label>
+          <label><input id="adMiddle" type="checkbox" checked> Publicidade no meio do artigo</label>
+          <label><input id="adEnd" type="checkbox"> Publicidade final em artigos longos</label>
+        </fieldset>
         <label class="full html-label">HTML do conteúdo
           <textarea id="contentHtml" class="html-box" rows="24" spellcheck="false" placeholder="<article>...</article>"></textarea>
+          <small>Para ritmo de revista, alterne <code>article-editorial-row</code> e <code>article-editorial-row article-editorial-row--reverse</code>. Use <code>article-feature-figure</code> somente em imagens de impacto.</small>
         </label>
         <div class="button-row">
+          <button id="btnSaveDraft" type="button">💾 Salvar rascunho</button>
           <button id="btnSaveEditor" type="button" class="primary">🚀 Publicar Artigo</button>
         </div>
       </div>
@@ -146,7 +208,7 @@
 
     <section class="panel log-panel">
       <h2>Log</h2>
-      <pre id="log">Atlas v16 pronto.</pre>
+      <pre id="log">Atlas pronto para publicar.</pre>
     </section>
   </main>
   <script src="js/state.js"></script>

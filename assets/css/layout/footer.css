@@ -174,3 +174,676 @@
         gap: 26px;
     }
 }
+
+/* ===================================================
+   MC-FOOTER — ESTRUTURA GLOBAL COMPARTILHADA
+   Ambientações de categorias: components/category-footers.css.
+=================================================== */
+/* ===================================================
+   FOOTER — MENTE CRUA / RENASCIMENTO GÓTICO
+   Baseado na composição do rodapé Drácula, adaptado
+   para a Home do Mente Crua.
+=================================================== */
+
+.mc-footer {
+    position: relative;
+    overflow: hidden;
+    margin-top: 0;
+    background: #070707;
+    border-top: 1px solid rgba(255,255,255,.08);
+    color: var(--mc-text, #B9B3AC);
+}
+
+.mc-footer-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7,7,7,.16),
+            rgba(7,7,7,.58) 45%,
+            rgba(7,7,7,.92) 100%
+        ),
+        radial-gradient(circle at 12% 18%, rgba(139,30,30,.12), transparent 34%),
+        radial-gradient(circle at 88% 24%, rgba(139,30,30,.08), transparent 32%),
+        url("../../img/footer/footer-biblioteca.webp") center bottom / cover no-repeat !important;
+
+    opacity: .88 !important;
+    filter: saturate(.82) contrast(1.04) brightness(.92);
+    pointer-events: none !important;
+}
+
+.mc-footer-overlay {
+    position: relative;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.38) 50%, rgba(0,0,0,.78)),
+        linear-gradient(180deg, transparent, rgba(0,0,0,.58));
+}
+
+.mc-footer-newsletter {
+    padding: 42px 0 38px;
+    border-bottom: 1px solid rgba(206,200,193,.12);
+    background:
+        linear-gradient(90deg, rgba(139,30,30,.22), rgba(139,30,30,.08) 50%, rgba(139,30,30,.22));
+}
+
+.mc-footer-newsletter-inner {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr) minmax(300px, 430px);
+    align-items: center;
+    gap: 30px;
+}
+
+.mc-footer-seal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: .95;
+}
+
+.mc-footer-seal span {
+    width: 52px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(206,200,193,.28));
+}
+
+.mc-footer-seal span:last-child {
+    background: linear-gradient(90deg, rgba(206,200,193,.28), transparent);
+}
+
+.mc-footer-seal img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    opacity: .9;
+}
+
+.mc-footer-newsletter .section-kicker {
+    margin: 0 0 8px;
+    color: var(--mc-white);
+    font-family: var(--font-title);
+    font-size: 1.22rem;
+    font-weight: 600;
+    letter-spacing: .03em;
+    text-transform: none;
+}
+
+.mc-footer-newsletter h2 {
+    margin: 0 0 8px;
+    color: var(--mc-white);
+    font-family: var(--font-title);
+    font-size: clamp(1.55rem, 2.4vw, 2.25rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -.035em;
+}
+
+.mc-footer-newsletter p {
+    margin: 0;
+    max-width: 680px;
+    color: var(--mc-text, #B9B3AC);
+    line-height: 1.62;
+}
+
+.mc-footer-form {
+    display: flex;
+    gap: 10px;
+}
+
+.mc-footer-form input {
+    min-width: 0;
+    flex: 1;
+    border: 1px solid rgba(206,200,193,.16);
+    background: rgba(0,0,0,.56);
+    color: var(--mc-white);
+    border-radius: 6px;
+    padding: 13px 14px;
+    font: inherit;
+    outline: none;
+}
+
+.mc-footer-form input::placeholder {
+    color: rgba(206,200,193,.58);
+}
+
+.mc-footer-form input:focus {
+    border-color: rgba(139,30,30,.78);
+}
+
+.mc-footer-form button,
+.mc-footer-button {
+    border: 1px solid rgba(139,30,30,.85);
+    background: linear-gradient(180deg, #9f2424, #751818);
+    color: #f4eee8;
+    border-radius: 6px;
+    padding: 13px 18px;
+    font: inherit;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .25s ease, filter .25s ease, border-color .25s ease;
+}
+
+.mc-footer-form button:hover,
+.mc-footer-button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+    border-color: rgba(183,42,42,.95);
+}
+
+.mc-footer-main {
+    display: grid;
+    grid-template-columns: minmax(240px, 1.35fr) .78fr .78fr minmax(230px, 1fr) 210px;
+    gap: 34px;
+    align-items: start;
+    padding: 44px 0 34px;
+}
+
+.mc-footer-brand,
+.mc-footer-column,
+.mc-footer-support {
+    min-width: 0;
+}
+
+.mc-footer-symbol {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    margin-bottom: 14px;
+    opacity: .9;
+}
+
+.mc-footer-brand h2 {
+    margin: 0 0 10px;
+    color: var(--mc-white);
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 3.2vw, 3.2rem);
+    font-weight: 500;
+    line-height: .95;
+    letter-spacing: -.05em;
+}
+
+.mc-footer-brand p,
+.mc-footer-support p {
+    margin: 0;
+    color: var(--mc-text, #B9B3AC);
+    line-height: 1.7;
+}
+
+.mc-footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.mc-footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid rgba(206,200,193,.18);
+    border-radius: 999px;
+    color: var(--mc-white);
+    font-size: .78rem;
+    text-decoration: none;
+    transition: color .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.mc-footer-social a:hover {
+    color: var(--mc-red-hover);
+    border-color: rgba(139,30,30,.72);
+    background: rgba(139,30,30,.08);
+}
+
+.mc-footer-column h3,
+.mc-footer-support h3 {
+    position: relative;
+    margin: 0 0 20px;
+    color: var(--mc-white);
+    font-size: .82rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.mc-footer-column h3::after,
+.mc-footer-support h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -9px;
+    width: 42px;
+    height: 1px;
+    background: var(--mc-red);
+}
+
+.mc-footer-column a {
+    display: block;
+    margin: 9px 0;
+    color: var(--mc-text, #B9B3AC);
+    text-decoration: none;
+    font-size: .92rem;
+    transition: color .25s ease, transform .25s ease;
+}
+
+.mc-footer-column a:hover {
+    color: var(--mc-red-hover);
+    transform: translateX(3px);
+}
+
+.mc-footer-support .mc-footer-button {
+    display: inline-flex;
+    margin: 18px 0 12px;
+    padding: 11px 16px;
+    font-size: .84rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.mc-footer-support small {
+    display: block;
+    color: var(--mc-muted, #8E8984);
+}
+
+.mc-footer-avatar-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.mc-footer-avatar-frame {
+    position: relative;
+    width: 190px;
+    aspect-ratio: 3 / 4;
+    padding: 10px;
+    border: 1px solid rgba(139,30,30,.42);
+    border-radius: 90px 90px 18px 18px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(139,30,30,.20), transparent 58%),
+        rgba(0,0,0,.36);
+    box-shadow:
+        inset 0 0 0 1px rgba(206,200,193,.08),
+        0 28px 60px rgba(0,0,0,.35);
+    overflow: hidden;
+}
+
+.mc-footer-avatar-frame::before,
+.mc-footer-avatar-frame::after {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(206,200,193,.10);
+    border-radius: 84px 84px 14px 14px;
+    pointer-events: none;
+}
+
+.mc-footer-avatar-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 80px 80px 12px 12px;
+    filter: saturate(.82) contrast(1.04);
+}
+
+.mc-footer-bottom {
+    padding: 18px 0 24px;
+    border-top: 1px solid rgba(206,200,193,.10);
+    text-align: center;
+}
+
+.mc-footer-bottom p {
+    margin: 0 0 8px;
+    color: var(--mc-white);
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    letter-spacing: .04em;
+}
+
+.mc-footer-bottom small {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    color: var(--mc-muted, #8E8984);
+}
+
+.mc-footer-bottom a {
+    color: var(--mc-muted, #8E8984);
+    text-decoration: none;
+}
+
+.mc-footer-bottom a:hover {
+    color: var(--mc-red-hover);
+}
+
+@media (max-width: 1120px) {
+    .mc-footer-newsletter-inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .mc-footer-main {
+        grid-template-columns: 1.2fr 1fr 1fr;
+    }
+
+    .mc-footer-avatar-wrap {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+    }
+}
+
+@media (max-width: 780px) {
+    .mc-footer-newsletter {
+        padding: 34px 0;
+    }
+
+    .mc-footer-form {
+        flex-direction: column;
+    }
+
+    .mc-footer-main {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 36px 0 28px;
+    }
+
+    .mc-footer-avatar-wrap {
+        grid-column: auto;
+        grid-row: auto;
+        justify-content: flex-start;
+    }
+
+    .mc-footer-avatar-frame {
+        width: 160px;
+    }
+}
+
+/* ===================================================
+   CORREÇÃO DEFINITIVA — BACKGROUND DO FOOTER
+   Fundo aplicado também no ::before do footer para evitar
+   problema de camada/altura da div .mc-footer-bg.
+=================================================== */
+
+.mc-footer {
+    position: relative !important;
+    overflow: hidden !important;
+    background: #070707 !important;
+    isolation: isolate !important;
+}
+
+.mc-footer::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7,7,7,.16),
+            rgba(7,7,7,.58) 45%,
+            rgba(7,7,7,.92) 100%
+        ),
+        radial-gradient(circle at 12% 18%, rgba(139,30,30,.12), transparent 34%),
+        radial-gradient(circle at 88% 24%, rgba(139,30,30,.08), transparent 32%),
+        url("../../img/footer/avatar-mente-crua.webp") center bottom / cover no-repeat !important;
+
+    opacity: .88 !important;
+    filter: saturate(.82) contrast(1.04) brightness(.92);
+    pointer-events: none !important;
+}
+
+.mc-footer-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+    pointer-events: none !important;
+}
+
+.mc-footer-overlay {
+    position: relative !important;
+    z-index: 1 !important;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.62), rgba(0,0,0,.24) 50%, rgba(0,0,0,.62)),
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.48)) !important;
+}
+
+.mc-footer-newsletter {
+    background: rgba(7,7,7,.34) !important;
+    backdrop-filter: blur(1px);
+}
+
+.mc-footer-newsletter .section-kicker {
+    display: none !important;
+}
+
+.mc-footer-newsletter h2 {
+    margin-top: 0 !important;
+}
+
+.mc-footer-main,
+.mc-footer-bottom {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.mc-footer-social {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    align-items: center !important;
+}
+
+.mc-footer-social a {
+    white-space: nowrap !important;
+}
+
+@media (max-width: 1120px) {
+    .mc-footer-social {
+        flex-wrap: wrap !important;
+    }
+}
+
+/* Correção definitiva: fundo do footer aplicado no próprio elemento */
+.mc-footer#footer {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    background-color: #070707 !important;
+    background-image:
+        linear-gradient(180deg, rgba(7,7,7,.08), rgba(7,7,7,.36) 52%, rgba(7,7,7,.72) 100%),
+        radial-gradient(circle at 12% 18%, rgba(139,30,30,.10), transparent 34%),
+        radial-gradient(circle at 88% 24%, rgba(139,30,30,.08), transparent 32%),
+        url("../../img/footer/footer-biblioteca.webp") !important;
+    background-position: center bottom !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+.mc-footer#footer::before {
+    display: none !important;
+}
+
+.mc-footer#footer .mc-footer-bg {
+    display: none !important;
+}
+
+.mc-footer#footer .mc-footer-overlay {
+    position: relative !important;
+    z-index: 1 !important;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.12) 50%, rgba(0,0,0,.42)),
+        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.24)) !important;
+}
+
+
+/* ===================================================
+   CORREÇÃO FINAL — ESPAÇAMENTOS + FOOTER BACKGROUND
+   Fundo do footer usa variável inline no index:
+   --mc-footer-bg-url: url('/assets/img/footer/footer-biblioteca.webp')
+=================================================== */
+
+/* Footer com fundo aplicado no próprio footer e no ::before */
+.mc-footer {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    background: #070707 !important;
+    border-top: 1px solid rgba(139, 30, 30, .35) !important;
+}
+
+.mc-footer::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    background:
+        linear-gradient(180deg, rgba(7,7,7,.10), rgba(7,7,7,.52) 48%, rgba(7,7,7,.88) 100%),
+        radial-gradient(circle at 12% 18%, rgba(139,30,30,.10), transparent 34%),
+        radial-gradient(circle at 88% 24%, rgba(139,30,30,.07), transparent 32%),
+        url("../../img/footer/footer-biblioteca.webp") center bottom / cover no-repeat !important;
+    opacity: .92 !important;
+    filter: saturate(.82) contrast(1.04) brightness(.92);
+    pointer-events: none !important;
+}
+
+/* A div continua existindo, mas não precisa carregar a imagem */
+.mc-footer-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    display: block !important;
+    background:
+        linear-gradient(180deg, rgba(7,7,7,.12), rgba(7,7,7,.48) 45%, rgba(7,7,7,.82) 100%),
+        radial-gradient(circle at 12% 18%, rgba(139,30,30,.12), transparent 34%),
+        radial-gradient(circle at 88% 24%, rgba(139,30,30,.08), transparent 32%),
+        url("../../img/footer/footer-biblioteca.webp") center bottom / cover no-repeat !important;
+    opacity: .92 !important;
+    filter: saturate(.86) contrast(1.03) brightness(.98);
+    pointer-events: none !important;
+}
+
+.mc-footer-overlay {
+    position: relative !important;
+    z-index: 1 !important;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.18) 50%, rgba(0,0,0,.55)),
+        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.38)) !important;
+}
+
+.mc-footer-newsletter {
+    background: rgba(7,7,7,.26) !important;
+    backdrop-filter: blur(1px);
+}
+
+.mc-footer-newsletter .section-kicker {
+    display: none !important;
+}
+
+.mc-footer-newsletter h2 {
+    margin-top: 0 !important;
+}
+
+.mc-footer-main,
+.mc-footer-bottom {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Redes em uma linha no desktop */
+.mc-footer-social {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    align-items: center !important;
+}
+
+.mc-footer-social a {
+    white-space: nowrap !important;
+}
+
+@media (max-width: 1120px) {
+    .mc-footer-social {
+        flex-wrap: wrap !important;
+    }
+}
+
+/* Separador da newsletter */
+.mc-footer-newsletter .editorial-section-title{
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+/* ===================================================
+   FOOTER — REDES SOCIAIS
+   Medalhões discretos em bronze.
+   O objetivo é integrar as redes sociais à identidade
+   visual da biblioteca, evitando aparência de botões
+   modernos de aplicativos.
+=================================================== */
+
+.mc-footer-social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.mc-footer-social a {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(184,154,106,.35);
+    border-radius: 50%;
+
+    background: transparent;
+
+    transition:
+        .25s ease;
+}
+
+.mc-footer-social a img{
+    width:18px;
+    height:18px;
+    opacity:.88;
+}
+
+.mc-footer-social a:hover{
+
+    transform:translateY(-2px);
+
+    border-color:rgba(139,30,30,.80);
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(139,30,30,.18),
+        transparent 70%
+    );
+}
+
+.mc-footer-social a:hover img{
+
+    opacity:1;
+
+    filter:
+        drop-shadow(0 0 6px rgba(184,154,106,.22));
+
+}

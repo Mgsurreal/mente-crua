@@ -1,8 +1,8 @@
-﻿/* Hero — mitos-e-lendas */
+/* Hero — Mitos e Lendas */
 .mitos-e-lendas-hero {
     position: relative;
     width: 100%;
-    aspect-ratio: 1600 / 592;
+    aspect-ratio: 1900 / 520;
     min-height: 320px;
     overflow: hidden;
 
@@ -19,10 +19,17 @@
     height: 100%;
 }
 
+/* Área reservada para os futuros cards e coleções da categoria. */
+.mitos-e-lendas-content {
+    position: relative;
+    min-height: 160px;
+}
+
 @media (max-width: 768px) {
     .mitos-e-lendas-hero {
         aspect-ratio: auto;
         min-height: clamp(220px, 58vw, 320px);
         background-position: center center;
     }
+
 }

@@ -60,6 +60,33 @@ body {
     object-fit:contain;
 }
 
+/* O antigo cérebro não faz mais parte da fachada.
+   Páginas antigas que ainda carregam logo-site.png recebem
+   automaticamente a assinatura editorial atual. */
+.logo a:has(> img) > img {
+    display: none;
+}
+
+.logo a:has(> img)::after {
+    content: '"Comece por aqui..."';
+    font-family: "Special Elite", "Courier Prime", "Courier New", monospace;
+    font-size: clamp(.72rem, .9vw, .86rem);
+    font-weight: 400;
+    letter-spacing: .04em;
+    color: #9f9489;
+    opacity: .62;
+    white-space: nowrap;
+    transform: rotate(-.6deg);
+    text-shadow: .7px 0 rgba(120,18,18,.14), -.2px 0 rgba(255,255,255,.03);
+    transition: color .25s ease, opacity .25s ease, transform .25s ease;
+}
+
+.logo a:has(> img):hover::after {
+    color: #c9beb2;
+    opacity: .82;
+    transform: rotate(-.6deg) translateX(2px);
+}
+
 /* ==========================================
    MENU PRINCIPAL
 ========================================== */

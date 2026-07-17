@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Conversor WebP local</title></head>
+<body>
+<p id="status">Convertendo…</p><pre id="output" hidden></pre>
+<script>
+(async function () {
+  const params = new URLSearchParams(location.search);
+  const source = params.get('src');
+  const quality = Math.min(1, Math.max(.1, Number(params.get('quality')) || .9));
+  if (!source) throw new Error('Imagem não informada.');
+  const image = new Image();
+  image.src = new URL(source, location.href).href;
+  await image.decode();
+  const canvas = document.createElement('canvas');
+  canvas.width = image.naturalWidth;
+  canvas.height = image.naturalHeight;
+  canvas.getContext('2d', { alpha: true }).drawImage(image, 0, 0);
+  const blob = await new Promise((resolve, reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error('WebP indisponível.')), 'image/webp', quality));
+  const reader = new FileReader();
+  const dataUrl = await new Promise((resolve, reject) => { reader.onload = () => resolve(reader.result); reader.onerror = reject; reader.readAsDataURL(blob); });
+  document.querySelector('#output').textContent = dataUrl;
+  document.querySelector('#status').textContent = `OK|${image.naturalWidth}|${image.naturalHeight}|${blob.size}`;
+}()).catch(error => { document.querySelector('#status').textContent = `ERRO|${error.message}`; });
+</script>
+</body>
+</html>
