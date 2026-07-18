@@ -623,6 +623,293 @@ body[class*="article-theme"] .article-hero {
 }
 </style>
 
+
+<style>
+/* =========================================================
+   MENTE CRUA — CARTÃO CULTURAL INTERATIVO
+   Primeiro cartão ativo: CUCA
+   ========================================================= */
+
+.future-link[data-future-article="cuca"] {
+  cursor: pointer;
+  border-bottom: 1px dotted rgba(201, 74, 74, 0.7);
+}
+
+.future-link[data-future-article="cuca"]:hover,
+.future-link[data-future-article="cuca"]:focus-visible {
+  color: #fff !important;
+  border-bottom-color: #fff;
+}
+
+.entity-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.entity-modal.is-open {
+  display: flex;
+}
+
+.entity-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(5px);
+}
+
+.entity-modal__dialog {
+  position: relative;
+  width: min(960px, calc(100vw - 40px));
+  max-height: 88vh;
+  overflow: auto;
+  border: 1px solid rgba(139, 30, 30, 0.58);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(24, 17, 15, 0.98), rgba(8, 8, 8, 0.99));
+  color: #f0e8dc;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.72);
+  scrollbar-width: thin;
+  scrollbar-color: #8b1e1e rgba(255,255,255,0.04);
+}
+
+.entity-modal__dialog::-webkit-scrollbar {
+  width: 10px;
+}
+
+.entity-modal__dialog::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.04);
+}
+
+.entity-modal__dialog::-webkit-scrollbar-thumb {
+  background: #8b1e1e;
+  border-radius: 999px;
+}
+
+.entity-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 50%;
+  background: rgba(7, 7, 7, 0.88);
+  color: #fff;
+  font-size: 1.45rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.entity-modal__close:hover,
+.entity-modal__close:focus-visible {
+  border-color: #c94a4a;
+  background: #8b1e1e;
+  outline: none;
+}
+
+.entity-card {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 24px;
+  padding: 24px;
+}
+
+.entity-card__visual {
+  position: relative;
+  width: 360px;
+  min-height: 450px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  background: #090909;
+}
+
+.entity-card__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.entity-card__visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 58%, rgba(0,0,0,0.58) 100%),
+    radial-gradient(circle at 50% 30%, transparent 48%, rgba(0,0,0,0.18) 100%);
+}
+
+.entity-card__visual-label {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 2;
+  padding: 0.42rem 0.72rem;
+  border: 1px solid rgba(201,74,74,0.58);
+  border-radius: 999px;
+  background: rgba(10,10,10,0.76);
+  color: #f3ddd6;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.entity-card__content {
+  min-width: 0;
+  padding: 8px 38px 8px 0;
+}
+
+.entity-card__eyebrow {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: #c94a4a;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.entity-card__title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.2rem, 4vw, 3.35rem);
+  line-height: 1;
+}
+
+.entity-card__subtitle {
+  margin: 0.8rem 0 1.25rem;
+  color: rgba(240,232,220,0.88);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.entity-card__meta {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.entity-card__meta-item {
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.025);
+}
+
+.entity-card__meta-item strong {
+  display: block;
+  margin-bottom: 0.26rem;
+  color: #fff;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.entity-card__meta-item span {
+  color: rgba(240,232,220,0.82);
+  font-size: 0.92rem;
+  line-height: 1.58;
+}
+
+.entity-card__quote {
+  margin: 1rem 0;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid #8b1e1e;
+  background: rgba(139,30,30,0.12);
+  color: #f5ead9;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.entity-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.entity-card__tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0.38rem 0.7rem;
+  border: 1px solid rgba(201,74,74,0.42);
+  border-radius: 999px;
+  background: rgba(201,74,74,0.08);
+  color: #f1e7d8;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+body.entity-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 840px) {
+  .entity-modal {
+    padding: 10px;
+  }
+
+  .entity-modal__dialog {
+    width: min(100%, 680px);
+    max-height: calc(100vh - 20px);
+  }
+
+  .entity-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 18px;
+  }
+
+  .entity-card__visual {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+
+  .entity-card__visual img {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+
+  .entity-card__content {
+    padding: 0 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .entity-modal__close {
+    top: 8px;
+    right: 8px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .entity-card {
+    padding: 12px;
+    gap: 14px;
+  }
+
+  .entity-card__title {
+    font-size: 2.15rem;
+  }
+
+  .entity-card__subtitle {
+    font-size: 0.94rem;
+  }
+}
+</style>
+
 </head>
 <body class="article-template article-theme--dense" style="--article-accent:#8b1e1e;--article-hero-position:center">
 <header class="site-header">
@@ -1604,6 +1891,135 @@ body[class*="article-theme"] .article-hero {
       document.execCommand('copy');
       temporary.remove();
       if (status) status.textContent = 'Link copiado.';
+    }
+  });
+})();
+</script>
+
+
+<div class="entity-modal" id="cuca-card-modal" aria-hidden="true">
+  <div class="entity-modal__backdrop" data-cuca-close></div>
+
+  <section
+    class="entity-modal__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cuca-card-title"
+    tabindex="-1"
+  >
+    <button class="entity-modal__close" type="button" aria-label="Fechar cartão da Cuca" data-cuca-close>×</button>
+
+    <div class="entity-card">
+      <div class="entity-card__visual">
+        <img
+          src="img/cuca.webp"
+          alt="Representação original da Cuca como criatura folclórica de aparência reptiliana em uma paisagem noturna brasileira."
+          width="1080"
+          height="1350"
+        >
+        <span class="entity-card__visual-label">Folclore brasileiro</span>
+      </div>
+
+      <div class="entity-card__content">
+        <span class="entity-card__eyebrow">Cartão cultural</span>
+        <h2 class="entity-card__title" id="cuca-card-title">Cuca</h2>
+
+        <p class="entity-card__subtitle">
+          Figura do folclore brasileiro associada ao medo noturno, à infância
+          e às histórias usadas para fazer crianças obedecerem ou dormirem.
+        </p>
+
+        <div class="entity-card__meta">
+          <div class="entity-card__meta-item">
+            <strong>Origem</strong>
+            <span>
+              A Cuca pertence à tradição oral brasileira e se relaciona a antigas
+              figuras ibéricas conhecidas como Coca ou Coco. Ao longo do tempo,
+              recebeu diferentes aparências, nomes e interpretações.
+            </span>
+          </div>
+
+          <div class="entity-card__meta-item">
+            <strong>Função cultural</strong>
+            <span>
+              Em muitas narrativas, ela aparece como criatura que vigia, ameaça
+              ou leva crianças desobedientes. O monstro transforma regras abstratas
+              em uma imagem fácil de lembrar.
+            </span>
+          </div>
+
+          <div class="entity-card__meta-item">
+            <strong>Relação com este artigo</strong>
+            <span>
+              Aqui, a Cuca representa o uso do medo como ferramenta de educação:
+              durma, permaneça quieto e obedeça para continuar protegido.
+            </span>
+          </div>
+        </div>
+
+        <blockquote class="entity-card__quote">
+          Quando a infância é educada pelo medo, monstros deixam de ser apenas
+          monstros. Eles se transformam em ferramentas culturais.
+        </blockquote>
+
+        <div class="entity-card__tags" aria-label="Temas relacionados">
+          <span class="entity-card__tag">Medo noturno</span>
+          <span class="entity-card__tag">Infância</span>
+          <span class="entity-card__tag">Tradição oral</span>
+          <span class="entity-card__tag">Psicologia</span>
+          <span class="entity-card__tag">Brasil</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<script>
+(function () {
+  const modal = document.getElementById('cuca-card-modal');
+  if (!modal) return;
+
+  const dialog = modal.querySelector('.entity-modal__dialog');
+  const closeTriggers = modal.querySelectorAll('[data-cuca-close]');
+  const cucaLinks = document.querySelectorAll('[data-future-article="cuca"]');
+  let lastTrigger = null;
+
+  function openCucaCard(trigger) {
+    lastTrigger = trigger;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('entity-modal-open');
+
+    window.setTimeout(function () {
+      dialog.focus();
+    }, 20);
+  }
+
+  function closeCucaCard() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('entity-modal-open');
+
+    if (lastTrigger) {
+      lastTrigger.focus();
+    }
+  }
+
+  cucaLinks.forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      openCucaCard(link);
+    });
+  });
+
+  closeTriggers.forEach(function (trigger) {
+    trigger.addEventListener('click', closeCucaCard);
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeCucaCard();
     }
   });
 })();
