@@ -60,11 +60,49 @@
             <a href="contato.html">Contato</a>
         </nav>
 
-        <div class="site-search" role="search">
-            <input class="siteSearchInput" type="search" placeholder="Buscar..." aria-label="Buscar no Mente Crua">
-            <div class="siteSearchResults home-search-results"></div>
+        <div class="header-tools">
+            <label class="language-selector">
+                <span class="visually-hidden">Idioma</span>
+                <span class="language-selector-icon" aria-hidden="true">◎</span>
+                <select id="site-language" aria-label="Selecionar idioma">
+                    <option value="pt-br">PT · Português (Brasil)</option>
+                    <option value="pt-pt">PT · Português (Portugal)</option>
+                    <option value="en-gb">EN · English</option>
+                    <option value="es-es">ES · Español (España)</option>
+                    <option value="es-latam">ES · Español (Latinoamérica)</option>
+                    <option value="fr-fr">FR · Français</option>
+                    <option value="de-de">DE · Deutsch</option>
+                    <option value="it-it">IT · Italiano</option>
+                    <option value="ru-ru">RU · Русский</option>
+                    <option value="ar">AR · العربية</option>
+                    <option value="ar-eg">AR-EG · العربية (مصر)</option>
+                    <option value="hi-in">HI · हिन्दी</option>
+                    <option value="ja-jp">JA · 日本語</option>
+                    <option value="ko-kr">KO · 한국어</option>
+                    <option value="zh-cn">ZH · 中文</option>
+                </select>
+            </label>
+
+            <div class="site-search" role="search">
+                <input class="siteSearchInput" type="search" placeholder="Buscar no site..." aria-label="Buscar em todo o site Mente Crua">
+                <div class="siteSearchResults home-search-results"></div>
+            </div>
         </div>
     </div>
+
+    <button class="home-intro-trigger" type="button" aria-expanded="false" aria-controls="home-intro-drawer" aria-label="Conheça o Mente Crua">
+        <span aria-hidden="true"></span>
+    </button>
+
+    <aside class="home-intro-drawer" id="home-intro-drawer" aria-hidden="true">
+        <div class="home-intro-page" role="dialog" aria-modal="false" aria-labelledby="home-intro-title">
+            <button class="home-intro-close" type="button" aria-label="Fechar apresentação">×</button>
+            <span class="home-intro-eyebrow">A porta está aberta...</span>
+            <h2 id="home-intro-title">Atravesse. Aqui, toda certeza deixa uma sombra.</h2>
+            <p>Você está diante de uma biblioteca construída para quem ainda sente prazer em pensar. Entre sem pressa. Caminhe por ideias antigas e inquietações modernas. Encontre filósofos, mitos, livros, conceitos e perguntas que sobreviveram ao tempo. O Mente Crua não exige que você concorde — apenas que deixe suas certezas do lado de fora por alguns instantes. Escolha uma porta. Siga o fio de uma dúvida. Talvez você não saia daqui olhando o mundo da mesma forma.</p>
+            <span class="home-intro-signature">Entre. Questione. Volte diferente.</span>
+        </div>
+    </aside>
 </header>
 
 <main>
@@ -121,6 +159,21 @@
 
         <div class="posts-grid">
 <!-- ATLAS:RECENT_POSTS_START -->
+<article class="post-card" data-atlas-slug="a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem">
+
+                <a href="modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/" class="post-thumb">
+                    <img src="modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/img/o-naufragio.webp" alt="A Pequena Sereia: o conto em que o amor não salva ninguém">
+                </a>
+
+                <span class="post-category">Antes da Disney · Contos originais e histórias sombrias</span>
+
+                <h3>A Pequena Sereia: o conto em que o amor não salva ninguém</h3>
+
+                <p>Antes de ganhar canções, cores brilhantes e um final feliz, a pequena sereia atravessou uma história de silêncio, dor, rejeição e desejo de possuir uma alma.</p>
+
+                <a href="modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/">Ler artigo →</a>
+
+            </article>
 <article class="post-card" data-atlas-slug="durma-ou-alguma-coisa-vira-buscar-voce">
 
                 <a href="modules/artigos/durma-ou-alguma-coisa-vira-buscar-voce/" class="post-thumb">
@@ -521,6 +574,9 @@ Receba novos artigos, reflexões e perguntas sempre que uma nova ideia chegar à
 </footer>
 
 <script src="assets/js/search.js"></script>
+<script src="assets/js/home-i18n.js"></script>
+<script src="assets/js/language-selector.js"></script>
+<script src="assets/js/home-intro-drawer.js"></script>
 <script src="assets/js/site.js" data-base=""></script>
 </body>
 </html>

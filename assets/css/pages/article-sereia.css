@@ -1,0 +1,44 @@
+/* Correção direta do banner do artigo */
+.article-hero {
+  min-height: clamp(250px, 22vw, 326px) !important;
+  background-image: url("../../../modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/img/banner-br.webp") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* O texto já está desenhado no banner; permanece no HTML para SEO/acessibilidade */
+.article-hero-content {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Correção definitiva: remove qualquer banner/fallback herdado de Pensadores */
+.article-hero {
+  position: relative !important;
+  min-height: clamp(250px, 22vw, 326px) !important;
+  background: #0b0808 url("../../../modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/img/banner-br.webp") center center / cover no-repeat !important;
+  overflow: hidden !important;
+}
+
+.article-hero::before,
+.article-hero::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+/* Neutraliza imagens herdadas por tema/categoria */
+.article-template .article-hero,
+.article-theme--dense .article-hero,
+body[class*="article-theme"] .article-hero {
+  background: #0b0808 url("../../../modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/img/banner-br.webp") center center / cover no-repeat !important;
+}

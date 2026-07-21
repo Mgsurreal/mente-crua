@@ -87,6 +87,7 @@ ${ogImage ? `<meta name="twitter:image" content="${escapeHtml(ogImage)}">` : ''}
 <link rel="stylesheet" href="../../../assets/css/main.css">
 <link rel="stylesheet" href="../../../assets/css/components/category-drawer.css">
 <link rel="stylesheet" href="../../../assets/css/pages/article-template.css">
+<link rel="stylesheet" href="../../../assets/css/pages/article-experience.css">
 <link rel="icon" type="image/png" href="../../../assets/img/favicon-v1.png">
 </head>
 <body class="article-template article-theme--${theme}" style="--article-accent:${accent};--article-hero-position:${heroPosition}">
@@ -115,8 +116,24 @@ ${ogImage ? `<meta name="twitter:image" content="${escapeHtml(ogImage)}">` : ''}
       </div>
     </section>
     <div class="article-main">
-      <article class="article-paper">
+      <article class="article-paper" data-article-lang="${escapeHtml(language)}">
         <div class="article-byline"><strong>Por ${escapeHtml(data.author || 'Equipe Mente Crua')}</strong>${publishedAt ? `<span>${escapeHtml(publishedAt)}</span>` : ''}<span>${Number(data.readingTime) || 8} min de leitura</span></div>
+        <div class="article-audio-reader" aria-label="Leitor em voz alta do artigo">
+          <button class="article-reader-button article-reader-button--primary" type="button" data-reader-play>▶ Ouvir artigo</button>
+          <button class="article-reader-button" type="button" data-reader-pause disabled>⏸ Pausar</button>
+          <button class="article-reader-button" type="button" data-reader-stop disabled>■ Parar</button>
+          <label class="article-reader-speed"><span>Velocidade</span><select data-reader-rate aria-label="Velocidade da leitura"><option value="0.85">0,85×</option><option value="0.95" selected>0,95×</option><option value="1">1×</option><option value="1.15">1,15×</option><option value="1.3">1,3×</option></select></label>
+          <span class="article-reader-status" aria-live="polite">Leitor disponível</span>
+        </div>
+        <div class="article-share" aria-label="Compartilhar este artigo">
+          <span class="article-share__label">Compartilhe:</span>
+          <button class="article-share__button" type="button" data-share-native hidden>Compartilhar</button>
+          <a class="article-share__button" href="#" data-share="whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="article-share__button" href="#" data-share="facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a class="article-share__button" href="#" data-share="x" target="_blank" rel="noopener noreferrer">X</a>
+          <button class="article-share__button" type="button" data-share-copy>Copiar link</button>
+          <span class="article-share__status" aria-live="polite"></span>
+        </div>
         <div class="article-copy">${article}</div>
       </article>
     </div>
@@ -147,6 +164,7 @@ ${ogImage ? `<meta name="twitter:image" content="${escapeHtml(ogImage)}">` : ''}
 <script src="../../../assets/js/search.js"></script>
 <script src="../../../assets/js/site.js" data-base="../../../"></script>
 <script src="../../../assets/js/category-drawer.js"></script>
+<script src="../../../assets/js/article-experience.js"></script>
 </body>
 </html>`;
 }
@@ -264,7 +282,7 @@ async function publishArticle() {
     addLog('✔ index.html gerado');
 
     try {
-      await publishHomeCard({ silent: true });
+      await publishHomeCard({ silent: true, data });
       addLog('✔ Home atualizada');
     } catch (homeErr) {
       addLog(`⚠ Home não atualizada: ${homeErr.message}`);

@@ -8,7 +8,7 @@
 @import url("components/cards.css");
 @import url("components/search.css");
 @import url("components/share.css");
-@import url("pages/home.css");
+@import url("pages/home.css?v=hero-460-final");
 @import url("pages/article.css");
 @import url("pages/thinkers.css");
 @import url("layout/footer.css");

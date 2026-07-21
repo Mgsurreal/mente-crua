@@ -40,13 +40,27 @@ function appendOrUpdateCard(existingHtml, newCard, slug) {
 async function publishHomeCard(options = {}) {
   if (!await requireProject()) return;
 
-  const type = $('#contentType').value || 'artigos';
-  const title = $('#homeTitle').value.trim() || $('#contentName').value.trim();
+  const publishedData = options.data || null;
+  const type = publishedData?.type || $('#contentType').value || 'artigos';
+  const title = publishedData
+    ? (publishedData.home?.title || publishedData.title || '').trim()
+    : ($('#homeTitle').value.trim() || $('#contentName').value.trim());
   if (!title) return alert('Informe o título do card da Home.');
 
-  const slug = $('#contentSlug').value || slugify($('#contentName').value || title);
-  const folder = `modules/${type}/${slug}/`;
-  const data = {
+  const slug = publishedData?.slug || $('#contentSlug').value || slugify($('#contentName').value || title);
+  const folder = publishedData?.folder || `modules/${type}/${slug}/`;
+  const data = publishedData ? {
+    ...publishedData,
+    type,
+    slug,
+    title: publishedData.title || title,
+    folder,
+    home: {
+      ...(publishedData.home || {}),
+      title,
+      link: publishedData.home?.link || folder
+    }
+  } : {
     type,
     slug,
     title,
