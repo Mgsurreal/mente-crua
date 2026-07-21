@@ -107,7 +107,7 @@
         ],
         [
             "antes-da-disney",
-            "Antes da Disney",
+            "Era uma Vez",
             "antes-da-disney.png"
         ]
     ];

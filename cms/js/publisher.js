@@ -63,7 +63,7 @@ function articlePageHtml(data) {
   const footerSlug = slugify(data.category || 'artigos');
   const knownFooters = ['artigos','pensadores','livros','conceitos','mitologia','historia','mitos-e-lendas','psicologia','ciencia','arte-explica','antes-da-disney'];
   const footerClass = knownFooters.includes(footerSlug) ? footerSlug : 'artigos';
-  const categoryLabels = {pensadores:'Pensadores',livros:'Livros',conceitos:'Conceitos',mitologia:'Mitologia',historia:'História','mitos-e-lendas':'Mitos e Lendas',psicologia:'Psicologia',ciencia:'Ciência','arte-explica':'A Arte Explica','antes-da-disney':'Antes da Disney',artigos:'Artigos'};
+  const categoryLabels = {pensadores:'Pensadores',livros:'Livros',conceitos:'Conceitos',mitologia:'Mitologia',historia:'História','mitos-e-lendas':'Mitos e Lendas',psicologia:'Psicologia',ciencia:'Ciência','arte-explica':'A Arte Explica','antes-da-disney':'Era uma Vez',artigos:'Artigos'};
   const categoryLabel = categoryLabels[footerClass] || data.category || 'Artigos';
   const tocHtml = data.sidebar?.autoToc !== false && toc.length ? `<section class="article-side-card"><h2>Neste artigo</h2><ul>${toc.map(item => `<li><a href="#${escapeHtml(item.id)}">${escapeHtml(item.label)}</a></li>`).join('')}</ul></section>` : '';
   const libraryHtml = data.sidebar?.library?.length ? `<section class="article-side-card"><h2>Biblioteca complementar</h2><ul>${sidebarItemsHtml(data.sidebar.library)}</ul></section>` : '';
@@ -182,7 +182,7 @@ function buildCategoryCard(data) {
   const description = data.home?.description || data.seo?.description || data.subtitle || '';
   const thumb = data.thumb ? `../artigos/${data.slug}/${data.thumb}` : '../../assets/img/logo-site.png';
   const link = `../artigos/${data.slug}/`;
-  const categoryLabels = {pensadores:'Pensadores',livros:'Livros',conceitos:'Conceitos',mitologia:'Mitologia',historia:'História','mitos-e-lendas':'Mitos e Lendas',psicologia:'Psicologia',ciencia:'Ciência','arte-explica':'A Arte Explica','antes-da-disney':'Antes da Disney'};
+  const categoryLabels = {pensadores:'Pensadores',livros:'Livros',conceitos:'Conceitos',mitologia:'Mitologia',historia:'História','mitos-e-lendas':'Mitos e Lendas',psicologia:'Psicologia',ciencia:'Ciência','arte-explica':'A Arte Explica','antes-da-disney':'Era uma Vez'};
   return `<article class="category-article-card" data-atlas-slug="${escapeHtml(data.slug)}"><a href="${link}"><img src="${escapeHtml(thumb)}" alt="${escapeHtml(data.title)}"></a><div class="category-article-card-body"><span class="category-article-card-category">${escapeHtml(categoryLabels[data.category] || data.category)}</span><h2><a href="${link}">${escapeHtml(data.title)}</a></h2>${description ? `<p>${escapeHtml(description)}</p>` : ''}<div class="category-article-card-footer"><span>${Number(data.readingTime) || 8} min de leitura</span><a href="${link}">Ler artigo →</a></div></div></article>`;
 }
 
