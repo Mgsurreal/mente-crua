@@ -88,6 +88,15 @@ ${ogImage ? `<meta name="twitter:image" content="${escapeHtml(ogImage)}">` : ''}
 <link rel="stylesheet" href="../../../assets/css/components/category-drawer.css">
 <link rel="stylesheet" href="../../../assets/css/pages/article-template.css">
 <link rel="stylesheet" href="../../../assets/css/pages/article-experience.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HTMGLEHCF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4HTMGLEHCF');
+</script>
 <link rel="icon" type="image/png" href="../../../assets/img/favicon-v1.png">
 </head>
 <body class="article-template article-theme--${theme}" style="--article-accent:${accent};--article-hero-position:${heroPosition}">

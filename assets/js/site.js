@@ -132,6 +132,7 @@ const y = -(window.scrollY * 0.10);
     function loadAnalytics() {
         if (analyticsLoaded) return;
         analyticsLoaded = true;
+        if (typeof window.gtag === 'function') return;
         window.dataLayer = window.dataLayer || [];
         window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
         window.gtag('js', new Date());
