@@ -1,0 +1,10 @@
+.git
+.git/**
+
+.codex
+.codex/**
+.agents
+.agents/**
+
+tmp
+tmp/**
