@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "articleSlug": "durma-ou-alguma-coisa-vira-buscar-voce",
+  "originalLocale": "pt-br",
+  "originalPath": "index.html",
+  "bannerPolicy": {
+    "mode": "shared-html-text",
+    "sharedBanner": "img/banner-clean-2666x590.webp",
+    "width": 2666,
+    "height": 590
+  },
+  "updatedAt": "2026-07-22T00:03:51Z",
+  "locales": {
+    "pt-br": {
+      "status": "original",
+      "path": "index.html",
+      "source": "data.json",
+      "audio": {
+        "mode": "browser"
+      },
+      "banner": "img/banner-br.webp"
+    },
+    "pt-pt": {
+      "status": "published",
+      "path": "pt-pt/index.html",
+      "source": "translations/pt-pt.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.946,
+        "title": "Dorme, ou algo virá buscar-te"
+      },
+      "publishedAt": "2026-07-22T00:03:50Z"
+    },
+    "en-gb": {
+      "status": "published",
+      "path": "en-gb/index.html",
+      "source": "translations/en-gb.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.935,
+        "title": "Sleep, or something will come for you"
+      },
+      "publishedAt": "2026-07-22T00:03:50Z"
+    },
+    "es-es": {
+      "status": "published",
+      "path": "es-es/index.html",
+      "source": "translations/es-es.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [
+          "possíveis trechos em português: 81"
+        ],
+        "ratio": 0.958,
+        "title": "Duerme, o algo vendrá por ti"
+      },
+      "publishedAt": "2026-07-22T00:03:50Z"
+    },
+    "es-latam": {
+      "status": "published",
+      "path": "es-latam/index.html",
+      "source": "translations/es-latam.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [
+          "possíveis trechos em português: 81"
+        ],
+        "ratio": 0.958,
+        "title": "Duerme, o algo vendrá por ti"
+      },
+      "publishedAt": "2026-07-22T00:03:50Z"
+    },
+    "fr-fr": {
+      "status": "published",
+      "path": "fr-fr/index.html",
+      "source": "translations/fr-fr.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [
+          "possíveis trechos em português: 36"
+        ],
+        "ratio": 1.02,
+        "title": "Dors, ou quelque chose viendra te chercher"
+      },
+      "publishedAt": "2026-07-22T00:03:50Z"
+    },
+    "de-de": {
+      "status": "published",
+      "path": "de-de/index.html",
+      "source": "translations/de-de.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 1.02,
+        "title": "Schlaf, sonst kommt etwas, um dich zu holen"
+      },
+      "publishedAt": "2026-07-22T00:03:50Z"
+    },
+    "it-it": {
+      "status": "published",
+      "path": "it-it/index.html",
+      "source": "translations/it-it.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [
+          "possíveis trechos em português: 13"
+        ],
+        "ratio": 0.971,
+        "title": "Dormi, o qualcosa verrà a prenderti"
+      },
+      "publishedAt": "2026-07-22T00:03:50Z"
+    },
+    "ru-ru": {
+      "status": "published",
+      "path": "ru-ru/index.html",
+      "source": "translations/ru-ru.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.909,
+        "title": "Спи, иначе что-нибудь придёт за тобой"
+      },
+      "publishedAt": "2026-07-22T00:03:50Z"
+    },
+    "ar": {
+      "status": "published",
+      "path": "ar/index.html",
+      "source": "translations/ar.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.766,
+        "title": "نم، وإلا سيأتي شيء من أجلك"
+      },
+      "publishedAt": "2026-07-22T00:03:51Z"
+    },
+    "ar-eg": {
+      "status": "published",
+      "path": "ar-eg/index.html",
+      "source": "translations/ar-eg.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.766,
+        "title": "نم، وإلا سيأتي شيء من أجلك"
+      },
+      "publishedAt": "2026-07-22T00:03:51Z"
+    },
+    "hi-in": {
+      "status": "published",
+      "path": "hi-in/index.html",
+      "source": "translations/hi-in.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.923,
+        "title": "सो जाओ, नहीं तो तुम्हारे लिए कुछ आएगा"
+      },
+      "publishedAt": "2026-07-22T00:03:51Z"
+    },
+    "ja-jp": {
+      "status": "published",
+      "path": "ja-jp/index.html",
+      "source": "translations/ja-jp.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.559,
+        "title": "眠れ、さもないと何かが来るぞ"
+      },
+      "publishedAt": "2026-07-22T00:03:51Z"
+    },
+    "ko-kr": {
+      "status": "published",
+      "path": "ko-kr/index.html",
+      "source": "translations/ko-kr.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.605,
+        "title": "자, 안 그러면 뭔가 널 찾아올 거야"
+      },
+      "publishedAt": "2026-07-22T00:03:51Z"
+    },
+    "zh-cn": {
+      "status": "published",
+      "path": "zh-cn/index.html",
+      "source": "translations/zh-cn.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T22:34:33Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.458,
+        "title": "睡吧，不然会有东西来找你"
+      },
+      "publishedAt": "2026-07-22T00:03:51Z"
+    }
+  }
+}

@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "articleSlug": "a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem",
+  "originalLocale": "pt-br",
+  "originalPath": "index.html",
+  "bannerPolicy": {
+    "mode": "shared-html-text",
+    "sharedBanner": "img/banner-clean-2666x590.webp",
+    "width": 2666,
+    "height": 590
+  },
+  "updatedAt": "2026-07-22T00:03:53Z",
+  "locales": {
+    "pt-br": {
+      "status": "original",
+      "path": "index.html",
+      "source": "data.json",
+      "banner": "img/banner-br.webp",
+      "audio": {
+        "mode": "browser"
+      }
+    },
+    "pt-pt": {
+      "status": "published",
+      "path": "pt-pt/index.html",
+      "source": "translations/pt-pt.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 1.0,
+        "title": "A Pequena Sereia: a história em que o amor não salva ninguém"
+      },
+      "publishedAt": "2026-07-22T00:03:51Z"
+    },
+    "en-gb": {
+      "status": "published",
+      "path": "en-gb/index.html",
+      "source": "translations/en-gb.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.972,
+        "title": "The Little Mermaid: the tale in which love saves no one"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "es-es": {
+      "status": "published",
+      "path": "es-es/index.html",
+      "source": "translations/es-es.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [
+          "possíveis trechos em português: 211"
+        ],
+        "ratio": 1.008,
+        "title": "La Sirenita: el cuento en el que el amor no salva a nadie"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "es-latam": {
+      "status": "published",
+      "path": "es-latam/index.html",
+      "source": "translations/es-latam.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [
+          "possíveis trechos em português: 211"
+        ],
+        "ratio": 1.008,
+        "title": "La Sirenita: el cuento en el que el amor no salva a nadie"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "fr-fr": {
+      "status": "published",
+      "path": "fr-fr/index.html",
+      "source": "translations/fr-fr.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [
+          "possíveis trechos em português: 55"
+        ],
+        "ratio": 1.073,
+        "title": "La Petite Sirène : le conte où l’amour ne sauve personne"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "de-de": {
+      "status": "published",
+      "path": "de-de/index.html",
+      "source": "translations/de-de.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 1.121,
+        "title": "Die kleine Meerjungfrau: Die Geschichte, in der die Liebe niemanden rettet"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "it-it": {
+      "status": "published",
+      "path": "it-it/index.html",
+      "source": "translations/it-it.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [
+          "possíveis trechos em português: 21"
+        ],
+        "ratio": 1.028,
+        "title": "La Sirenetta: la storia in cui l'amore non salva nessuno"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "ru-ru": {
+      "status": "published",
+      "path": "ru-ru/index.html",
+      "source": "translations/ru-ru.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.969,
+        "title": "«Русалочка»: сказка, в которой любовь никого не спасает"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "ar": {
+      "status": "published",
+      "path": "ar/index.html",
+      "source": "translations/ar.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.779,
+        "title": "حورية البحر الصغيرة: القصة التي لا ينقذ فيها الحب أحدا"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "ar-eg": {
+      "status": "published",
+      "path": "ar-eg/index.html",
+      "source": "translations/ar-eg.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.779,
+        "title": "حورية البحر الصغيرة: القصة التي لا ينقذ فيها الحب أحدا"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "hi-in": {
+      "status": "published",
+      "path": "hi-in/index.html",
+      "source": "translations/hi-in.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 1.023,
+        "title": "द लिटिल मरमेड: वह कहानी जिसमें प्यार किसी को नहीं बचाता"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "ja-jp": {
+      "status": "published",
+      "path": "ja-jp/index.html",
+      "source": "translations/ja-jp.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.533,
+        "title": "リトル・マーメイド:愛が誰も救わない物語"
+      },
+      "publishedAt": "2026-07-22T00:03:52Z"
+    },
+    "ko-kr": {
+      "status": "published",
+      "path": "ko-kr/index.html",
+      "source": "translations/ko-kr.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.592,
+        "title": "인어공주: 사랑이 아무도 구하지 못하는 이야기"
+      },
+      "publishedAt": "2026-07-22T00:03:53Z"
+    },
+    "zh-cn": {
+      "status": "published",
+      "path": "zh-cn/index.html",
+      "source": "translations/zh-cn.json",
+      "audio": {
+        "mode": "absent"
+      },
+      "updatedAt": "2026-07-21T23:08:42Z",
+      "validation": {
+        "errors": [],
+        "warnings": [],
+        "ratio": 0.419,
+        "title": "小美人鱼：爱情无法拯救任何人的故事"
+      },
+      "publishedAt": "2026-07-22T00:03:53Z"
+    }
+  }
+}

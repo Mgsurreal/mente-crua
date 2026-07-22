@@ -84,13 +84,20 @@
             const inicioDoAno = new Date(hoje.getFullYear(), 0, 0);
             const diaDoAno = Math.floor((hoje - inicioDoAno) / 86400000);
             const frase = frases[diaDoAno % frases.length];
-
-            quoteText.textContent = `“${frase.texto}”`;
-            quoteAuthor.textContent = `— ${frase.autor}`;
+            window.MenteCruaDailyQuote = frase;
+            const selected = localStorage.getItem('mente-crua-language') || 'pt-br';
+            if (selected === 'pt-br') {
+                quoteText.textContent = `“${frase.texto}”`;
+                quoteAuthor.textContent = `— ${frase.autor}`;
+            }
+            document.dispatchEvent(new CustomEvent('mente-crua-daily-quote'));
         })
         .catch(() => {
-            quoteText.textContent = '“Quem nunca muda de ideia talvez nunca tenha pensado.”';
-            quoteAuthor.textContent = '— Mente Crua';
+            const selected = localStorage.getItem('mente-crua-language') || 'pt-br';
+            if (selected === 'pt-br') {
+                quoteText.textContent = '“Quem nunca muda de ideia talvez nunca tenha pensado.”';
+                quoteAuthor.textContent = '— Mente Crua';
+            }
         });
 }());
 

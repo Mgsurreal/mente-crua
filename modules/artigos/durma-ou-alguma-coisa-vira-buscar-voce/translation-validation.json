@@ -1,0 +1,20 @@
+{
+  "article": "durma-ou-alguma-coisa-vira-buscar-voce",
+  "passed": [
+    "ar-eg",
+    "ar",
+    "de-de",
+    "en-gb",
+    "es-es",
+    "es-latam",
+    "fr-fr",
+    "hi-in",
+    "it-it",
+    "ja-jp",
+    "ko-kr",
+    "pt-pt",
+    "ru-ru",
+    "zh-cn"
+  ],
+  "failed": {}
+}

@@ -5,7 +5,10 @@ const Atlas = {
   contentDirHandle: null,
   imgDirHandle: null,
   current: null,
-  media: []
+  media: [],
+  translationLocale: null,
+  translationManifest: null,
+  originalData: null
 };
 
 const ATLAS_DRAFT_KEY = 'mente-crua-atlas-draft-v1';
@@ -230,7 +233,7 @@ function collectEditorData() {
       accentColor: $('#accentColor').value || '#8f2424',
       heroPosition: $('#heroPosition').value || 'center'
     },
-    language: $('#articleLanguage').value || 'pt-BR',
+    language: window.MenteCruaLocales?.normalize($('#articleLanguage').value) || 'pt-br',
     author: $('#author').value.trim() || 'Equipe Mente Crua',
     publishedAt: $('#publishedAt').value || new Date().toISOString().slice(0, 10),
     readingTime: Math.max(1, Number($('#readingTime').value) || 8),
@@ -278,7 +281,7 @@ function fillForms(data) {
   $('#articleTheme').value = data.presentation?.theme || 'light';
   $('#accentColor').value = data.presentation?.accentColor || '#8f2424';
   $('#heroPosition').value = data.presentation?.heroPosition || 'center';
-  $('#articleLanguage').value = data.language || 'pt-BR';
+  $('#articleLanguage').value = window.MenteCruaLocales?.normalize(data.language) || 'pt-br';
   $('#author').value = data.author || 'Equipe Mente Crua';
   $('#publishedAt').value = (data.publishedAt || '').slice(0, 10);
   $('#readingTime').value = data.readingTime || 8;
@@ -308,8 +311,11 @@ async function setCurrentContent({ dirHandle, imgHandle, data }) {
     title: data.title,
     folder: data.folder || `modules/${data.type}/${data.slug}/`
   };
+  Atlas.translationLocale = null;
+  Atlas.originalData = data;
   fillForms(data);
   saveLocalDraft();
   await refreshMediaLibrary();
+  if (typeof loadLanguageWorkspace === 'function') await loadLanguageWorkspace();
   refreshStatus();
 }

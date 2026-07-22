@@ -3,19 +3,8 @@
     const hero = document.querySelector(".home-hero");
     if (!selector || !hero) return;
 
-    const available = new Set([
-        "pt-br", "pt-pt", "en-gb", "es-es", "es-latam", "fr-fr",
-        "de-de", "it-it", "ru-ru", "ar", "ar-eg", "hi-in", "ja-jp",
-        "ko-kr", "zh-cn"
-    ]);
-
-    const htmlLanguages = {
-        "pt-br": "pt-BR", "pt-pt": "pt-PT", "en-gb": "en-GB",
-        "es-es": "es-ES", "es-latam": "es-419", "fr-fr": "fr-FR",
-        "de-de": "de-DE", "it-it": "it-IT", "ru-ru": "ru-RU",
-        ar: "ar", "ar-eg": "ar-EG", "hi-in": "hi-IN", "ja-jp": "ja-JP",
-        "ko-kr": "ko-KR", "zh-cn": "zh-CN"
-    };
+    const registry = window.MenteCruaLocales;
+    const available = new Set(registry?.locales.map(({ code }) => code) || ["pt-br"]);
 
     const all = (query, root = document) => [...root.querySelectorAll(query)];
     const one = (query, root = document) => root.querySelector(query);
@@ -79,6 +68,68 @@
     }
 
     const original = readHome();
+    const originalCards = new Map(all('.post-card').map((card) => [card, {
+        category: one('.post-category', card)?.textContent.trim() || '',
+        title: one('h3', card)?.textContent.trim() || '',
+        description: one('p', card)?.textContent.trim() || '',
+        imageAlt: one('img', card)?.alt || '',
+        links: all('a', card).map((link) => link.getAttribute('href')),
+        hidden: card.hidden
+    }]));
+
+    function applyEditorialContent(selected) {
+        const content = window.MenteCruaHomeContentI18n?.[selected]
+            || (selected === 'ar-eg' ? window.MenteCruaHomeContentI18n?.ar : null);
+        all('.post-card').forEach((card) => {
+            const originalCard = originalCards.get(card);
+            const slug = card.dataset.atlasSlug;
+            const article = content?.articles?.[slug];
+            if (selected === 'pt-br') {
+                card.hidden = originalCard.hidden;
+                text(one('.post-category', card), originalCard.category);
+                text(one('h3', card), originalCard.title);
+                text(one('p', card), originalCard.description);
+                if (one('img', card)) one('img', card).alt = originalCard.imageAlt;
+                all('a', card).forEach((link, index) => link.setAttribute('href', originalCard.links[index]));
+                return;
+            }
+            card.hidden = !article;
+            if (!article) return;
+            text(one('.post-category', card), article.category);
+            text(one('h3', card), article.title);
+            text(one('p', card), article.description);
+            if (one('img', card)) one('img', card).alt = article.title;
+            all('a', card).forEach((link, index) => {
+                const base = originalCard.links[index].replace(/\/?$/, '/');
+                link.setAttribute('href', `${base}index-${selected}.html`);
+            });
+        });
+        const quote = content?.quote;
+        if (quote) {
+            text(one('[data-daily-quote-text]'), `“${quote[0]}”`);
+            text(one('[data-daily-quote-author]'), `— ${quote[1]}`);
+        } else if (window.MenteCruaDailyQuote) {
+            text(one('[data-daily-quote-text]'), `“${window.MenteCruaDailyQuote.texto}”`);
+            text(one('[data-daily-quote-author]'), `— ${window.MenteCruaDailyQuote.autor}`);
+        }
+    }
+
+    function browserLocale() {
+        const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
+        for (const raw of languages) {
+            const code = String(raw || '').toLowerCase();
+            if (code === 'pt-pt') return 'pt-pt';
+            if (code.startsWith('pt')) return 'pt-br';
+            if (code.startsWith('en')) return 'en-gb';
+            if (/^es-(mx|ar|cl|co|pe|uy|ve|ec|bo|py|cr|gt|hn|ni|pa|do|pr)/.test(code)) return 'es-latam';
+            if (code.startsWith('es')) return 'es-es';
+            if (code === 'ar-eg') return 'ar-eg';
+            if (code.startsWith('ar')) return 'ar';
+            const prefix = {fr:'fr-fr',de:'de-de',it:'it-it',ru:'ru-ru',hi:'hi-in',ja:'ja-jp',ko:'ko-kr',zh:'zh-cn'}[code.split('-')[0]];
+            if (prefix) return prefix;
+        }
+        return registry?.defaultCode || 'pt-br';
+    }
 
     function applyHome(copy) {
         all(".menu a").forEach((item, index) => text(item, copy.nav[index]));
@@ -150,16 +201,19 @@
         const selected = available.has(language) ? language : "pt-br";
         selector.value = selected;
         hero.style.backgroundImage = `url("assets/img/banner/home/home-${selected}.webp")`;
-        document.documentElement.lang = htmlLanguages[selected] || "pt-BR";
-        const isArabic = selected === "ar" || selected === "ar-eg";
+        const locale = registry?.byCode[selected];
+        document.documentElement.lang = locale?.htmlLang || "pt-BR";
+        const isArabic = locale?.dir === "rtl";
         document.documentElement.dir = isArabic ? "rtl" : "ltr";
         document.body.classList.toggle("is-rtl", isArabic);
         const translated = window.MenteCruaHomeI18n?.[selected]
             || (selected === "ar-eg" ? window.MenteCruaHomeI18n?.ar : null);
         applyHome(translated || original);
-        localStorage.setItem("mente-crua-language", selected);
+        applyEditorialContent(selected);
+        localStorage.setItem(registry?.storageKey || "mente-crua-language", selected);
     }
 
     selector.addEventListener("change", () => applyLanguage(selector.value));
-    applyLanguage(localStorage.getItem("mente-crua-language") || "pt-br");
+    document.addEventListener('mente-crua-daily-quote', () => applyEditorialContent(selector.value));
+    applyLanguage(localStorage.getItem(registry?.storageKey || "mente-crua-language") || browserLocale());
 })();

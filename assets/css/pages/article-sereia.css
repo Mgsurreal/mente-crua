@@ -1,7 +1,7 @@
 /* Correção direta do banner do artigo */
 .article-hero {
   min-height: clamp(250px, 22vw, 326px) !important;
-  background-image: url("../../../modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/img/banner-br.webp") !important;
+  background-image: url("../../../modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/img/banner-clean-2666x590.webp") !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
@@ -24,7 +24,7 @@
 .article-hero {
   position: relative !important;
   min-height: clamp(250px, 22vw, 326px) !important;
-  background: #0b0808 url("../../../modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/img/banner-br.webp") center center / cover no-repeat !important;
+  background: #0b0808 url("../../../modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/img/banner-clean-2666x590.webp") center center / cover no-repeat !important;
   overflow: hidden !important;
 }
 
@@ -40,5 +40,5 @@
 .article-template .article-hero,
 .article-theme--dense .article-hero,
 body[class*="article-theme"] .article-hero {
-  background: #0b0808 url("../../../modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/img/banner-br.webp") center center / cover no-repeat !important;
+  background: #0b0808 url("../../../modules/artigos/a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem/img/banner-clean-2666x590.webp") center center / cover no-repeat !important;
 }

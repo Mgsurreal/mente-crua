@@ -73,3 +73,56 @@
         grid-template-columns: 1fr;
     }
 }
+
+html:not([lang="pt-BR"]):not([lang="pt-PT"]) :is(.pensadores-hero,.livros-hero,.conceitos-hero,.mitologia-hero,.historia-hero,.mitos-e-lendas-hero,.psicologia-hero,.ciencia-hero,.arte-explica-hero,.antes-da-disney-hero)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(ellipse at center, rgba(4,4,4,.96) 0%, rgba(4,4,4,.88) 25%, rgba(4,4,4,.48) 48%, transparent 72%);
+    pointer-events: none;
+}
+
+html:not([lang="pt-BR"]):not([lang="pt-PT"]) :is(.pensadores-hero,.livros-hero,.conceitos-hero,.mitologia-hero,.historia-hero,.mitos-e-lendas-hero,.psicologia-hero,.ciencia-hero,.arte-explica-hero,.antes-da-disney-hero) .container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    min-height: inherit;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+html:not([lang="pt-BR"]):not([lang="pt-PT"]) :is(.pensadores-hero,.livros-hero,.conceitos-hero,.mitologia-hero,.historia-hero,.mitos-e-lendas-hero,.psicologia-hero,.ciencia-hero,.arte-explica-hero,.antes-da-disney-hero) #category-title,
+html:not([lang="pt-BR"]):not([lang="pt-PT"]) :is(.pensadores-hero,.livros-hero,.conceitos-hero,.mitologia-hero,.historia-hero,.mitos-e-lendas-hero,.psicologia-hero,.ciencia-hero,.arte-explica-hero,.antes-da-disney-hero) #category-title + p {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0;
+    padding: 0;
+    overflow: visible !important;
+    clip: auto !important;
+    clip-path: none !important;
+    white-space: normal !important;
+}
+
+html:not([lang="pt-BR"]):not([lang="pt-PT"]) :is(.pensadores-hero,.livros-hero,.conceitos-hero,.mitologia-hero,.historia-hero,.mitos-e-lendas-hero,.psicologia-hero,.ciencia-hero,.arte-explica-hero,.antes-da-disney-hero) #category-title {
+    max-width: 900px;
+    color: #d8c8ae;
+    font-family: "Cinzel", serif;
+    font-size: clamp(2rem, 4.5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: .04em;
+    text-shadow: 0 3px 18px #000;
+}
+
+html:not([lang="pt-BR"]):not([lang="pt-PT"]) :is(.pensadores-hero,.livros-hero,.conceitos-hero,.mitologia-hero,.historia-hero,.mitos-e-lendas-hero,.psicologia-hero,.ciencia-hero,.arte-explica-hero,.antes-da-disney-hero) #category-title + p {
+    max-width: 720px;
+    margin-top: 14px;
+    color: rgba(216,200,174,.82);
+    font-size: clamp(.85rem, 1.25vw, 1.05rem);
+    line-height: 1.6;
+    text-shadow: 0 2px 12px #000;
+}

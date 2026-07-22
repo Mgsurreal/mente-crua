@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="cms.css">
   <link rel="stylesheet" href="atlas-options.css">
   <link rel="stylesheet" href="atlas-draft.css">
+  <link rel="stylesheet" href="languages.css">
 <link rel="icon" type="image/png" href="../assets/img/favicon-v1.png"><!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HTMGLEHCF"></script>
 <script>
@@ -42,6 +43,7 @@
       <button class="step" data-step="estrutura">📁 Estrutura</button>
       <button class="step" data-step="imagens">🖼️ Imagens</button>
       <button class="step" data-step="editor">✍️ Editor</button>
+      <button class="step" data-step="idiomas">🌐 Idiomas</button>
     </nav>
 
     <section id="screen-home" class="screen active">
@@ -150,7 +152,7 @@
           <label>Imagem OG — 1200 × 630 px
             <input id="ogImage" placeholder="img/og.webp">
           </label>
-          <label>Banner do artigo — 1900 × 420 px
+          <label>Banner do artigo — 2666 × 590 px
             <input id="heroImage" placeholder="img/banner.webp">
           </label>
           <label>Clima visual
@@ -167,9 +169,23 @@
               <option value="bottom">Base</option>
             </select>
           </label>
-          <label>Idioma do artigo
+          <label>Idioma original do artigo
             <select id="articleLanguage">
-              <option value="pt-BR">Português</option><option value="en">Inglês</option><option value="es">Espanhol</option><option value="it">Italiano</option>
+              <option value="pt-br">Português (Brasil)</option>
+              <option value="pt-pt">Português (Portugal)</option>
+              <option value="en-gb">English</option>
+              <option value="es-es">Español (España)</option>
+              <option value="es-latam">Español (Latinoamérica)</option>
+              <option value="fr-fr">Français</option>
+              <option value="de-de">Deutsch</option>
+              <option value="it-it">Italiano</option>
+              <option value="ru-ru">Русский</option>
+              <option value="ar">العربية</option>
+              <option value="ar-eg">العربية (مصر)</option>
+              <option value="hi-in">हिन्दी</option>
+              <option value="ja-jp">日本語</option>
+              <option value="ko-kr">한국어</option>
+              <option value="zh-cn">简体中文</option>
             </select>
           </label>
           <label>Cor de destaque
@@ -215,15 +231,41 @@
       </div>
     </section>
 
+    <section id="screen-idiomas" class="screen">
+      <div class="panel">
+        <div class="language-panel-head">
+          <div>
+            <h2>5. Idiomas</h2>
+            <p class="hint">Gerencie as versões deste artigo. Nesta fase, nenhuma tradução é publicada automaticamente.</p>
+          </div>
+          <div class="language-progress" aria-live="polite">
+            <strong id="languageProgressValue">0/15</strong>
+            <span>versões preparadas</span>
+          </div>
+        </div>
+        <div class="language-progress-track" aria-hidden="true"><span id="languageProgressBar"></span></div>
+        <div id="translationModeNotice" class="translation-mode-notice" hidden></div>
+        <div class="button-row">
+          <button id="btnReturnOriginal" type="button" hidden>↩ Voltar ao original</button>
+          <button id="btnRefreshLanguages" type="button">↻ Atualizar painel</button>
+        </div>
+        <div id="languageGrid" class="language-grid">
+          <p class="hint">Abra um conteúdo para carregar os idiomas.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="panel log-panel">
       <h2>Log</h2>
       <pre id="log">Atlas pronto para publicar.</pre>
     </section>
   </main>
+  <script src="../assets/js/locales.js"></script>
   <script src="js/state.js"></script>
   <script src="js/home.js"></script>
   <script src="js/estrutura.js"></script>
   <script src="js/imagens.js"></script>
+  <script src="js/languages.js"></script>
   <script src="js/editor.js"></script>
   <script src="js/publisher.js"></script>
   <script src="js/app.js"></script>

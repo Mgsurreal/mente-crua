@@ -14,6 +14,13 @@ $('#mediaLibrary').addEventListener('click', handleMediaClick);
 $('#btnSaveDraft').addEventListener('click', saveEditor);
 $('#btnSaveEditor').addEventListener('click', publishArticle);
 $('#btnClearDraft').addEventListener('click', clearLocalDraft);
+$('#languageGrid').addEventListener('click', handleLanguageAction);
+$('#btnReturnOriginal').addEventListener('click', returnToOriginal);
+$('#btnRefreshLanguages').addEventListener('click', async () => {
+  if (!await requireContent()) return;
+  await loadLanguageWorkspace();
+  setLog('🌐 IDIOMAS\n✔ Painel atualizado');
+});
 
 document.addEventListener('input', (event) => {
   if (event.target.matches('input[id], select[id], textarea[id]')) scheduleLocalDraft();

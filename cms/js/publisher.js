@@ -88,6 +88,7 @@ ${ogImage ? `<meta name="twitter:image" content="${escapeHtml(ogImage)}">` : ''}
 <link rel="stylesheet" href="../../../assets/css/components/category-drawer.css">
 <link rel="stylesheet" href="../../../assets/css/pages/article-template.css">
 <link rel="stylesheet" href="../../../assets/css/pages/article-experience.css">
+<link rel="stylesheet" href="../../../assets/css/pages/article-hero-html.css">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HTMGLEHCF"></script>
 <script>
@@ -264,6 +265,10 @@ async function rebuildSitemap() {
 
 async function publishArticle() {
   if (!await requireContent()) return;
+  if (Atlas.translationLocale) {
+    setLog('🌐 TRADUÇÃO\n⚠ Tradução salva somente como rascunho nesta fase. O original brasileiro não foi alterado.');
+    return;
+  }
 
   setLog('🚀 PUBLICADOR\nIniciando...');
 

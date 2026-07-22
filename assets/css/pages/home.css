@@ -1788,6 +1788,10 @@ main,
     }
 }
 
+.recent-posts .post-card[hidden] {
+    display: none !important;
+}
+
 /* ===================================================
    GAVETA EDITORIAL — EXCLUSIVA DA HOME
 =================================================== */
