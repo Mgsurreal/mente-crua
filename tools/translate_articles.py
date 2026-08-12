@@ -15,11 +15,9 @@ ARTICLE_SLUGS = [
     "a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem",
 ]
 TARGETS = {
-    "pt-pt": "pt-pt", "en-gb": "en", "es-es": "es", "fr-fr": "fr",
-    "de-de": "de", "it-it": "it", "ru-ru": "ru", "ar": "ar",
-    "hi-in": "hi", "ja-jp": "ja", "ko-kr": "ko", "zh-cn": "zh-Hans",
+    "en-gb": "en", "es-es": "es",
 }
-COPIES = {"es-latam": "es-es", "ar-eg": "ar"}
+COPIES = {}
 TEXT_KEYS = {"title", "subtitle", "description", "category"}
 ATTR_RE = re.compile(r'\b(alt|title|aria-label)=("([^"]*)"|\'([^\']*)\')', re.I)
 TAG_SPLIT_RE = re.compile(r"(<[^>]+>)")

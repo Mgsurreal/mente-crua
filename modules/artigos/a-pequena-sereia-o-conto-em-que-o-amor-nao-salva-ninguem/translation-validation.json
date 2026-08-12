@@ -1,20 +1,8 @@
 {
   "article": "a-pequena-sereia-o-conto-em-que-o-amor-nao-salva-ninguem",
   "passed": [
-    "ar-eg",
-    "ar",
-    "de-de",
     "en-gb",
-    "es-es",
-    "es-latam",
-    "fr-fr",
-    "hi-in",
-    "it-it",
-    "ja-jp",
-    "ko-kr",
-    "pt-pt",
-    "ru-ru",
-    "zh-cn"
+    "es-es"
   ],
   "failed": {}
 }

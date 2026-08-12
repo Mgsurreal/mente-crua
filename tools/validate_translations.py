@@ -30,12 +30,12 @@ def validate(source, translated, locale):
     if IMG_RE.findall(source_html) != IMG_RE.findall(target_html): errors.append("imagens ou caminhos alterados")
     if LINK_RE.findall(source_html) != LINK_RE.findall(target_html): errors.append("links alterados")
     if "MCSEP" in target_html: errors.append("marcador interno de tradução presente")
-    if locale not in {"pt-pt"}:
+    if locale != "pt-br":
         plain = re.sub(r"<[^>]+>", " ", html.unescape(target_html))
         marker_count = len(PT_MARKERS.findall(plain))
         if marker_count > 12: warnings.append(f"possíveis trechos em português: {marker_count}")
     ratio = len(target_html) / max(1, len(source_html))
-    minimum_ratio = .35 if locale in {"zh-cn", "ja-jp", "ko-kr"} else .55
+    minimum_ratio = .55
     if ratio < minimum_ratio or ratio > 2.6: errors.append(f"variação de tamanho anormal: {ratio:.2f}")
     return errors, warnings, ratio
 

@@ -16,20 +16,8 @@ from lxml import etree, html
 ROOT = Path(__file__).resolve().parents[1]
 LOCALES = {
     "pt-br": ("pt-BR", "ltr", "Português (Brasil)", "pt-BR"),
-    "pt-pt": ("pt-PT", "ltr", "Português (Portugal)", "pt-PT"),
     "en-gb": ("en-GB", "ltr", "English", "en-GB"),
-    "es-es": ("es-ES", "ltr", "Español (España)", "es-ES"),
-    "es-latam": ("es-419", "ltr", "Español (Latinoamérica)", "es-419"),
-    "fr-fr": ("fr-FR", "ltr", "Français", "fr-FR"),
-    "de-de": ("de-DE", "ltr", "Deutsch", "de-DE"),
-    "it-it": ("it-IT", "ltr", "Italiano", "it-IT"),
-    "ru-ru": ("ru-RU", "ltr", "Русский", "ru-RU"),
-    "ar": ("ar", "rtl", "العربية", "ar"),
-    "ar-eg": ("ar-EG", "rtl", "العربية (مصر)", "ar-EG"),
-    "hi-in": ("hi-IN", "ltr", "हिन्दी", "hi-IN"),
-    "ja-jp": ("ja-JP", "ltr", "日本語", "ja-JP"),
-    "ko-kr": ("ko-KR", "ltr", "한국어", "ko-KR"),
-    "zh-cn": ("zh-CN", "ltr", "简体中文", "zh-CN"),
+    "es-es": ("es-ES", "ltr", "Español", "es-ES"),
 }
 
 UI = {

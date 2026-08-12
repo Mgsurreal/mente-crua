@@ -26,11 +26,11 @@ def check_page(path: Path) -> list[str]:
         if signature(localized_copy[0]) != signature(original_copy[0]):
             errors.append("estrutura editorial difere do original")
     locale = path.stem.removeprefix("index-")
-    expected_dir = "rtl" if locale in {"ar", "ar-eg"} else "ltr"
+    expected_dir = "ltr"
     if root.get("dir") != expected_dir:
         errors.append(f"dir={root.get('dir')} (esperado {expected_dir})")
     options = doc.xpath('//*[@id="article-language-switcher"]//option')
-    if len(options) != 15:
+    if len(options) != 3:
         errors.append(f"seletor tem {len(options)} opções")
     selected = doc.xpath('//*[@id="article-language-switcher"]//option[@selected]/@data-locale')
     if selected != [locale]:

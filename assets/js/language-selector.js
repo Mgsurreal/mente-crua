@@ -78,8 +78,7 @@
     }]));
 
     function applyEditorialContent(selected) {
-        const content = window.MenteCruaHomeContentI18n?.[selected]
-            || (selected === 'ar-eg' ? window.MenteCruaHomeContentI18n?.ar : null);
+        const content = window.MenteCruaHomeContentI18n?.[selected];
         all('.post-card').forEach((card) => {
             const originalCard = originalCards.get(card);
             const slug = card.dataset.atlasSlug;
@@ -118,15 +117,9 @@
         const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
         for (const raw of languages) {
             const code = String(raw || '').toLowerCase();
-            if (code === 'pt-pt') return 'pt-pt';
             if (code.startsWith('pt')) return 'pt-br';
             if (code.startsWith('en')) return 'en-gb';
-            if (/^es-(mx|ar|cl|co|pe|uy|ve|ec|bo|py|cr|gt|hn|ni|pa|do|pr)/.test(code)) return 'es-latam';
             if (code.startsWith('es')) return 'es-es';
-            if (code === 'ar-eg') return 'ar-eg';
-            if (code.startsWith('ar')) return 'ar';
-            const prefix = {fr:'fr-fr',de:'de-de',it:'it-it',ru:'ru-ru',hi:'hi-in',ja:'ja-jp',ko:'ko-kr',zh:'zh-cn'}[code.split('-')[0]];
-            if (prefix) return prefix;
         }
         return registry?.defaultCode || 'pt-br';
     }
@@ -203,11 +196,10 @@
         hero.style.backgroundImage = `url("assets/img/banner/home/home-${selected}.webp")`;
         const locale = registry?.byCode[selected];
         document.documentElement.lang = locale?.htmlLang || "pt-BR";
-        const isArabic = locale?.dir === "rtl";
-        document.documentElement.dir = isArabic ? "rtl" : "ltr";
-        document.body.classList.toggle("is-rtl", isArabic);
+        document.documentElement.dir = "ltr";
+        document.body.classList.remove("is-rtl");
         const translated = window.MenteCruaHomeI18n?.[selected]
-            || (selected === "ar-eg" ? window.MenteCruaHomeI18n?.ar : null);
+            || null;
         applyHome(translated || original);
         applyEditorialContent(selected);
         localStorage.setItem(registry?.storageKey || "mente-crua-language", selected);
