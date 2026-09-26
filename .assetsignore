@@ -6,5 +6,8 @@
 .agents
 .agents/**
 
+.wrangler
+.wrangler/**
+
 tmp
 tmp/**
