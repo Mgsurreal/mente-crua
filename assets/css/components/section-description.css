@@ -1,0 +1,22 @@
+.section-description-trigger{position:absolute;left:50%;bottom:-19px;z-index:4;width:48px;height:21px;padding:0;border:0;background:transparent;transform:translateX(-50%);cursor:pointer;filter:drop-shadow(0 4px 6px rgba(0,0,0,.8))}
+.section-description-trigger span{display:block;width:0;height:0;margin:0 auto;border-left:12px solid transparent;border-right:12px solid transparent;border-top:10px solid #9f1518;transition:transform .28s ease,border-color .22s ease,filter .22s ease;animation:section-description-pulse 2.8s ease-in-out infinite}
+.section-description-trigger:hover span,.section-description-trigger:focus-visible span{border-top-color:#c32227;filter:drop-shadow(0 0 5px rgba(166,20,24,.75))}
+.section-description-trigger.is-open span{transform:rotate(180deg);animation:none}
+.section-description-trigger:focus-visible,.section-description-close:focus-visible{outline:1px solid rgba(190,35,38,.95);outline-offset:3px}
+@keyframes section-description-pulse{0%,72%,100%{transform:translateY(0);filter:drop-shadow(0 0 0 rgba(166,20,24,0))}82%{transform:translateY(3px);filter:drop-shadow(0 0 4px rgba(166,20,24,.65))}91%{transform:translateY(0)}}
+.section-description-drawer{position:absolute;top:100%;left:50%;z-index:3;width:min(820px,calc(100vw - 40px));padding-top:18px;visibility:hidden;opacity:0;pointer-events:none;transform:translate(-50%,-20px);transition:opacity .32s ease,transform .38s cubic-bezier(.22,.82,.3,1),visibility 0s linear .38s}
+.section-description-drawer.is-open{visibility:visible;opacity:1;pointer-events:auto;transform:translate(-50%,0);transition-delay:0s}
+.section-description-page{position:relative;overflow:hidden;padding:clamp(34px,5vw,56px) clamp(30px,6vw,76px) clamp(32px,4vw,48px);border:1px solid rgba(144,118,91,.35);border-radius:3px 3px 12px 12px;background:linear-gradient(90deg,rgba(139,18,22,.15),transparent 12%,transparent 88%,rgba(139,18,22,.15)),rgba(12,11,10,.88);box-shadow:0 28px 80px rgba(0,0,0,.72),inset 0 0 55px rgba(0,0,0,.4);backdrop-filter:blur(14px) saturate(.72);-webkit-backdrop-filter:blur(14px) saturate(.72);color:#cfc7bc;text-align:center}
+.section-description-page::before,.section-description-page::after{content:"";position:absolute;pointer-events:none}
+.section-description-page::before{inset:12px;border:1px solid rgba(155,130,101,.16);box-shadow:inset 0 0 0 3px rgba(0,0,0,.17)}
+.section-description-page::after{inset:21px 28px auto;height:1px;background:linear-gradient(90deg,transparent,rgba(143,21,24,.66),transparent)}
+.section-description-close{position:absolute;top:17px;right:20px;z-index:2;width:30px;height:30px;border:0;background:transparent;color:rgba(220,211,200,.55);font:300 1.45rem/1 Georgia,serif;cursor:pointer;transition:color .2s ease,transform .2s ease}
+.section-description-close:hover{color:#b51d21;transform:rotate(5deg)}
+.section-description-eyebrow,.section-description-signature{display:block;font-family:"Special Elite","Courier New",monospace;letter-spacing:.08em}
+.section-description-eyebrow{margin-bottom:12px;color:#a92327;font-size:.75rem}
+.section-description-page h2{max-width:650px;margin:0 auto 20px;color:#e4ded5;font-family:"Cinzel",Georgia,serif;font-size:clamp(1.25rem,2.4vw,2rem);font-weight:500;line-height:1.25}
+.section-description-page p{max-width:680px;margin:0 auto;color:rgba(224,217,207,.82);font-size:clamp(.9rem,1.3vw,1.03rem);line-height:1.82;text-wrap:pretty}
+.section-description-signature{margin-top:22px;color:rgba(177,155,132,.72);font-size:.72rem}
+@media(max-width:900px){.section-description-trigger{bottom:-17px}.section-description-drawer{width:min(660px,calc(100vw - 24px));padding-top:16px}.section-description-page{max-height:calc(100vh - 120px);overflow-y:auto;padding:34px 28px 30px}.section-description-page p{line-height:1.68}}
+@media(max-width:520px){.section-description-page{padding:32px 22px 27px;border-radius:2px 2px 9px 9px}.section-description-page h2{margin-bottom:15px}.section-description-page p{font-size:.88rem;line-height:1.58}.section-description-signature{margin-top:17px}}
+@media(prefers-reduced-motion:reduce){.section-description-trigger span{animation:none}.section-description-drawer{transition-duration:.01ms}}

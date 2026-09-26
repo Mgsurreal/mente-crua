@@ -40,6 +40,66 @@
     });
 }());
 
+/* Descrições editoriais expansíveis das seções */
+(function () {
+    const descriptions = {
+        '/modules/pensadores/': ['Galeria dos Pensadores', 'Ideias atravessam séculos quando ainda têm algo a nos perguntar.', 'Filósofos, cientistas, escritores e intelectuais aparecem aqui não como estátuas intocáveis, mas como vozes em diálogo. Explore suas obras, contradições e as perguntas que continuam transformando nossa maneira de compreender o mundo.', 'Encontre uma mente. Siga uma ideia.'],
+        '/modules/livros/': ['Biblioteca Antiga', 'Alguns livros terminam. Outros continuam dentro de nós.', 'Esta sala reúne obras que informam, provocam e transformam. Cada leitura abre caminhos entre épocas, autores e ideias para quem aceita atravessar as páginas sem exigir respostas fáceis.', 'Abra um livro. Atravesse outro tempo.'],
+        '/modules/conceitos/': ['Gabinete das Ideias', 'Dar nome a uma ideia é o primeiro passo para enxergá-la.', 'Conceitos filosóficos, psicológicos, científicos e sociais ajudam a organizar o pensamento humano. Aqui, cada termo é desmontado com contexto para revelar o que significa, de onde veio e como influencia aquilo que pensamos.', 'Defina. Relacione. Compreenda.'],
+        '/modules/mitologia/': ['Templo do Conhecimento', 'Antes das teorias, contamos histórias para explicar o mundo.', 'Deuses, símbolos e narrativas de diferentes civilizações revelam como os seres humanos tentaram compreender a natureza, o destino, a morte e a si mesmos. Os mitos mudam de forma, mas suas perguntas permanecem.', 'Entre no mito. Reconheça o humano.'],
+        '/modules/historia/': ['Arquivo da Humanidade', 'O passado nunca está completamente atrás de nós.', 'Civilizações, acontecimentos, personagens e documentos formam as camadas do presente. Esta seção investiga o que aconteceu, como foi interpretado e por que certas histórias continuam disputando espaço na memória.', 'Observe o passado. Releia o presente.'],
+        '/modules/mitos-e-lendas/': ['Salão das Lendas', 'Entre o fato e a imaginação, uma cultura revela seus medos.', 'Criaturas, heróis, assombrações e relatos transmitidos por gerações habitam esta sala. Mais do que separar verdade e invenção, buscamos entender o que essas narrativas preservam sobre os povos que as contaram.', 'Escute a história. Procure o símbolo.'],
+        '/modules/psicologia/': ['Sala da Mente', 'Nem tudo o que nos move passa primeiro pela consciência.', 'Comportamento, identidade, emoções, consciência e inconsciente se encontram nesta seção. As ideias da psicologia são apresentadas como ferramentas para investigar a mente — não como diagnósticos ou respostas universais.', 'Observe. Questione. Conheça-se.'],
+        '/modules/ciencia/': ['Laboratório do Conhecimento', 'A ciência avança quando uma certeza aceita ser testada.', 'Descobertas, teorias, experiências e dúvidas mostram como construímos conhecimento sobre a realidade. Aqui, resultados importam, mas os métodos, os limites e as perguntas que os produziram importam também.', 'Teste a ideia. Siga a evidência.'],
+        '/modules/arte-explica/': ['A Arte Explica', 'Ver uma obra é diferente de realmente enxergá-la.', 'Símbolos, contexto, técnica, composição e significado transformam a maneira como olhamos a arte. Esta seção convida você a atravessar a superfície das imagens e perceber as ideias, conflitos e escolhas escondidas em cada obra.', 'Olhe de novo. Há mais ali.'],
+        '/modules/antes-da-disney/': ['Era uma Vez', 'Antes dos finais felizes, os contos carregavam sombras.', 'As versões antigas dos contos eram mais estranhas, violentas e ambíguas do que suas adaptações modernas. Aqui, recuperamos essas narrativas e investigamos os medos, avisos e símbolos que sobreviveram através das gerações.', 'Volte à origem. Desconfie do final.'],
+        '/modules/personagens/': ['Galeria de Personagens', 'Algumas figuras são inventadas. O que revelam sobre nós, não.', 'Heróis, vilões, arquétipos e figuras históricas atravessam cultura e imaginação porque condensam conflitos profundamente humanos. Esta seção investiga quem são, o que representam e por que continuam retornando.', 'Conheça a figura. Descubra o arquétipo.'],
+        '/sobre.html': ['Sobre o Projeto', 'Uma biblioteca para quem ainda desconfia das certezas.', 'O Mente Crua nasceu da curiosidade e da vontade de observar com mais calma aquilo que aceitamos depressa demais. Reunimos ideias, histórias e perguntas para oferecer contexto — nunca para decidir o que você deve pensar.', 'Sem gurus. Sem atalhos. Com contexto.'],
+        '/contato.html': ['Abra uma Conversa', 'Boas perguntas também começam quando alguém escreve.', 'Sugestões, correções e críticas construtivas ajudam esta biblioteca a crescer com responsabilidade. Use este espaço para apontar um caminho, questionar um conteúdo ou conversar sobre o projeto.', 'Escreva. Toda conversa começa de algum lugar.']
+    };
+
+    const path = window.location.pathname.replace(/\/index\.html$/, '/');
+    const copy = descriptions[path];
+    const header = document.querySelector('.site-header');
+    if (!copy || !header || header.querySelector('.section-description-trigger')) return;
+
+    const trigger = document.createElement('button');
+    const drawer = document.createElement('aside');
+    trigger.className = 'section-description-trigger';
+    trigger.type = 'button';
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.setAttribute('aria-controls', 'section-description-drawer');
+    trigger.setAttribute('aria-label', `Conheça a seção ${copy[0]}`);
+    trigger.innerHTML = '<span aria-hidden="true"></span>';
+    drawer.className = 'section-description-drawer';
+    drawer.id = 'section-description-drawer';
+    drawer.setAttribute('aria-hidden', 'true');
+    drawer.innerHTML = '<div class="section-description-page" role="dialog" aria-modal="false" aria-labelledby="section-description-title"><button class="section-description-close" type="button" aria-label="Fechar descrição">×</button><span class="section-description-eyebrow"></span><h2 id="section-description-title"></h2><p></p><span class="section-description-signature"></span></div>';
+    drawer.querySelector('.section-description-eyebrow').textContent = copy[0];
+    drawer.querySelector('h2').textContent = copy[1];
+    drawer.querySelector('p').textContent = copy[2];
+    drawer.querySelector('.section-description-signature').textContent = copy[3];
+    header.append(trigger, drawer);
+
+    const close = drawer.querySelector('.section-description-close');
+    function setOpen(open, returnFocus) {
+        drawer.classList.toggle('is-open', open);
+        trigger.classList.toggle('is-open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+        drawer.setAttribute('aria-hidden', String(!open));
+        if (open) setTimeout(() => close.focus({ preventScroll: true }), 280);
+        if (!open && returnFocus) trigger.focus();
+    }
+    trigger.addEventListener('click', () => setOpen(!drawer.classList.contains('is-open')));
+    close.addEventListener('click', () => setOpen(false, true));
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && drawer.classList.contains('is-open')) setOpen(false, true);
+    });
+    document.addEventListener('click', event => {
+        if (drawer.classList.contains('is-open') && !drawer.contains(event.target) && !trigger.contains(event.target)) setOpen(false, false);
+    });
+}());
+
 /* Central ADM — link disponível somente no ambiente local */
 (function () {
     const isLocal =
